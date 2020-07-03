@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import Header from "@src/components/organisms/Header/header";
+import Footer from "@src/components/organisms/Footer/footer";
 
 export default function Home() {
   return (
     <Wrapper>
       <Header />
+      <Footer />
     </Wrapper>
   );
 }
