@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import Hamberger from "@src/components/atoms/Btn/hamberger";
 
-export default function Header() {
+export default function MainHeader() {
   return (
     <Wrapper>
       <EsqueTV>Esque TV</EsqueTV>
       <Shop>SHOP</Shop>
+      <Hamberger size={1} color={"white"}></Hamberger>
     </Wrapper>
   );
 }
@@ -33,9 +35,16 @@ const EsqueTV = styled.p`
   font-weight: bold;
   font-size: 2rem;
   line-height: 3rem;
+  letter-spacing: -0.02em;
 `;
 
 const Shop = styled.p`
   font-size: 2rem;
   line-height: 3rem;
+  font-style: normal;
+  font-weight: normal;
+  color: #ffffff;
+  opacity: 0.6;
+  letter-spacing: -0.02em;
+  padding-right: 14.8rem;
 `;

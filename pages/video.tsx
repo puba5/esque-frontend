@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import VideoHeader from "@src/components/organisms/Header/mainHeader";
+import VideoHeader from "@src/components/organisms/Header/videoHeader";
 import Footer from "@src/components/organisms/Footer/footer";
 
-export default function Home() {
+export default function Video() {
   return (
     <Wrapper>
       <VideoHeader />
