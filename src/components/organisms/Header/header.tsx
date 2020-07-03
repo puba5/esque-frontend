@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Header() {
   return (
     <Wrapper>
-      <EsqueTV>Esque TV 12 399</EsqueTV>
+      <EsqueTV>Esque TV999</EsqueTV>
       <Shop>SHOP</Shop>
     </Wrapper>
   );
@@ -13,18 +13,22 @@ export default function Header() {
 const Wrapper = styled.div`
   position: fixed;
   width: 100%;
-  height: 4rem;
+  height: 111px;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 1rem;
   background-color: #fff;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   z-index: 10;
+  padding-top: 50px;
+  border: 1px solid black;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.5);
 `;
 const EsqueTV = styled.div`
   padding-left: 19px;
   padding-right: 30px;
+  font-weight: bold;
 `;
 
 const Shop = styled.div``;
