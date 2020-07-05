@@ -69,7 +69,7 @@ export default class Esque extends App {
       <>
         <GlobalStyle />
         <Head>
-          <title>react-typescript-11th</title>
+          <title>esque</title>
         </Head>
         <BestWrapper>
           <Grey />
