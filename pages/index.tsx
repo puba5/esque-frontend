@@ -1,22 +1,55 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 
-import VideoHeader from "@src/components/organisms/Header/mainHeader";
-import Footer from "@src/components/organisms/Footer/footer";
+import IndexVideo from "@src/components/organisms/Video/indexVideo";
+import Video from "../src/components/organisms/Video/video";
 
 export default function Home() {
+  if (!process.browser) {
+    return <div></div>;
+  }
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  let page = 1;
+  useEffect(() => {
+    slideRef.current.style.transition = "all 0.5s ease-in-out";
+    slideRef.current.style.transform = `translateY(${currentSlide}00vh)`; // 백틱을 사용하여 슬라이드로 이동하는 애니메이션을 만듭니다.
+  }, [currentSlide]);
+  let y = 0;
+  let gap = 0;
+
+  document.addEventListener(
+    "touchstart",
+    (event) => {
+      console.log("valueChange");
+      y = event.touches[0].clientY;
+    },
+    false
+  );
+  document.addEventListener("touchmove", () => {}, false);
+  document.addEventListener(
+    "touchend",
+    (event) => {
+      console.log("touchEnd");
+      gap = event.changedTouches[0].clientY - y;
+      if (gap < -50) {
+        setCurrentSlide(currentSlide + 1);
+      } else if (gap > 50) {
+        setCurrentSlide(currentSlide - 1);
+      }
+      if (page < 0) {
+      } else if (page > 1) {
+      }
+      console.log("client", gap, currentSlide);
+    },
+    false
+  );
+  const slideRef = useRef(null);
+
   return (
-    <Wrapper>
-      <VideoHeader />
-      <video id="background-video" width="100%" loop autoPlay muted>
-        <source
-          src={
-            "https://firebasestorage.googleapis.com/v0/b/esque-66147.appspot.com/o/esquevideo%2F%EC%98%81%EC%83%81%20%EC%98%88%EC%8B%9C1.mp4?alt=media&token=a583cc80-b418-455e-aa51-4b16102289d1"
-          }
-          type="video/mp4"
-        />
-      </video>
-      <Footer />
+    <Wrapper ref={slideRef}>
+      <IndexVideo />
+      <Video page={page} />
     </Wrapper>
   );
 }
@@ -24,9 +57,4 @@ export default function Home() {
 const Wrapper = styled.div`
   position: fixed;
   overflow: hidden;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
