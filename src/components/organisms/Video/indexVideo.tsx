@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import VideoHeader from "@src/components/organisms/Header/mainHeader";
+import MainHeader from "@src/components/organisms/Header/mainHeader";
 import Footer from "@src/components/organisms/Footer/footer";
 
-export default function IndexVideo() {
+export default function IndexVideo(props) {
+  const { isMenu, setIsMenu } = props;
   return (
     <Wrapper>
-      <VideoHeader />
+      <MainHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <video id="background-video" width="100%" loop autoPlay muted playsInline>
         <source
           src={

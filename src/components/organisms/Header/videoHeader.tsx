@@ -2,13 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import Hamberger from "@src/components/atoms/Btn/hamberger";
 
-export default function VideoHeader() {
+export default function VideoHeader(props) {
+  const { isMenu, setIsMenu } = props;
+  const onClickButton = () => {
+    console.log(isMenu);
+    if (isMenu == 1) {
+      setIsMenu(0);
+    }
+  };
   return (
     <Wrapper>
       <Top>
         <EsqueTV>Esque TV</EsqueTV>
         <Shop>SHOP</Shop>
-        <Hamberger size={1} color={"white"}></Hamberger>
+        <div onClick={onClickButton}>
+          <Hamberger size={1} color={"white"} />
+        </div>
       </Top>
       <Bottom>
         <Desc>지금 여기는</Desc>
@@ -22,6 +31,7 @@ export default function VideoHeader() {
 }
 
 const Wrapper = styled.div`
+  z-index: 1;
   position: fixed;
   width: 100%;
   height: 29.1rem;

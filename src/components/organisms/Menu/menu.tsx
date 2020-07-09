@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import HambergerDivider from "@src/components/atoms/bar/hamberger_divider";
 import HamHeart from "@src/components/atoms/mark/ham_heart";
 import Close from "@src/components/atoms/mark/close";
 
-export default function Menu() {
+export default function Menu(props) {
+  const { isMenu, setIsMenu } = props;
+
+  const slideRef = useRef(null);
+
+  useEffect(() => {
+    console.log(isMenu);
+    slideRef.current.style.transform = `translateX(${isMenu}00vw)`;
+  });
+
+  const closeMenu = () => {
+    setIsMenu(1);
+  };
   return (
-    <Wrapper>
-      <ClosePosition>
+    <Wrapper ref={slideRef}>
+      <ClosePosition onClick={closeMenu}>
         <Close />
       </ClosePosition>
       <List>
@@ -51,6 +63,7 @@ const Wrapper = styled.div`
   font-style: normal;
   line-height: 1.33;
   letter-spacing: -0.6px;
+  transition: all 0.5s ease-in-out;
 `;
 
 const ClosePosition = styled.div`

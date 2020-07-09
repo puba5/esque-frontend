@@ -2,12 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import Hamberger from "@src/components/atoms/Btn/hamberger";
 
-export default function MainHeader() {
+export default function MainHeader(props) {
+  const { isMenu, setIsMenu } = props;
+  const onClickButton = () => {
+    console.log(isMenu);
+    if (isMenu == 1) {
+      setIsMenu(0);
+    }
+  };
   return (
     <Wrapper>
       <EsqueTV>Esque TV</EsqueTV>
       <Shop>SHOP</Shop>
-      <Hamberger size={1} color={"white"}></Hamberger>
+      <div onClick={onClickButton}>
+        <Hamberger size={1} color={"white"}></Hamberger>
+      </div>
     </Wrapper>
   );
 }
