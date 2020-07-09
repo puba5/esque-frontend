@@ -9,7 +9,7 @@ export default function Home() {
   if (!process.browser) {
     return <div></div>;
   }
-  const [isMenu, setIsMenu] = useState(0);
+  const [isMenu, setIsMenu] = useState(1);
   // const [isMenu, setIsMenu] = useState(0);
   // const slideRef = useRef(); //as React.MutableRefObject<HTMLInputElement>;
   // // const slideRef = useRef(null);

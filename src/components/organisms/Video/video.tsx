@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import VideoHeader from "@src/components/organisms/Header/videoHeader";
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   position: fixed;
   width: 100vw;
   height: 100vh;
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 100vh, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
