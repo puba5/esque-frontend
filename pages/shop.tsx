@@ -6,10 +6,10 @@ import ShopProducts from "@src/components/organisms/product/shopProducts";
 export default function Shop() {
   return (
     <Wrapper>
-      <ShopHeader></ShopHeader>
+      <ShopHeader />
       <Line />
       <Dummy></Dummy>
-      <ShopProducts></ShopProducts>
+      <ShopProducts />
     </Wrapper>
   );
 }
