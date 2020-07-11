@@ -6,7 +6,7 @@ import Footer from "@src/components/organisms/Footer/footer";
 
 export default function IndexVideo(props) {
   const { isMenu, setIsMenu, videoRef, page } = props;
-  console.log(page);
+
   return (
     <Wrapper>
       <MainHeader isMenu={isMenu} setIsMenu={setIsMenu} />

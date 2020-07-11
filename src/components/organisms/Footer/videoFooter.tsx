@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function VideoFooter() {
+export default function VideoFooter(props) {
+  const { setIsFooterUp } = props;
   return (
     <Wrapper
       onClick={() => {
-        console.log("cliceked");
+        setIsFooterUp(1);
       }}
     >
       <Background />
