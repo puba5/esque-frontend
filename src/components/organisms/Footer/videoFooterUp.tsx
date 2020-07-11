@@ -6,14 +6,14 @@ import Product from "@src/components/molecules/Desc/product";
 export default function VideoFooterUp(props) {
   const { setIsFooterUp } = props;
   return (
-    <Wrapper
-      onClick={() => {
-        setIsFooterUp(0);
-      }}
-    >
+    <Wrapper>
       <Background />
       <Desc>
-        <DescText>
+        <DescText
+          onClick={() => {
+            setIsFooterUp(0);
+          }}
+        >
           <DescBig>달콤쌉살한 커피가 필요해</DescBig>
           <DescSmall>
             비엔나에서 맛봤던 커피의 맛을 잊지 못해 늘 그리워 하고 있었어요. 입술에 닿는 순간
