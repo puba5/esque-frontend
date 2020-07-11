@@ -49,7 +49,8 @@ export default function Menu(props) {
 }
 
 const Wrapper = styled.div`
-  transform: translate3d(50vw, 0, 0);
+  z-index: 100;
+  transform: translate3d(100vw, 0, 0);
   background: #2b2b2b;
   height: 100%;
   width: 100%;

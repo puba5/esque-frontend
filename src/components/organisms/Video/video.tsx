@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
 import VideoHeader from "@src/components/organisms/Header/videoHeader";
 import VideoFooter from "@src/components/organisms/Footer/videoFooter";
 
 export default function Video(props) {
-  const { isMenu, setIsMenu } = props;
+  const { isMenu, setIsMenu, videoRef } = props;
 
   return (
-    <Wrapper>
+    <Wrapper ref={videoRef}>
       <VideoHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <video width="100%" loop autoPlay muted>
         <source
@@ -24,6 +24,7 @@ export default function Video(props) {
 }
 
 const Wrapper = styled.div`
+  z-index: 1;
   position: fixed;
   width: 100vw;
   height: 100vh;

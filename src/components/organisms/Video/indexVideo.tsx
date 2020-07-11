@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
 import MainHeader from "@src/components/organisms/Header/mainHeader";
 import Footer from "@src/components/organisms/Footer/footer";
 
 export default function IndexVideo(props) {
-  const { isMenu, setIsMenu } = props;
+  const { isMenu, setIsMenu, videoRef, page } = props;
+  console.log(page);
   return (
     <Wrapper>
       <MainHeader isMenu={isMenu} setIsMenu={setIsMenu} />
+      <div>{page}</div>
       <video width="100%" loop autoPlay muted playsInline>
         <source
           src={
@@ -26,7 +28,7 @@ const Wrapper = styled.div`
   position: fixed;
   overflow: hidden;
   width: 100vw;
-  height: 100vg;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
