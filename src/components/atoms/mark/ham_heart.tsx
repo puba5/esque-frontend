@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function HamHeart() {
+export default function HamHeart(props) {
+  const { size } = props;
   return (
     <Wrapper>
       <svg

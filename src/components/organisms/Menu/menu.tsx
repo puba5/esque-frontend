@@ -21,7 +21,7 @@ export default function Menu(props) {
   return (
     <Wrapper ref={slideRef}>
       <ClosePosition onClick={closeMenu}>
-        <Close />
+        <Close size={1.6} />
       </ClosePosition>
       <List>
         <div>검색</div>
@@ -64,13 +64,13 @@ const Wrapper = styled.div`
   font-style: normal;
   line-height: 1.33;
   letter-spacing: -0.6px;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
 `;
 
 const ClosePosition = styled.div`
   position: fixed;
-  margin-top: 5.6rem;
-  margin-left: 33.7rem;
+  margin-top: 0.3rem;
+  margin-left: 34.2rem;
 `;
 
 const List = styled.div`
