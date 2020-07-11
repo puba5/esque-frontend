@@ -5,7 +5,6 @@ import Hamberger from "@src/components/atoms/Btn/hamberger";
 export default function VideoHeader(props) {
   const { isMenu, setIsMenu } = props;
   const onClickButton = () => {
-    console.log(isMenu);
     if (isMenu == 1) {
       setIsMenu(0);
     }
@@ -34,10 +33,10 @@ const Wrapper = styled.div`
   z-index: 1;
   position: fixed;
   width: 100%;
-  height: 29.1rem;
+  height: 16.5rem;
   color: white;
   background-color: #fff;
-  padding-top: 5rem;
+  padding-top: 0.7rem;
   background: linear-gradient(
     180deg,
     rgba(2, 2, 2, 0.54) 0%,

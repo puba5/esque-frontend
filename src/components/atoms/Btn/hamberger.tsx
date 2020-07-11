@@ -11,9 +11,9 @@ export default function Hamberger({ size, color }) {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M7 8H23" stroke={color} stroke-width="2" />
-        <path d="M7 15H23" stroke={color} stroke-width="2" />
-        <path d="M7 22H23" stroke={color} stroke-width="2" />
+        <path d="M7 8H23" stroke={color} strokeWidth="2" />
+        <path d="M7 15H23" stroke={color} strokeWidth="2" />
+        <path d="M7 22H23" stroke={color} strokeWidth="2" />
       </svg>
     </Wrapper>
   );

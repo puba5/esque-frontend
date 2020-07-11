@@ -7,7 +7,7 @@ export default function ShopHeader() {
     <Wrapper>
       <EsqueTV>Esque TV</EsqueTV>
       <Shop>SHOP</Shop>
-      <Hamberger size={1} color={"white"}></Hamberger>
+      <Hamberger size={1} color={"black"}></Hamberger>
     </Wrapper>
   );
 }
