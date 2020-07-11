@@ -69,8 +69,8 @@ const Wrapper = styled.div`
 
 const ClosePosition = styled.div`
   position: fixed;
-  margin-top: 0.3rem;
-  margin-left: 34.2rem;
+  top: 0.3rem;
+  right: 2rem;
 `;
 
 const List = styled.div`
