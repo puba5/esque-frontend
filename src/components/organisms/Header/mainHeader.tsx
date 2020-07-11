@@ -25,12 +25,12 @@ const Wrapper = styled.div`
   z-index: 1;
   position: fixed;
   width: 100%;
-  height: 17.2rem;
+  height: 11.7rem;
   color: white;
   display: flex;
   flex-direction: row;
   background-color: #fff;
-  padding-top: 5rem;
+  padding-top: 0.7rem;
   background: linear-gradient(
     179.81deg,
     rgba(2, 2, 2, 0.54) 0.35%,

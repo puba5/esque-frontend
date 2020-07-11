@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 
 const Desc = styled.div`
   position: fixed;
-  bottom: 7.7rem;
+  bottom: 2.7rem;
   left: 2rem;
 `;
 const DescBig = styled.p`

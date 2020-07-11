@@ -3,7 +3,11 @@ import styled from "styled-components";
 
 export default function VideoFooter() {
   return (
-    <Wrapper>
+    <Wrapper
+      onClick={() => {
+        console.log("cliceked");
+      }}
+    >
       <Background />
       <Desc>
         <DescBig>달콤쌉살한 커피가 필요해</DescBig>
@@ -23,7 +27,7 @@ const Wrapper = styled.div`
 const Desc = styled.div`
   position: fixed;
   width: 28rem;
-  bottom: 7.5rem;
+  bottom: 11.5rem;
   left: 2rem;
 `;
 const DescBig = styled.p`
