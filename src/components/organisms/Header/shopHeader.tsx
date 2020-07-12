@@ -8,6 +8,7 @@ export default function ShopHeader() {
       <EsqueTV>Esque TV</EsqueTV>
       <Shop>SHOP</Shop>
       <Hamberger size={1} color={"black"}></Hamberger>
+      <Line />
     </Wrapper>
   );
 }
@@ -15,11 +16,11 @@ export default function ShopHeader() {
 const Wrapper = styled.div`
   position: fixed;
   width: 100%;
-  height: 11.1rem;
+  height: 6.2rem;
   display: flex;
   flex-direction: row;
   background: #ffffff;
-  padding-top: 5rem;
+  padding-top: 1rem;
   color: black;
 `;
 const EsqueTV = styled.p`
@@ -41,4 +42,12 @@ const Shop = styled.p`
   line-height: 3rem;
   letter-spacing: -0.02em;
   padding-right: 14.8rem;
+`;
+
+const Line = styled.div`
+  position: fixed;
+  top: 6.1rem;
+  height: 0.1rem;
+  width: 100%;
+  background: #e4e4e4;
 `;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import ShopHeader from "@src/components/organisms/Header/shopHeader";
+import ShopHeader from "@src/components/organisms/Header/ShopHeader";
 import ShopProducts from "@src/components/organisms/product/shopProducts";
 
 export default function Shop() {
@@ -22,7 +22,7 @@ export default function Shop() {
   return (
     <Wrapper>
       <ShopHeader />
-      <Line />
+
       <Dummy></Dummy>
       <ShopProducts
         totalScrollHeight={totalScrollHeight}
@@ -43,11 +43,4 @@ export default function Shop() {
 const Wrapper = styled.div``;
 const Dummy = styled.div`
   height: 11.2rem;
-`;
-const Line = styled.div`
-  position: fixed;
-  top: 11.2rem;
-  height: 0.1rem;
-  width: 100%;
-  background: #e4e4e4;
 `;
