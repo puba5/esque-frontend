@@ -5,10 +5,10 @@ import VideoFooter from "@src/components/organisms/Footer/videoFooter";
 import VideoFooterUp from "@src/components/organisms/Footer/videoFooterUp";
 
 export default function Video(props) {
-  const { videoRef } = props;
+  const { videoRef, slideRef } = props;
   const [isFooterUp, setIsFooterUp] = useState(false);
   return (
-    <Wrapper ref={videoRef}>
+    <Wrapper ref={slideRef}>
       <video width="100%" loop autoPlay muted>
         <source
           src={

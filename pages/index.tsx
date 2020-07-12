@@ -14,6 +14,7 @@ export default function Home() {
 
   // 모든 videoComponent에 slideRef 인자를 주기 위하여 slideRef 리스트 생성
   const slideRef = [];
+
   let totalPageList = 3;
   // 페이지 개수만큼 생성
   for (let i = 0; i < totalPageList; i++) {
@@ -61,7 +62,7 @@ export default function Home() {
     <Wrapper>
       <IndexHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <IndexVideo />
-      <Video videoRef={slideRef[0]} />
+      <Video slideRef={slideRef[0]} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
     </Wrapper>
   );
