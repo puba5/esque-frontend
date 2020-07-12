@@ -5,8 +5,8 @@ import Hamberger from "@src/components/atoms/Btn/hamberger";
 export default function VideoHeader(props) {
   const { isMenu, setIsMenu } = props;
   const onClickButton = () => {
-    if (isMenu == 1) {
-      setIsMenu(0);
+    if (isMenu == true) {
+      setIsMenu(false);
     }
   };
   return (
