@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import ShopProduct from "@src/components/molecules/Desc/shopProduct";
 
 export default function ShopProducts() {
+  const shopRef = useRef(null);
+  useEffect(() => {
+    shopRef.current.style.height = `${3 * window.innerHeight}px`;
+  });
+
   return (
-    <Wrapper>
+    <Wrapper ref={shopRef}>
       <Desc>
         담백한 독일식 <br />
         브런치는 어떠세요?

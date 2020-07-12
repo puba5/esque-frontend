@@ -13,7 +13,7 @@ export default function VideoHeader(props) {
     <Wrapper>
       <Top>
         <EsqueTV>Esque TV</EsqueTV>
-        <Shop>SHOP</Shop>
+        <Shop href="/shop">SHOP</Shop>
         <div onClick={onClickButton}>
           <Hamberger size={1} color={"white"} />
         </div>
@@ -50,6 +50,7 @@ const Top = styled.div`
   flex-direction: row;
   margin-bottom: 3.4rem;
 `;
+
 const EsqueTV = styled.p`
   padding-left: 1.9rem;
   padding-right: 3rem;
@@ -62,7 +63,12 @@ const EsqueTV = styled.p`
   margin-bottom: 0;
 `;
 
-const Shop = styled.p`
+const Shop = styled.a`
+  &:active {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+  }
   font-size: 2rem;
   line-height: 3rem;
   font-style: normal;
