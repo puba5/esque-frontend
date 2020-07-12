@@ -11,12 +11,15 @@ export default function Menu(props) {
   const slideRef = useRef(null);
 
   useEffect(() => {
-    console.log(isMenu);
-    slideRef.current.style.transform = `translateX(${isMenu}00vw)`;
+    if (isMenu) {
+      slideRef.current.style.transform = `translateX(0vw)`;
+    } else {
+      slideRef.current.style.transform = `translateX(100vw)`;
+    }
   });
 
   const closeMenu = () => {
-    setIsMenu(1);
+    setIsMenu(false);
   };
   return (
     <Wrapper ref={slideRef}>

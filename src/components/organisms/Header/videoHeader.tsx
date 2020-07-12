@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Hamberger from "@src/components/atoms/Btn/hamberger";
+import Hamberger from "@src/components/atoms/btn/hamberger";
 
 export default function VideoHeader(props) {
   const { isMenu, setIsMenu } = props;
   const onClickButton = () => {
-    if (isMenu == true) {
-      setIsMenu(false);
+    console.log("hello");
+    if (isMenu == false) {
+      setIsMenu(true);
     }
   };
   return (

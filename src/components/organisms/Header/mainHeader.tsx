@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Hamberger from "@src/components/atoms/Btn/hamberger";
+import Hamberger from "@src/components/atoms/btn/hamberger";
 
 export default function MainHeader(props) {
   const { isMenu, setIsMenu } = props;
