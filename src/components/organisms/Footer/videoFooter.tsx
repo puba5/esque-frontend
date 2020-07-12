@@ -6,7 +6,7 @@ export default function VideoFooter(props) {
   return (
     <Wrapper
       onClick={() => {
-        setIsFooterUp(1);
+        setIsFooterUp(true);
       }}
     >
       <Background />

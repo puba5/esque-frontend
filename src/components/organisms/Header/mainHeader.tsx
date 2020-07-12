@@ -6,8 +6,8 @@ export default function MainHeader(props) {
   const { isMenu, setIsMenu } = props;
   const onClickButton = () => {
     console.log(isMenu);
-    if (isMenu == 1) {
-      setIsMenu(0);
+    if (isMenu == true) {
+      setIsMenu(false);
     }
   };
   return (

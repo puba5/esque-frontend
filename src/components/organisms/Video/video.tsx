@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import VideoHeader from "@src/components/organisms/Header/videoHeader";
 import VideoFooter from "@src/components/organisms/Footer/videoFooter";
 import VideoFooterUp from "@src/components/organisms/Footer/videoFooterUp";
 
 export default function Video(props) {
-  const { isMenu, setIsMenu, videoRef } = props;
-  const [isFooterUp, setIsFooterUp] = useState(0);
+  const { videoRef } = props;
+  const [isFooterUp, setIsFooterUp] = useState(false);
   return (
     <Wrapper ref={videoRef}>
-      <VideoHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <video width="100%" loop autoPlay muted>
         <source
           src={

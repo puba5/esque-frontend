@@ -5,13 +5,14 @@ import Product from "@src/components/molecules/Desc/product";
 
 export default function VideoFooterUp(props) {
   const { setIsFooterUp } = props;
+
   return (
     <Wrapper>
       <Background />
       <Desc>
         <DescText
           onClick={() => {
-            setIsFooterUp(0);
+            setIsFooterUp(false);
           }}
         >
           <DescBig>달콤쌉살한 커피가 필요해</DescBig>

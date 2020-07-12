@@ -30,7 +30,7 @@ export default function VideoHeader(props) {
 }
 
 const Wrapper = styled.div`
-  z-index: 1;
+  z-index: 100;
   position: fixed;
   width: 100%;
   height: 16.5rem;

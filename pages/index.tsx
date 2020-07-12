@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 
+import VideoHeader from "@src/components/organisms/Header/videoHeader";
 import IndexVideo from "@src/components/organisms/Video/indexVideo";
 import Video from "@src/components/organisms/Video/video";
 import Menu from "@src/components/organisms/Menu/menu";
@@ -9,7 +10,7 @@ export default function Home() {
   if (!process.browser) {
     return <div></div>;
   }
-  const [isMenu, setIsMenu] = useState(1);
+  const [isMenu, setIsMenu] = useState(true);
 
   // 모든 videoComponent에 slideRef 인자를 주기 위하여 slideRef 리스트 생성
   const slideRef = [];
@@ -58,6 +59,7 @@ export default function Home() {
 
   return (
     <Wrapper>
+      <VideoHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <IndexVideo isMenu={isMenu} setIsMenu={setIsMenu} />
       <Video isMenu={isMenu} setIsMenu={setIsMenu} videoRef={slideRef[0]} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
