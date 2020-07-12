@@ -2,11 +2,16 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import ShopProduct from "@src/components/molecules/Desc/shopProduct";
 
-export default function ShopProducts() {
+export default function ShopProducts(props) {
   const shopRef = useRef(null);
+  const { totalScrollHeight, setTotalScrollHeight } = props;
+  let currentScrollHeight = 1.5 * window.innerHeight;
+
   useEffect(() => {
-    shopRef.current.style.height = `${3 * window.innerHeight}px`;
-  });
+    console.log("oh");
+    shopRef.current.style.height = `${currentScrollHeight}px`;
+    setTotalScrollHeight(totalScrollHeight + currentScrollHeight);
+  }, []);
 
   return (
     <Wrapper ref={shopRef}>
@@ -27,7 +32,7 @@ const Wrapper = styled.div`
 `;
 
 const Desc = styled.div`
-  position: fixed;
+  position: absolute;
   font-style: normal;
   font-weight: 300;
   font-size: 3rem;

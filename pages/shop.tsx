@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ShopHeader from "@src/components/organisms/Header/shopHeader";
 import ShopProducts from "@src/components/organisms/product/shopProducts";
@@ -9,20 +9,33 @@ export default function Shop() {
     return <div></div>;
   }
 
+  const [totalScrollHeight, setTotalScrollHeight] = useState(0);
   let shopCnt = 0;
-  let totalScrollHeight = 0;
-  for (let i = 0; i < shopCnt; i++) {
-    totalScrollHeight += 5 * window.innerHeight;
-  }
+  // let totalScrollHeight = 0;
+  // for (let i = 0; i < shopCnt; i++) {
+  //   totalScrollHeight += 5 * window.innerHeight;
+  // }
 
+  window.addEventListener("scroll", () => {
+    console.log("currentScroll", window.pageYOffset, totalScrollHeight);
+  });
   return (
     <Wrapper>
       <ShopHeader />
       <Line />
       <Dummy></Dummy>
-      <ShopProducts />
-      <ShopProducts />
-      <ShopProducts />
+      <ShopProducts
+        totalScrollHeight={totalScrollHeight}
+        setTotalScrollHeight={setTotalScrollHeight}
+      />
+      <ShopProducts
+        totalScrollHeight={totalScrollHeight}
+        setTotalScrollHeight={setTotalScrollHeight}
+      />
+      <ShopProducts
+        totalScrollHeight={totalScrollHeight}
+        setTotalScrollHeight={setTotalScrollHeight}
+      />
     </Wrapper>
   );
 }
