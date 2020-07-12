@@ -2,12 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import Hamberger from "@src/components/atoms/btn/hamberger";
 
-export default function ShopHeader() {
+export default function ShopHeader(props) {
+  const { isMenu, setIsMenu } = props;
+  const onClickButton = () => {
+    if (isMenu == false) {
+      console.log("hello");
+      setIsMenu(true);
+    }
+  };
+
   return (
     <Wrapper>
-      <EsqueTV>Esque TV</EsqueTV>
+      <EsqueTV href="/">Esque TV</EsqueTV>
       <Shop>SHOP</Shop>
-      <Hamberger size={1} color={"black"}></Hamberger>
+      <div onClick={onClickButton}>
+        <Hamberger size={1} color={"black"} />
+      </div>
       <Line />
     </Wrapper>
   );
@@ -24,7 +34,12 @@ const Wrapper = styled.div`
   padding-top: 1rem;
   color: black;
 `;
-const EsqueTV = styled.p`
+const EsqueTV = styled.a`
+  &:active {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+  }
   padding-left: 1.9rem;
   padding-right: 3rem;
   font-style: normal;

@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import Hamberger from "@src/components/atoms/btn/hamberger";
 
-export default function VideoHeader(props) {
+export default function IndexHeader(props) {
   const { isMenu, setIsMenu } = props;
   const onClickButton = () => {
-    console.log("hello");
     if (isMenu == false) {
       setIsMenu(true);
     }
   };
+
   return (
     <Wrapper>
       <Top>

@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
-import VideoHeader from "@src/components/organisms/Header/videoHeader";
+import IndexHeader from "@src/components/organisms/Header/IndexHeader";
 import IndexVideo from "@src/components/organisms/Video/indexVideo";
 import Video from "@src/components/organisms/Video/video";
 import Menu from "@src/components/organisms/Menu/menu";
@@ -59,7 +59,7 @@ export default function Home() {
 
   return (
     <Wrapper>
-      <VideoHeader isMenu={isMenu} setIsMenu={setIsMenu} />
+      <IndexHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <IndexVideo />
       <Video videoRef={slideRef[0]} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />

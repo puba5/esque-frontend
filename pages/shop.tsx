@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ShopHeader from "@src/components/organisms/Header/ShopHeader";
 import ShopProducts from "@src/components/organisms/product/shopProducts";
+import Menu from "@src/components/organisms/Menu/menu";
 
 export default function Shop() {
   // 서버사이드렌더링을 하게되면, window가 생성 X, 이 문제를 해결하기 위해
@@ -9,20 +10,16 @@ export default function Shop() {
     return <div></div>;
   }
 
+  const [isMenu, setIsMenu] = useState(false);
   const [totalScrollHeight, setTotalScrollHeight] = useState(0);
-  let shopCnt = 0;
-  // let totalScrollHeight = 0;
-  // for (let i = 0; i < shopCnt; i++) {
-  //   totalScrollHeight += 5 * window.innerHeight;
-  // }
 
   window.addEventListener("scroll", () => {
     console.log("currentScroll", window.pageYOffset, totalScrollHeight);
   });
   return (
     <Wrapper>
-      <ShopHeader />
-
+      <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
+      <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy></Dummy>
       <ShopProducts
         totalScrollHeight={totalScrollHeight}
@@ -40,7 +37,12 @@ export default function Shop() {
   );
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden;
+`;
 const Dummy = styled.div`
   height: 11.2rem;
 `;

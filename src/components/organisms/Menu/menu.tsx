@@ -12,15 +12,16 @@ export default function Menu(props) {
 
   useEffect(() => {
     if (isMenu) {
-      slideRef.current.style.transform = `translateX(0vw)`;
+      slideRef.current.style.transform = `translate3d(0vw,0,0)`;
     } else {
-      slideRef.current.style.transform = `translateX(100vw)`;
+      slideRef.current.style.transform = `translate3d(100vw,0,0)`;
     }
   });
 
   const closeMenu = () => {
     setIsMenu(false);
   };
+
   return (
     <Wrapper ref={slideRef}>
       <ClosePosition onClick={closeMenu}>
