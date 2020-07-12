@@ -21,9 +21,9 @@ export default function Home() {
     slideRef.push(useRef(null));
   }
 
-  let page = 0;
-  let y = 0;
-  let gap = 0;
+  let currentPage = 0;
+  let startY = 0;
+  let gapY = 0;
 
   // 터치 시작
   document.addEventListener(
@@ -31,7 +31,7 @@ export default function Home() {
     (event) => {
       console.log("valueChange");
       // 첫번째 터치의 Y 값을 구한다
-      y = event.touches[0].clientY;
+      startY = event.touches[0].clientY;
     },
     false
   );
@@ -42,14 +42,14 @@ export default function Home() {
     "touchend",
     (event) => {
       console.log("touchEnd");
-      gap = event.changedTouches[0].clientY - y;
-      if (gap < -50) {
-        page = 0;
+      gapY = event.changedTouches[0].clientY - startY;
+      if (gapY < -50) {
+        currentPage = 0;
         // 슬라이드를 위로 올림
         slideRef[0].current.style.transition = "all 0.5s ease-in-out";
         slideRef[0].current.style.transform = `translateY(0vh)`;
-      } else if (gap > 50) {
-        page = 1;
+      } else if (gapY > 50) {
+        currentPage = 1;
         // 슬라이드를 아래로 내림
         slideRef[0].current.style.transition = "all 0.5s ease-in-out";
         slideRef[0].current.style.transform = `translateY(100vh)`;
