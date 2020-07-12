@@ -14,6 +14,7 @@ export default function ShopHeader() {
 }
 
 const Wrapper = styled.div`
+  z-index: 100;
   position: fixed;
   width: 100%;
   height: 6.2rem;
@@ -46,7 +47,7 @@ const Shop = styled.p`
 
 const Line = styled.div`
   position: fixed;
-  top: 6.1rem;
+  top: 6.2rem;
   height: 0.1rem;
   width: 100%;
   background: #e4e4e4;
