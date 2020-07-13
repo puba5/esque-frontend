@@ -2,15 +2,38 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import ShopProduct from "@src/components/molecules/Desc/shopProduct";
 
+// Scene의 정보를 담은 객체
+const sceneInfo = [
+  {
+    heightNum: 1.5,
+    scrollHeight: 0,
+    values: {
+      // values에는 변화의 시작 값, 끝 값, 변화의 시작과 끝 시간(비율)
+      video_translateY_in: [20, 0, { start: 0.1, end: 0.3 }],
+      title_translateY_in: [20, 0, { start: 0.3, end: 0.5 }],
+      product_translateY_in: [20, 0, { start: 0.5, end: 0.7 }],
+    },
+    objs: {
+      video: null,
+      title: null,
+      product: null,
+    },
+  },
+];
+
 export default function ShopProducts(props) {
+  const { newRef } = props;
   const shopRef = useRef(null);
-  const { totalScrollHeight, setTotalScrollHeight } = props;
-  let currentScrollHeight = 1.5 * window.innerHeight;
+  let productCnt = 3;
+  const productRef = [];
+  for (let i = 0; i < productCnt; i++) {
+    productRef.push(useRef(null));
+  }
+
+  let currentScrollHeight = 1.4 * window.innerHeight;
 
   useEffect(() => {
-    console.log("oh");
     shopRef.current.style.height = `${currentScrollHeight}px`;
-    setTotalScrollHeight(totalScrollHeight + currentScrollHeight);
   }, []);
 
   return (
@@ -19,14 +42,18 @@ export default function ShopProducts(props) {
         담백한 독일식 <br />
         브런치는 어떠세요?
       </Desc>
-      <Photo />
-      <ShopProduct />
-      <ShopProduct />
+      <Photo ref={newRef} />
+      <div ref={newRef}>
+        <ShopProduct />
+        <ShopProduct />
+        <ShopProduct />
+      </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
+  border: green solid 4px;
   width: 37.5rem;
   height: 62rem;
 `;

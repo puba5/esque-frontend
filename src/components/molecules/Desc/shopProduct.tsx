@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import Heart from "@src/components/atoms/btn/Heart";
 
-export default function ShopProduct() {
+export default function ShopProduct(props) {
+  const { brandName, productName, price } = props;
   return (
     <Wrapper>
       <ProductPhoto></ProductPhoto>
@@ -10,7 +12,9 @@ export default function ShopProduct() {
         <ProductName>독일 천연 통곡물 호밀빵</ProductName>
         <Price>8,500</Price>
       </ProductDesc>
-      <Heart></Heart>
+      <HeartButton>
+        <Heart color={"black"} size={`1.5`} />
+      </HeartButton>
     </Wrapper>
   );
 }
@@ -57,9 +61,11 @@ const Price = styled.div`
   letter-spacing: -0.02em;
 `;
 
-const Heart = styled.div`
+const HeartButton = styled.div`
   width: 4rem;
   height: 5rem;
   background-color: red;
   margin-left: auto;
+  padding-left: 1.3rem;
+  padding-top: 1.9rem;
 `;
