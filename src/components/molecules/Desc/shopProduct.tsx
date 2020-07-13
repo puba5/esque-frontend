@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 const ProductPhoto = styled.div`
   width: 7.7rem;
   height: 7.7rem;
-  background-color: white;
+  background: #f4f4f4;
   margin-right: 1.2rem;
 `;
 
