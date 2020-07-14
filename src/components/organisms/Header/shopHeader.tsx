@@ -18,7 +18,7 @@ export default function ShopHeader(props) {
       <div onClick={onClickButton}>
         <Hamberger size={1} color={"black"} />
       </div>
-      <Line />
+      <HeaderLine />
     </Wrapper>
   );
 }
@@ -60,7 +60,7 @@ const Shop = styled.p`
   padding-right: 14.8rem;
 `;
 
-const Line = styled.div`
+const HeaderLine = styled.div`
   position: fixed;
   top: 6.2rem;
   height: 0.1rem;
