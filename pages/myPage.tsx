@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MyProduct from "@src/components/molecules/product/MyProduct";
 import MyHeader from "@src/components/organisms/Header/MyHeader";
+import MyFooter from "@src/components/organisms/Footer/MyFooter";
 
 export default function myPage() {
   return (
@@ -11,7 +12,7 @@ export default function myPage() {
       <MyProduct></MyProduct>
       <MyProduct></MyProduct>
       <MyProduct></MyProduct>
-      <div>??</div>
+      <MyFooter></MyFooter>
     </Wrapper>
   );
 }
