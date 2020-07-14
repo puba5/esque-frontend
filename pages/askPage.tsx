@@ -59,7 +59,7 @@ const Email = styled.textarea`
   border: none;
   resize: none;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 5px;
   height: 3.7rem;
   padding: 0.5rem 1.2rem;
   ::placeholder {
@@ -77,7 +77,7 @@ const AskTitle = styled.textarea`
   border: none;
   resize: none;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 5px;
   margin-top: 1.2rem;
   height: 3.7rem;
   padding: 0.5rem 1.2rem;
@@ -96,7 +96,7 @@ const AskContent = styled.textarea`
   resize: none;
   border: none;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 5px;
   margin-top: 1.2rem;
   height: 26.7rem;
   padding: 0.9rem 1.2rem 2rem 1.2rem;
