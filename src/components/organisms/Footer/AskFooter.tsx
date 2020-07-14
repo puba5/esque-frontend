@@ -7,7 +7,7 @@ export default function AskFooter() {
   };
   return (
     <Wrapper>
-      <HeaderLine></HeaderLine>
+      <HeaderLine />
       <SendButton onClick={SendEmail}>메일보내기</SendButton>
     </Wrapper>
   );
