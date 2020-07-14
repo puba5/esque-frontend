@@ -19,13 +19,6 @@ export default function IndexHeader(props) {
           <Hamberger size={1} color={"white"} />
         </div>
       </Top>
-      <Bottom>
-        <Desc>지금 여기는</Desc>
-        <Where>
-          <City>Paris</City>
-          <Country>프랑스</Country>
-        </Where>
-      </Bottom>
     </Wrapper>
   );
 }

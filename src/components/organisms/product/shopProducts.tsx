@@ -54,7 +54,7 @@ export default function ShopProducts(props) {
 
 const Wrapper = styled.div`
   border: green solid 4px;
-  width: 37.5rem;
+  width: 100%;
   height: 62rem;
 `;
 

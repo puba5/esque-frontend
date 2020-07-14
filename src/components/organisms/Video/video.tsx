@@ -9,6 +9,13 @@ export default function Video(props) {
   const [isFooterUp, setIsFooterUp] = useState(false);
   return (
     <Wrapper ref={slideRef}>
+      <Bottom>
+        <Desc>지금 여기는</Desc>
+        <Where>
+          <City>Paris</City>
+          <Country>프랑스</Country>
+        </Where>
+      </Bottom>
       <video width="100%" loop autoPlay muted>
         <source
           src={
@@ -32,4 +39,45 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const Bottom = styled.div`
+  position: fixed;
+  top: 8.1rem;
+  left: 1.9rem;
+`;
+
+const Desc = styled.p`
+  margin-bottom: 0;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+`;
+
+const Where = styled.div`
+  display: flex;
+  flex-direction: row;
+  vertical-align: bottom;
+`;
+
+const Country = styled.p`
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  padding-top: 0.46rem;
+`;
+const City = styled.p`
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-top: 0;
+  margin-right: 0.5rem;
 `;

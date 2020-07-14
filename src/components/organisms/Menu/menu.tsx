@@ -53,7 +53,7 @@ export default function Menu(props) {
 }
 
 const Wrapper = styled.div`
-  z-index: 100;
+  z-index: 101;
   transform: translate3d(100vw, 0, 0);
   background: #2b2b2b;
   height: 100%;
