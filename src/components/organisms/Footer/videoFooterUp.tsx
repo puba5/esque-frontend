@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Product from "@src/components/molecules/Desc/product";
+import Product from "@src/components/molecules/product/product";
 
 export default function VideoFooterUp(props) {
   const { setIsFooterUp } = props;

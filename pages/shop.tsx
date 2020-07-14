@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ShopHeader from "@src/components/organisms/Header/ShopHeader";
-import ShopProducts from "@src/components/organisms/product/shopProducts";
+import ShopProducts from "@src/components/organisms/productList/shopProducts";
 import Menu from "@src/components/organisms/Menu/menu";
 import ShopFooter from "@src/components/organisms/Footer/ShopFooter";
 

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
-import ShopProduct from "@src/components/molecules/Desc/shopProduct";
+import ShopProduct from "@src/components/molecules/product/shopProduct";
 
 // Scene의 정보를 담은 객체
 const sceneInfo = [
