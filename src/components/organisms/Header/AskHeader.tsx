@@ -4,15 +4,17 @@ import styled from "styled-components";
 export default function AskHeader() {
   return (
     <Wrapper>
-      <Shop>SHOP</Shop>
+      <Shop>1:1문의</Shop>
       <HeaderLine />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
+  border: 2px solid blue;
   z-index: 100;
   position: fixed;
+  top: 0;
   width: 100%;
   height: 6.2rem;
   display: flex;
