@@ -4,6 +4,7 @@ import styled from "styled-components";
 export default function MyProduct() {
   return (
     <Wrapper>
+      <HeaderLine></HeaderLine>
       <ButtonList>
         <CheckButton></CheckButton>
         <ButtonDesc>상품선택</ButtonDesc>
@@ -23,10 +24,15 @@ export default function MyProduct() {
 }
 
 const Wrapper = styled.div`
-  border: solid 2px blue;
   width: 100%;
   height: 14.4rem;
   color: black;
+  background: white;
+`;
+const HeaderLine = styled.div`
+  height: 0.1rem;
+  width: 100%;
+  background: #e4e4e4;
 `;
 const ButtonList = styled.div`
   display: flex;
