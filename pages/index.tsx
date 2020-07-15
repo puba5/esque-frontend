@@ -8,7 +8,7 @@ import Menu from "@src/components/organisms/Menu/menu";
 
 export default function Home() {
   if (!process.browser) {
-    return <Wrapper></Wrapper>;
+    return <div></div>;
   }
   const [isMenu, setIsMenu] = useState(false);
 
