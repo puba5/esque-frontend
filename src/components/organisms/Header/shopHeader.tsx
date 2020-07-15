@@ -16,9 +16,9 @@ export default function ShopHeader(props) {
       <Wrapper>
         <EsqueTV href="/">Esque TV</EsqueTV>
         <Shop>SHOP</Shop>
-        <div onClick={onClickButton}>
+        <HambergerButton onClick={onClickButton}>
           <Hamberger size={1} color={"black"} />
-        </div>
+        </HambergerButton>
         <HeaderLine />
       </Wrapper>
     </div>
@@ -67,4 +67,8 @@ const HeaderLine = styled.div`
   height: 0.1rem;
   width: 100%;
   background: #e4e4e4;
+`;
+
+const HambergerButton = styled.div`
+  padding-right: 1.2rem;
 `;

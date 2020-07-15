@@ -6,8 +6,8 @@ export default function HeartFilled(props) {
   return (
     <Wrapper>
       <svg
-        width="40"
-        height="50"
+        width={`${4 * size}rem`}
+        height={`${5 * size}rem`}
         viewBox="0 0 40 50"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
