@@ -12,24 +12,25 @@ export default function ShopHeader(props) {
   };
 
   return (
-    <Wrapper>
-      <EsqueTV href="/">Esque TV</EsqueTV>
-      <Shop>SHOP</Shop>
-      <div onClick={onClickButton}>
-        <Hamberger size={1} color={"black"} />
-      </div>
-      <HeaderLine />
-    </Wrapper>
+    <div>
+      <Wrapper>
+        <EsqueTV href="/">Esque TV</EsqueTV>
+        <Shop>SHOP</Shop>
+        <div onClick={onClickButton}>
+          <Hamberger size={1} color={"black"} />
+        </div>
+        <HeaderLine />
+      </Wrapper>
+    </div>
   );
 }
 
 const Wrapper = styled.div`
-  z-index: 100;
   position: fixed;
   width: 100%;
+  z-index: 100;
   height: 6.2rem;
   display: flex;
-  flex-direction: row;
   background: #ffffff;
   padding-top: 1rem;
   color: black;
@@ -40,8 +41,8 @@ const EsqueTV = styled.a`
     font-weight: bold;
     color: black;
   }
-  padding-left: 1.9rem;
-  padding-right: 3rem;
+  margin-left: 1.9rem;
+  margin-right: 3rem;
   font-style: normal;
   font-weight: normal;
   font-size: 2rem;
@@ -57,7 +58,7 @@ const Shop = styled.p`
   font-size: 2rem;
   line-height: 3rem;
   letter-spacing: -0.02em;
-  padding-right: 14.8rem;
+  margin-right: auto;
 `;
 
 const HeaderLine = styled.div`
