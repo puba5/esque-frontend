@@ -83,7 +83,7 @@ const sceneInfo = [
 export default function Shop() {
   // 서버사이드렌더링을 하게되면, window가 생성 X, 이 문제를 해결하기 위해
   if (!process.browser) {
-    return <div></div>;
+    return <Wrapper></Wrapper>;
   }
   const [isMenu, setIsMenu] = useState(false);
   let currentScene = 0;
@@ -213,6 +213,7 @@ const Wrapper = styled.div`
   position: fixed;
   overflow: hidden;
 `;
+
 const Dummy = styled.div`
   height: 11.2rem;
 `;
