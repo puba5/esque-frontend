@@ -28,25 +28,25 @@ export default function Menu(props) {
         <Close size={1.6} />
       </ClosePosition>
       <List>
-        <div>검색</div>
+        <PageMoveButton>검색</PageMoveButton>
         <Slash>
           <HambergerDivider />
         </Slash>
-        <div>브랜드 소개</div>
+        <PageMoveButton>브랜드 소개</PageMoveButton>
         <Slash>
           <HambergerDivider />
         </Slash>
-        <div>
+        <PageMoveButton href="/myPage">
           <HamHeart />
-        </div>
+        </PageMoveButton>
         <Slash>
           <HambergerDivider />
         </Slash>
-        <div>공지사항</div>
+        <PageMoveButton>공지사항</PageMoveButton>
         <Slash>
           <HambergerDivider />
         </Slash>
-        <div>1:1문의</div>
+        <PageMoveButton href="/askPage">1:1문의</PageMoveButton>
       </List>
     </Wrapper>
   );
@@ -86,4 +86,14 @@ const List = styled.div`
 
 const Slash = styled.div`
   height: 4.6rem;
+`;
+
+const PageMoveButton = styled.a`
+  text-decoration: none;
+  color: white;
+  &:active {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+  }
 `;

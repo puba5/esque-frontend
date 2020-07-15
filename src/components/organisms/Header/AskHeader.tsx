@@ -5,6 +5,7 @@ import BackButton from "@src/components/atoms/btn/BackButton";
 export default function AskHeader() {
   const ClickBackButton = () => {
     console.log("BACK!!!");
+    window.history.back();
   };
   return (
     <Wrapper>
