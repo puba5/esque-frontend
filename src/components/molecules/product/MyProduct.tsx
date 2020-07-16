@@ -17,7 +17,12 @@ export default function MyProduct() {
           <ProductName>독일 천연 통곡물 호밀빵</ProductName>
           <Price>8,500</Price>
         </ProductDesc>
-        <Quantity></Quantity>
+        <Quantity>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </Quantity>
       </ProductContainer>
     </Wrapper>
   );
@@ -103,11 +108,13 @@ const Price = styled.div`
   letter-spacing: -0.02em;
 `;
 
-const Quantity = styled.div`
+const Quantity = styled.select`
   width: 5.3rem;
   height: 2.4rem;
   margin-right: 2rem;
   margin-left: auto;
   margin-top: auto;
-  border: black 1px solid;
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  border-radius: 3px;
 `;
