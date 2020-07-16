@@ -83,9 +83,11 @@ const sceneInfo = [
 export default function Shop() {
   // 서버사이드렌더링을 하게되면, window가 생성 X, 이 문제를 해결하기 위해
   if (!process.browser) {
-    return <Wrapper></Wrapper>;
+    return <div></div>;
   }
   const [isMenu, setIsMenu] = useState(false);
+  const [yyOffset, setyOffset] = useState(0);
+
   let currentScene = 0;
   let prevScrollHeight = 0;
   let totalComponent = 3;
@@ -97,7 +99,7 @@ export default function Shop() {
 
   function scrollLoop() {
     enterNewScene = false;
-
+    setyOffset(yOffset);
     console.log("prev", prevScrollHeight);
 
     prevScrollHeight = 0;
@@ -127,7 +129,7 @@ export default function Shop() {
     if (enterNewScene) {
       return;
     }
-    playAnimation();
+    // playAnimation();
   }
   // 화면 비율을 구하여 알맞은 값을 계산
   function calcValues(values, currentYOffset) {
@@ -186,10 +188,13 @@ export default function Shop() {
     }
   }
 
+  document.addEventListener("touchmove", () => {}, { passive: false });
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       yOffset = window.pageYOffset;
       console.log("currentScroll", yOffset, currentScene);
+
       scrollLoop();
     });
   }, []);
@@ -199,6 +204,9 @@ export default function Shop() {
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
+      <TimeValue>{yyOffset}</TimeValue>
+      <div>{}</div>
+
       <ShopProducts newRef={AA} />
       <ShopProducts newRef={AA} />
       <ShopProducts newRef={AA} />
@@ -210,8 +218,14 @@ export default function Shop() {
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  overscroll-behavior: contain;
 `;
 
 const Dummy = styled.div`
   height: 11.2rem;
+`;
+
+const TimeValue = styled.div`
+  position: fixed;
+  font-size: 3rem;
 `;

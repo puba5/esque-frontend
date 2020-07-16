@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 body {
+  overscroll-behavior: none ;
   margin: 0;
   padding: 0;
   font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';

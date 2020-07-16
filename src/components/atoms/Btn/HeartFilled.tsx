@@ -21,4 +21,8 @@ export default function HeartFilled(props) {
   );
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  position: relative;
+  left: -1.2rem;
+  top: -1.7rem;
+`;
