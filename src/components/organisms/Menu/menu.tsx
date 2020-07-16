@@ -37,12 +37,9 @@ export default function Menu(props) {
           <HambergerDivider />
         </Slash>
         <PageMoveButton href="/myPage">
-          <HamHeart />
+          <Text>MY</Text>
+          <HamHeart size={2.4} />
         </PageMoveButton>
-        <Slash>
-          <HambergerDivider />
-        </Slash>
-        <PageMoveButton>공지사항</PageMoveButton>
         <Slash>
           <HambergerDivider />
         </Slash>
@@ -81,7 +78,7 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 21.8rem;
+  margin-top: 16.8rem;
 `;
 
 const Slash = styled.div`
@@ -89,6 +86,7 @@ const Slash = styled.div`
 `;
 
 const PageMoveButton = styled.a`
+  display: flex;
   text-decoration: none;
   color: white;
   &:active {
@@ -96,4 +94,8 @@ const PageMoveButton = styled.a`
     font-weight: bold;
     color: white;
   }
+`;
+
+const Text = styled.p`
+  margin-right: 1rem;
 `;

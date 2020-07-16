@@ -6,8 +6,8 @@ export default function HamHeart(props) {
   return (
     <Wrapper>
       <svg
-        width="34"
-        height="34"
+        width={`${size}rem`}
+        height={`${size}rem`}
         viewBox="0 0 34 34"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -23,4 +23,7 @@ export default function HamHeart(props) {
   );
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  position: relative;
+  top: -0.2rem;
+`;
