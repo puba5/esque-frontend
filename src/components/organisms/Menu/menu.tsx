@@ -50,10 +50,15 @@ export default function Menu(props) {
 }
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   z-index: 101;
   transform: translate3d(100vw, 0, 0);
   background: #2b2b2b;
-  height: 100%;
+  height: 100vh;
+
   width: 100%;
   color: white;
   position: fixed;
@@ -78,7 +83,7 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 16.8rem;
+  justify-content: center;
 `;
 
 const Slash = styled.div`

@@ -12,8 +12,8 @@ const sceneInfo = [
     scrollHeight: 0,
     values: {
       // values에는 변화의 시작 값, 끝 값, 변화의 시작과 끝 시간(비율)
-      messageA_opacity_in: [0, 1, { start: 0.1, end: 0.2 }],
-      messageB_opacity_in: [0, 1, { start: 0.15, end: 0.25 }],
+      messageA_opacity_in: [1, 0, { start: 0.1, end: 0.2 }],
+      messageB_opacity_in: [1, 0, { start: 0.15, end: 0.25 }],
       messageC_opacity_in: [0, 1, { start: 0.2, end: 0.3 }],
       messageA_translateY_in: [20, 0, { start: 0.1, end: 0.2 }],
       messageB_translateY_in: [20, 0, { start: 0.15, end: 0.25 }],
@@ -100,24 +100,21 @@ export default function Shop() {
   function scrollLoop() {
     enterNewScene = false;
     setyOffset(yOffset);
-    console.log("prev", prevScrollHeight);
 
     prevScrollHeight = 0;
+
     for (let i = 0; i < currentScene; i++) {
       prevScrollHeight += componentHeight;
     }
 
     if (yOffset > prevScrollHeight + componentHeight) {
-      console.log("oh");
       enterNewScene = true;
       if (currentScene + 1 >= totalComponent) {
         return;
       }
-
       currentScene += 1;
     }
     if (yOffset < prevScrollHeight) {
-      console.log("my");
       enterNewScene = true;
       // 브라우저 바운스 효과로 -되는 것을 방지
       if (currentScene === 0) {
@@ -129,8 +126,9 @@ export default function Shop() {
     if (enterNewScene) {
       return;
     }
-    // playAnimation();
+    playAnimation();
   }
+
   // 화면 비율을 구하여 알맞은 값을 계산
   function calcValues(values, currentYOffset) {
     let retValues;
@@ -158,17 +156,19 @@ export default function Shop() {
     }
     return retValues;
   }
-
+  const [opa, setOpa] = useState(0);
   const AA = useRef(null);
   function playAnimation() {
     let values = sceneInfo[currentScene].values;
     let currentYOffset = yOffset - prevScrollHeight;
     const scrollHeight = componentHeight;
     const scrollRatio = currentYOffset / scrollHeight;
-    console.log("hello", currentScene, currentYOffset, scrollRatio);
+
     switch (currentScene) {
       case 0:
-        AA.current.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
+        setOpa(calcValues(values.messageA_opacity_in, currentYOffset));
+        AA.current.style.opacity = opa;
+        console.log("opa", calcValues(values.messageA_opacity_in, currentYOffset));
         AA.current.style.transform = `translateY(${calcValues(
           values.messageA_translateY_in,
           currentYOffset
@@ -193,10 +193,10 @@ export default function Shop() {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       yOffset = window.pageYOffset;
-      console.log("currentScroll", yOffset, currentScene);
-
+      //   console.log("currentScroll", yOffset, currentScene);
       scrollLoop();
     });
+    AA.current.style.opacity = opa;
   }, []);
 
   return (
@@ -205,8 +205,6 @@ export default function Shop() {
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
       <TimeValue>{yyOffset}</TimeValue>
-      <div>{}</div>
-
       <ShopProducts newRef={AA} />
       <ShopProducts newRef={AA} />
       <ShopProducts newRef={AA} />

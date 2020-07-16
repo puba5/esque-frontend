@@ -43,7 +43,7 @@ export default function ShopProducts(props) {
         브런치는 어떠세요?
       </Desc>
       <Photo ref={newRef} />
-      <div ref={newRef}>
+      <div>
         <ShopProduct />
         <ShopProduct />
         <ShopProduct />

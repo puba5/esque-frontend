@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Heart from "@src/components/atoms/btn/Heart";
-import HeartFilled from "@src/components/atoms/btn/HeartFilled";
 
 export default function ShopProduct(props) {
   const { brandName, productName, price } = props;
@@ -23,8 +21,8 @@ export default function ShopProduct(props) {
         <Price>8,500</Price>
       </ProductDesc>
       <HeartButton onClick={heartClick}>
-        {isHeart && <HeartFilled size={`1`}></HeartFilled>}
-        {!isHeart && <Heart color={"black"} size={`1.5`} />}
+        {isHeart && <HeartFilled src="./image/filled_heart.png" />}
+        {!isHeart && <HeartEmpty src="./image/empty_heart.png" />}
       </HeartButton>
     </Wrapper>
   );
@@ -36,6 +34,15 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 2.2rem 1rem 0.5rem 2rem;
   color: black;
+`;
+
+const HeartFilled = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+const HeartEmpty = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
 `;
 
 const ProductPhoto = styled.div`
