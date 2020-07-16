@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Product from "@src/components/molecules/product/product";
+import ShopProduct from "@src/components/molecules/product/shopProduct";
 
 export default function VideoFooterUp(props) {
   const { setIsFooterUp } = props;
@@ -21,8 +21,8 @@ export default function VideoFooterUp(props) {
             초콜릿같이 달콤한 비엔나 커피의 향이 느껴지지 않나요?
           </DescSmall>
         </DescText>
-        <Product />
-        <Product />
+        <ShopProduct />
+        <ShopProduct />
       </Desc>
     </Wrapper>
   );

@@ -46,8 +46,8 @@ const HeartEmpty = styled.img`
 `;
 
 const ProductPhoto = styled.div`
-  width: 7.7rem;
-  height: 7.7rem;
+  width: 7.6rem;
+  height: 7.6rem;
   background: #f4f4f4;
   margin-right: 1.2rem;
 `;
