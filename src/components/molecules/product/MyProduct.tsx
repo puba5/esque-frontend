@@ -103,8 +103,8 @@ const ProductName = styled.div`
 const Price = styled.div`
   font-style: normal;
   font-weight: bold;
-  font-size: 17px;
-  line-height: 25px;
+  font-size: 1.7rem;
+  line-height: 2.5rem;
   letter-spacing: -0.02em;
 `;
 
