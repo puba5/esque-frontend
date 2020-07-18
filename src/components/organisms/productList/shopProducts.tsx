@@ -10,7 +10,7 @@ const sceneInfo = [
     values: {
       // values에는 변화의 시작 값, 끝 값, 변화의 시작과 끝 시간(비율)
       video_translateY_in: [20, 0, { start: 0.1, end: 0.3 }],
-      title_translateY_in: [20, 0, { start: 0.3, end: 0.5 }],
+      title_translateY_in: [100, 0, { start: 0.0, end: 0.3 }],
       product_translateY_in: [20, 0, { start: 0.5, end: 0.7 }],
     },
     objs: {
@@ -22,27 +22,98 @@ const sceneInfo = [
 ];
 
 export default function ShopProducts(props) {
-  const { newRef } = props;
+  const { newRef, currentScene, sceneNumber, yOffset } = props;
   const shopRef = useRef(null);
-  let productCnt = 3;
-  const productRef = [];
-  for (let i = 0; i < productCnt; i++) {
-    productRef.push(useRef(null));
+  const videoRef = useRef(null);
+  const titleRef = useRef(null);
+  const productRef = useRef(null);
+
+  sceneInfo[0].objs.title = titleRef;
+  // 한 컴포넌트의 높이
+  let componentHeight = 1.4 * window.innerHeight;
+  // 현재 컴포넌트 전까지의 높이
+  let prevScrollHeight = 0;
+  for (let i = 0; i < currentScene; i++) {
+    prevScrollHeight += componentHeight;
   }
 
   let currentScrollHeight = 1.4 * window.innerHeight;
 
+  // 화면 비율을 구하여 알맞은 값을 계산
+  function calcValues(values, currentYOffset) {
+    let retValues;
+    // 현재 씬에서 스크롤된 범위로 구하기
+    const scrollHeight = componentHeight;
+    const scrollRatio = currentYOffset / scrollHeight;
+
+    if (values[2]) {
+      // start~end 사이에 애니메이션 실행
+      const partScrollStart = values[2].start * scrollHeight;
+      const partScrollEnd = values[2].end * scrollHeight;
+      const PartScrollHeight = partScrollEnd - partScrollStart;
+
+      if (partScrollStart <= currentYOffset && currentYOffset <= partScrollEnd) {
+        retValues =
+          ((currentYOffset - partScrollStart) / PartScrollHeight) * (values[1] - values[0]) +
+          values[0];
+      } else if (partScrollStart > currentYOffset) {
+        retValues = values[0];
+      } else if (partScrollEnd < currentYOffset) {
+        retValues = values[1];
+      }
+    } else {
+      retValues = scrollRatio * (values[1] - values[0]) + values[0];
+    }
+    return retValues;
+  }
+
+  function playAnimation() {
+    let values = sceneInfo[0].values;
+    let currentYOffset = yOffset - prevScrollHeight;
+    const scrollHeight = componentHeight;
+    const scrollRatio = currentYOffset / scrollHeight;
+    console.log("value", calcValues(values.title_translateY_in, currentYOffset));
+    titleRef.current.style.transform = `translateY(${calcValues(
+      values.title_translateY_in,
+      currentYOffset
+    )}% )`;
+    // switch (currentScene) {
+    //   case 0:
+    //     // AA1.current.style.opacity = opa;
+    // AA1.current.style.transform = `translateY(${calcValues(
+    //   values.messageA_translateY_in,
+    //   currentYOffset
+    // )}% )`;
+    // break;
+    //   case 1:
+    //     //AA2.current.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
+    //     AA2.current.style.transform = `translateY(${calcValues(
+    //       values.messageA_translateY_in,
+    //       currentYOffset
+    //     )}% )`;
+    //     break;
+    //   case 2:
+    //     break;
+    //   default:
+    //     break;
+    // }
+  }
+
   useEffect(() => {
-    shopRef.current.style.height = `${currentScrollHeight}px`;
+    shopRef.current.style.height = `${componentHeight}px`;
   }, []);
+
+  useEffect(() => {
+    playAnimation();
+  });
 
   return (
     <Wrapper ref={shopRef}>
-      <Desc>
+      <Desc ref={titleRef}>
         담백한 독일식 <br />
         브런치는 어떠세요?
       </Desc>
-      <Photo ref={newRef} />
+      <Photo />
       <div>
         <ShopProduct />
         <ShopProduct />
@@ -53,6 +124,7 @@ export default function ShopProducts(props) {
 }
 
 const Wrapper = styled.div`
+  padding-top: 30rem;
   border: green solid 4px;
   width: 100%;
   height: 62rem;
