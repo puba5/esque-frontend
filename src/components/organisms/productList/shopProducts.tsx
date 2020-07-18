@@ -3,23 +3,21 @@ import styled from "styled-components";
 import ShopProduct from "@src/components/molecules/product/shopProduct";
 
 // Scene의 정보를 담은 객체
-const sceneInfo = [
-  {
-    heightNum: 1.5,
-    scrollHeight: 0,
-    values: {
-      // values에는 변화의 시작 값, 끝 값, 변화의 시작과 끝 시간(비율)
-      video_translateY_in: [20, 0, { start: 0.1, end: 0.3 }],
-      title_translateY_in: [100, 0, { start: 0.0, end: 0.3 }],
-      product_translateY_in: [20, 0, { start: 0.5, end: 0.7 }],
-    },
-    objs: {
-      video: null,
-      title: null,
-      product: null,
-    },
+const sceneInfo = {
+  heightNum: 1.5,
+  scrollHeight: 0,
+  values: {
+    // values에는 변화의 시작 값, 끝 값, 변화의 시작과 끝 시간(비율)
+    video_translateY_in: [20, 0, { start: 0.1, end: 0.25 }],
+    title_translateY_in: [20, 0, { start: 0.0, end: 0.15 }],
+    product_translateY_in: [20, 0, { start: 0.2, end: 0.35 }],
   },
-];
+  objs: {
+    video: null,
+    title: null,
+    product: null,
+  },
+};
 
 export default function ShopProducts(props) {
   const { newRef, currentScene, sceneNumber, yOffset } = props;
@@ -28,9 +26,11 @@ export default function ShopProducts(props) {
   const titleRef = useRef(null);
   const productRef = useRef(null);
 
-  sceneInfo[0].objs.title = titleRef;
+  sceneInfo.objs.video = videoRef;
+  sceneInfo.objs.title = titleRef;
+  sceneInfo.objs.product = productRef;
   // 한 컴포넌트의 높이
-  let componentHeight = 1.4 * window.innerHeight;
+  let componentHeight = 2 * window.innerHeight;
   // 현재 컴포넌트 전까지의 높이
   let prevScrollHeight = 0;
   for (let i = 0; i < currentScene; i++) {
@@ -68,35 +68,24 @@ export default function ShopProducts(props) {
   }
 
   function playAnimation() {
-    let values = sceneInfo[0].values;
+    let values = sceneInfo.values;
     let currentYOffset = yOffset - prevScrollHeight;
-    const scrollHeight = componentHeight;
-    const scrollRatio = currentYOffset / scrollHeight;
-    console.log("value", calcValues(values.title_translateY_in, currentYOffset));
+
+    //console.log("value", calcValues(values.title_translateY_in, currentYOffset));
     titleRef.current.style.transform = `translateY(${calcValues(
       values.title_translateY_in,
       currentYOffset
-    )}% )`;
-    // switch (currentScene) {
-    //   case 0:
-    //     // AA1.current.style.opacity = opa;
-    // AA1.current.style.transform = `translateY(${calcValues(
-    //   values.messageA_translateY_in,
-    //   currentYOffset
-    // )}% )`;
-    // break;
-    //   case 1:
-    //     //AA2.current.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
-    //     AA2.current.style.transform = `translateY(${calcValues(
-    //       values.messageA_translateY_in,
-    //       currentYOffset
-    //     )}% )`;
-    //     break;
-    //   case 2:
-    //     break;
-    //   default:
-    //     break;
-    // }
+    )}rem )`;
+
+    videoRef.current.style.transform = `translateY(${calcValues(
+      values.video_translateY_in,
+      currentYOffset
+    )}rem)`;
+
+    productRef.current.style.transform = `translateY(${calcValues(
+      values.product_translateY_in,
+      currentYOffset
+    )}rem )`;
   }
 
   useEffect(() => {
@@ -113,8 +102,8 @@ export default function ShopProducts(props) {
         담백한 독일식 <br />
         브런치는 어떠세요?
       </Desc>
-      <Photo />
-      <div>
+      <Photo ref={videoRef} />
+      <div ref={productRef}>
         <ShopProduct />
         <ShopProduct />
         <ShopProduct />
@@ -131,6 +120,7 @@ const Wrapper = styled.div`
 `;
 
 const Desc = styled.div`
+  z-index: 1;
   position: absolute;
   font-style: normal;
   font-weight: 300;
@@ -144,5 +134,5 @@ const Photo = styled.div`
   padding-left: auto;
   width: 34.3rem;
   height: 41.5rem;
-  background: purple;
+  background: yellow;
 `;

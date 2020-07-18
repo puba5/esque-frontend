@@ -19,15 +19,11 @@ export default function Shop() {
   // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여 )
   let prevScrollHeight = 0;
   let totalComponent = 3;
-  let componentHeight = 1.4 * window.innerHeight;
+  let componentHeight = 2 * window.innerHeight;
 
   let enterNewScene = false;
 
   let yOffset = 0;
-
-  const AA1 = useRef(null);
-  const AA2 = useRef(null);
-  const AA3 = useRef(null);
 
   function scrollLoop() {
     enterNewScene = false;
@@ -78,7 +74,6 @@ export default function Shop() {
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
-      <TimeValue>{yyOffset}</TimeValue>
       <ShopProducts currentScene={currentScene} sceneNumber={0} yOffset={yyOffset} />
       <ShopProducts currentScene={currentScene} sceneNumber={1} yOffset={yyOffset} />
       <ShopProducts currentScene={currentScene} sceneNumber={2} yOffset={yyOffset} />
