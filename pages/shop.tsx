@@ -87,8 +87,8 @@ export default function Shop() {
   }
   const [isMenu, setIsMenu] = useState(false);
   const [yyOffset, setyOffset] = useState(0);
-
-  let currentScene = 0;
+  const [currentScene, setCurrentScene] = useState(0);
+  // let currentScene = 0;
   let prevScrollHeight = 0;
   let totalComponent = 3;
   let componentHeight = 1.4 * window.innerHeight;
@@ -97,9 +97,16 @@ export default function Shop() {
 
   let yOffset = 0;
 
+  const AA1 = useRef(null);
+  const AA2 = useRef(null);
+  const AA3 = useRef(null);
+
   function scrollLoop() {
     enterNewScene = false;
     setyOffset(yOffset);
+    console.log(currentScene, yOffset);
+    AA.current.style.opacity = opa;
+    //    console.log("opa", opa);
 
     prevScrollHeight = 0;
 
@@ -112,7 +119,8 @@ export default function Shop() {
       if (currentScene + 1 >= totalComponent) {
         return;
       }
-      currentScene += 1;
+      setCurrentScene(currentScene + 1);
+      // currentScene += 1;
     }
     if (yOffset < prevScrollHeight) {
       enterNewScene = true;
@@ -120,8 +128,8 @@ export default function Shop() {
       if (currentScene === 0) {
         return;
       }
-
-      currentScene -= 1;
+      setCurrentScene(currentScene - 1);
+      // currentScene -= 1;
     }
     if (enterNewScene) {
       return;
@@ -167,16 +175,15 @@ export default function Shop() {
     switch (currentScene) {
       case 0:
         setOpa(calcValues(values.messageA_opacity_in, currentYOffset));
-        AA.current.style.opacity = opa;
-        console.log("opa", calcValues(values.messageA_opacity_in, currentYOffset));
-        AA.current.style.transform = `translateY(${calcValues(
+        // AA1.current.style.opacity = opa;
+        AA1.current.style.transform = `translateY(${calcValues(
           values.messageA_translateY_in,
           currentYOffset
         )}% )`;
         break;
       case 1:
-        AA.current.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
-        AA.current.style.transform = `translateY(${calcValues(
+        //AA2.current.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
+        AA2.current.style.transform = `translateY(${calcValues(
           values.messageA_translateY_in,
           currentYOffset
         )}% )`;
@@ -188,26 +195,29 @@ export default function Shop() {
     }
   }
 
-  document.addEventListener("touchmove", () => {}, { passive: false });
+  const SetScroll = () => {
+    yOffset = window.pageYOffset;
+    scrollLoop();
+  };
+  // document.addEventListener("touchmove", () => {}, { passive: false });
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      yOffset = window.pageYOffset;
-      //   console.log("currentScroll", yOffset, currentScene);
-      scrollLoop();
-    });
-    AA.current.style.opacity = opa;
-  }, []);
+    // 스크롤 이벤트를 추가, 페에지가 사라질 때는 스크롤 이벤트가 사라지도록
+    window.addEventListener("scroll", SetScroll);
+    return () => {
+      window.removeEventListener("scroll", SetScroll);
+    };
+  }, [currentScene, opa]);
 
   return (
     <Wrapper>
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
-      <TimeValue>{yyOffset}</TimeValue>
-      <ShopProducts newRef={AA} />
-      <ShopProducts newRef={AA} />
-      <ShopProducts newRef={AA} />
+      <TimeValue ref={AA}>{yyOffset}</TimeValue>
+      <ShopProducts newRef={AA1} />
+      <ShopProducts newRef={AA2} />
+      <ShopProducts newRef={AA3} />
       <ShopFooter />
     </Wrapper>
   );

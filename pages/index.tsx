@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 
 import IndexHeader from "@src/components/organisms/Header/IndexHeader";
@@ -24,39 +24,40 @@ export default function Home() {
   let currentPage = 0;
   let startY = 0;
   let gapY = 0;
-
-  // 터치 시작
-  document.addEventListener(
-    "touchstart",
-    (event) => {
-      console.log("valueChange");
-      // 첫번째 터치의 Y 값을 구한다
-      startY = event.touches[0].clientY;
-    },
-    false
-  );
-  // 터치 이동
-  document.addEventListener("touchmove", () => {}, false);
-  // 터치 끝
-  document.addEventListener(
-    "touchend",
-    (event) => {
-      console.log("touchEnd");
-      gapY = event.changedTouches[0].clientY - startY;
-      if (gapY < -50) {
-        currentPage = 0;
-        // 슬라이드를 위로 올림
-        slideRef[0].current.style.transition = "all 0.5s ease-in-out";
-        slideRef[0].current.style.transform = `translateY(0vh)`;
-      } else if (gapY > 50) {
-        currentPage = 1;
-        // 슬라이드를 아래로 내림
-        slideRef[0].current.style.transition = "all 0.5s ease-in-out";
-        slideRef[0].current.style.transform = `translateY(100vh)`;
-      }
-    },
-    false
-  );
+  useEffect(() => {
+    // 터치 시작
+    document.addEventListener(
+      "touchstart",
+      (event) => {
+        console.log("valueChange");
+        // 첫번째 터치의 Y 값을 구한다
+        startY = event.touches[0].clientY;
+      },
+      false
+    );
+    // 터치 이동
+    document.addEventListener("touchmove", () => {}, false);
+    // 터치 끝
+    document.addEventListener(
+      "touchend",
+      (event) => {
+        console.log("touchEnd");
+        gapY = event.changedTouches[0].clientY - startY;
+        if (gapY < -50) {
+          currentPage = 0;
+          // 슬라이드를 위로 올림
+          slideRef[0].current.style.transition = "all 0.5s ease-in-out";
+          slideRef[0].current.style.transform = `translateY(0vh)`;
+        } else if (gapY > 50) {
+          currentPage = 1;
+          // 슬라이드를 아래로 내림
+          slideRef[0].current.style.transition = "all 0.5s ease-in-out";
+          slideRef[0].current.style.transform = `translateY(100vh)`;
+        }
+      },
+      false
+    );
+  }, []);
 
   return (
     <Wrapper>
