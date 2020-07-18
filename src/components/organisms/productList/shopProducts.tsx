@@ -8,9 +8,9 @@ const sceneInfo = {
   scrollHeight: 0,
   values: {
     // values에는 변화의 시작 값, 끝 값, 변화의 시작과 끝 시간(비율)
-    video_translateY_in: [20, 0, { start: 0.05, end: 0.15 }],
-    title_translateY_in: [20, 0, { start: 0.0, end: 0.15 }],
-    product_translateY_in: [20, 0, { start: 0.2, end: 0.35 }],
+    title_translateY_in: [10, 0, { start: 0, end: 0.2 }],
+    video_translateY_in: [10, 0, { start: 0.2, end: 0.4 }],
+    product_translateY_in: [10, 0, { start: 0.3, end: 0.5 }],
   },
   objs: {
     video: null,
@@ -30,7 +30,7 @@ export default function ShopProducts(props) {
   sceneInfo.objs.title = titleRef;
   sceneInfo.objs.product = productRef;
   // 한 컴포넌트의 높이
-  let componentHeight = 2 * window.innerHeight;
+  let componentHeight = 1 * window.innerHeight;
   // 현재 컴포넌트 전까지의 높이
   let prevScrollHeight = 0;
   for (let i = 0; i < currentScene; i++) {
@@ -68,7 +68,7 @@ export default function ShopProducts(props) {
   function playAnimation() {
     let values = sceneInfo.values;
     let currentYOffset = yOffset - prevScrollHeight;
-
+    if (sceneNumber !== currentScene) return;
     //console.log("value", calcValues(values.title_translateY_in, currentYOffset));
     titleRef.current.style.transform = `translateY(${calcValues(
       values.title_translateY_in,
@@ -87,7 +87,9 @@ export default function ShopProducts(props) {
   }
 
   useEffect(() => {
+    console.log(shopRef.current.clientHeight);
     shopRef.current.style.height = `${componentHeight}px`;
+    console.log(shopRef.current.clientHeight);
   }, []);
 
   useEffect(() => {
@@ -101,17 +103,17 @@ export default function ShopProducts(props) {
         브런치는 어떠세요?
       </Desc>
       <Photo ref={videoRef} />
-      <div ref={productRef}>
+      <ProductList ref={productRef}>
         <ShopProduct />
         <ShopProduct />
         <ShopProduct />
-      </div>
+      </ProductList>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  padding-top: 30rem;
+  padding-bottom: 10rem;
   border: green solid 4px;
   width: 100%;
   height: 62rem;
@@ -126,11 +128,17 @@ const Desc = styled.div`
   line-height: 4rem;
   letter-spacing: -0.02em;
   color: #2b2b2b;
+  transform: translateY(10rem);
+`;
+
+const ProductList = styled.div`
+  transform: translateY(10rem);
 `;
 
 const Photo = styled.div`
   padding-left: auto;
   width: 34.3rem;
-  height: 41.5rem;
+  height: 30.5rem;
   background: yellow;
+  transform: translateY(10rem);
 `;

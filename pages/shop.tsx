@@ -12,22 +12,20 @@ export default function Shop() {
   }
   const [isMenu, setIsMenu] = useState(false);
   // 현재 스크롤 좌표
-  const [yyOffset, setyOffset] = useState(0);
+  const [yOffset, setyOffset] = useState(0);
   // 현재 몇 번째 씬인지
   const [currentScene, setCurrentScene] = useState(0);
 
   // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여 )
   let prevScrollHeight = 0;
   let totalComponent = 3;
-  let componentHeight = 2 * window.innerHeight;
+  let componentHeight = 1 * window.innerHeight;
 
   let enterNewScene = false;
 
-  let yOffset = 0;
-
   function scrollLoop() {
     enterNewScene = false;
-    setyOffset(yOffset);
+
     console.log(currentScene, yOffset);
 
     prevScrollHeight = 0;
@@ -57,7 +55,7 @@ export default function Shop() {
   }
 
   const SetScroll = () => {
-    yOffset = window.pageYOffset;
+    setyOffset(window.pageYOffset + +0.5 * componentHeight);
     scrollLoop();
   };
 
@@ -67,16 +65,16 @@ export default function Shop() {
     return () => {
       window.removeEventListener("scroll", SetScroll);
     };
-  }, [currentScene]);
+  }, [currentScene, yOffset]);
 
   return (
     <Wrapper>
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
-      <ShopProducts currentScene={currentScene} sceneNumber={0} yOffset={yyOffset} />
-      <ShopProducts currentScene={currentScene} sceneNumber={1} yOffset={yyOffset} />
-      <ShopProducts currentScene={currentScene} sceneNumber={2} yOffset={yyOffset} />
+      <ShopProducts currentScene={currentScene} sceneNumber={0} yOffset={yOffset} />
+      <ShopProducts currentScene={currentScene} sceneNumber={1} yOffset={yOffset} />
+      <ShopProducts currentScene={currentScene} sceneNumber={2} yOffset={yOffset} />
       <ShopFooter />
     </Wrapper>
   );
