@@ -15,18 +15,21 @@ export default function Shop() {
   const [yOffset, setyOffset] = useState(0);
   // 현재 몇 번째 씬인지
   const [currentScene, setCurrentScene] = useState(0);
-
+  const [componentHeightList, setComponentHeightList] = useState({});
+  const [prev, setPrev] = useState(0);
+  const [enterNewScene, setEnterNewScene] = useState(false);
   // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여 )
   let prevScrollHeight = 0;
   let totalComponent = 3;
-  let componentHeight = 1 * window.innerHeight;
+  let componentHeight = 612;
 
-  let enterNewScene = false;
+  //1 * window.innerHeight;
+
+  // let enterNewScene = false;
 
   function scrollLoop() {
-    enterNewScene = false;
-
-    console.log(currentScene, yOffset);
+    setEnterNewScene(false);
+    //enterNewScene = false;
 
     prevScrollHeight = 0;
 
@@ -34,28 +37,33 @@ export default function Shop() {
       prevScrollHeight += componentHeight;
     }
 
+    setPrev(prevScrollHeight);
+    //    console.log(currentScene, yOffset, prevScrollHeight, prev);
+
     if (yOffset > prevScrollHeight + componentHeight) {
-      enterNewScene = true;
+      //enterNewScene = true;
+      setEnterNewScene(true);
       if (currentScene + 1 >= totalComponent) {
         return;
       }
       setCurrentScene(currentScene + 1);
     }
     if (yOffset < prevScrollHeight) {
-      enterNewScene = true;
+      setEnterNewScene(true);
+      //enterNewScene = true;
       // 브라우저 바운스 효과로 -되는 것을 방지
       if (currentScene === 0) {
         return;
       }
       setCurrentScene(currentScene - 1);
     }
-    if (enterNewScene) {
-      return;
-    }
+    // if (enterNewScene) {
+    //   return;
+    // }
   }
 
   const SetScroll = () => {
-    setyOffset(window.pageYOffset + +0.5 * componentHeight);
+    setyOffset(window.pageYOffset + 0.7 * componentHeight);
     scrollLoop();
   };
 
@@ -72,9 +80,33 @@ export default function Shop() {
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
-      <ShopProducts currentScene={currentScene} sceneNumber={0} yOffset={yOffset} />
-      <ShopProducts currentScene={currentScene} sceneNumber={1} yOffset={yOffset} />
-      <ShopProducts currentScene={currentScene} sceneNumber={2} yOffset={yOffset} />
+      <ShopProducts
+        currentScene={currentScene}
+        sceneNumber={0}
+        yOffset={yOffset}
+        componentHeightList={componentHeightList}
+        setComponentHeightList={setComponentHeightList}
+        prev={prev}
+        enterNewScene={enterNewScene}
+      />
+      <ShopProducts
+        currentScene={currentScene}
+        sceneNumber={1}
+        yOffset={yOffset}
+        componentHeightList={componentHeightList}
+        setComponentHeightList={setComponentHeightList}
+        prev={prev}
+        enterNewScene={enterNewScene}
+      />
+      <ShopProducts
+        currentScene={currentScene}
+        sceneNumber={2}
+        yOffset={yOffset}
+        componentHeightList={componentHeightList}
+        setComponentHeightList={setComponentHeightList}
+        prev={prev}
+        enterNewScene={enterNewScene}
+      />
       <ShopFooter />
     </Wrapper>
   );

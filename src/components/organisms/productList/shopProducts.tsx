@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import ShopProduct from "@src/components/molecules/product/shopProduct";
 
@@ -20,29 +20,37 @@ const sceneInfo = {
 };
 
 export default function ShopProducts(props) {
-  const { newRef, currentScene, sceneNumber, yOffset } = props;
+  const {
+    currentScene,
+    sceneNumber,
+    yOffset,
+    componentHeightList,
+    setComponentHeightList,
+    prev,
+    enterNewScene,
+  } = props;
   const shopRef = useRef(null);
   const videoRef = useRef(null);
   const titleRef = useRef(null);
   const productRef = useRef(null);
 
-  sceneInfo.objs.video = videoRef;
-  sceneInfo.objs.title = titleRef;
-  sceneInfo.objs.product = productRef;
+  const [currentHeight, setCurrentHeight] = useState(0);
   // 한 컴포넌트의 높이
-  let componentHeight = 1 * window.innerHeight;
+  // let componentHeight = 1 * shopRef.current.clientHeight;
   // 현재 컴포넌트 전까지의 높이
-  let prevScrollHeight = 0;
-  for (let i = 0; i < currentScene; i++) {
-    prevScrollHeight += componentHeight;
-  }
+  // let prevScrollHeight = 0;
+  // for (let i = 0; i < currentScene; i++) {
+  //   prevScrollHeight += componentHeightList[0];
+  // }
 
   // 화면 비율을 구하여 알맞은 값을 계산
   function calcValues(values, currentYOffset) {
     let retValues;
     // 현재 씬에서 스크롤된 범위로 구하기
-    const scrollHeight = componentHeight;
-    const scrollRatio = currentYOffset / scrollHeight;
+    const scrollHeight = currentHeight;
+    //const scrollRatio = currentYOffset / scrollHeight;
+    const scrollRatio = currentYOffset / currentHeight;
+    //.log("ratio", scrollHeight, scrollRatio);
 
     if (values[2]) {
       // start~end 사이에 애니메이션 실행
@@ -66,10 +74,22 @@ export default function ShopProducts(props) {
   }
 
   function playAnimation() {
+    let objs = sceneInfo.objs;
     let values = sceneInfo.values;
-    let currentYOffset = yOffset - prevScrollHeight;
-    if (sceneNumber !== currentScene) return;
-    //console.log("value", calcValues(values.title_translateY_in, currentYOffset));
+    let currentYOffset = yOffset - prev;
+    //prevScrollHeight;
+
+    // 해당하는 컴포넌트가 아니면 skip
+    console.log(enterNewScene);
+    // 조건을 넣어 해당 조건에는 애니메이션이 작동하지 않도록
+    if (currentYOffset < 0) return;
+    if (currentYOffset > 612) return;
+    if (enterNewScene) return;
+    if (sceneNumber !== currentScene) {
+      return;
+    }
+
+    console.log("curr", currentYOffset, yOffset, prev, sceneNumber, currentScene);
     titleRef.current.style.transform = `translateY(${calcValues(
       values.title_translateY_in,
       currentYOffset
@@ -87,9 +107,12 @@ export default function ShopProducts(props) {
   }
 
   useEffect(() => {
-    console.log(shopRef.current.clientHeight);
-    shopRef.current.style.height = `${componentHeight}px`;
-    console.log(shopRef.current.clientHeight);
+    setComponentHeightList((componentHeightList[sceneNumber] = shopRef.current.clientHeight));
+    setCurrentHeight(shopRef.current.clientHeight);
+    // 초기 값 설정
+    // sceneInfo.objs.video = videoRef;
+    // sceneInfo.objs.title = titleRef;
+    // sceneInfo.objs.product = productRef;
   }, []);
 
   useEffect(() => {
@@ -116,7 +139,6 @@ const Wrapper = styled.div`
   padding-bottom: 10rem;
   border: green solid 4px;
   width: 100%;
-  height: 62rem;
 `;
 
 const Desc = styled.div`
