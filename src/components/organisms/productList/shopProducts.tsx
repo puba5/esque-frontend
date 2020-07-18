@@ -8,7 +8,7 @@ const sceneInfo = {
   scrollHeight: 0,
   values: {
     // values에는 변화의 시작 값, 끝 값, 변화의 시작과 끝 시간(비율)
-    video_translateY_in: [20, 0, { start: 0.1, end: 0.25 }],
+    video_translateY_in: [20, 0, { start: 0.05, end: 0.15 }],
     title_translateY_in: [20, 0, { start: 0.0, end: 0.15 }],
     product_translateY_in: [20, 0, { start: 0.2, end: 0.35 }],
   },
@@ -36,8 +36,6 @@ export default function ShopProducts(props) {
   for (let i = 0; i < currentScene; i++) {
     prevScrollHeight += componentHeight;
   }
-
-  let currentScrollHeight = 1.4 * window.innerHeight;
 
   // 화면 비율을 구하여 알맞은 값을 계산
   function calcValues(values, currentYOffset) {
