@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function Product() {
+export default function VideoProduct(props) {
+  const { brandName, productName, price } = props;
+  const [isHeart, setIsHeart] = useState(false);
+
+  const heartClick = () => {
+    if (!isHeart) {
+      setIsHeart(true);
+    } else {
+      setIsHeart(false);
+    }
+  };
   return (
     <Wrapper>
       <ProductPhoto></ProductPhoto>
@@ -10,7 +20,10 @@ export default function Product() {
         <ProductName>독일 천연 통곡물 호밀빵</ProductName>
         <Price>8,500</Price>
       </ProductDesc>
-      <Heart></Heart>
+      <HeartButton onClick={heartClick}>
+        {isHeart && <HeartFilled src="./image/filled_heart_white.png" />}
+        {!isHeart && <HeartEmpty src="./image/empty_heart.png" />}
+      </HeartButton>
     </Wrapper>
   );
 }
@@ -20,12 +33,22 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   padding: 2.2rem 1rem 0.5rem 2rem;
+  color: white;
+`;
+
+const HeartFilled = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+const HeartEmpty = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
 `;
 
 const ProductPhoto = styled.div`
-  width: 7.7rem;
-  height: 7.7rem;
-  background-color: white;
+  width: 7.6rem;
+  height: 7.6rem;
+  background: #f4f4f4;
   margin-right: 1.2rem;
 `;
 
@@ -40,7 +63,6 @@ const Brand = styled.div`
   font-size: 1.3rem;
   line-height: 1.9rem;
   letter-spacing: -0.02em;
-  color: #ffffff;
 `;
 const ProductName = styled.div`
   font-style: normal;
@@ -48,7 +70,6 @@ const ProductName = styled.div`
   font-size: 1.7rem;
   line-height: 2.7rem;
   letter-spacing: -0.02em;
-  color: #ffffff;
 `;
 const Price = styled.div`
   font-style: normal;
@@ -56,12 +77,13 @@ const Price = styled.div`
   font-size: 17px;
   line-height: 25px;
   letter-spacing: -0.02em;
-  color: #ffffff;
 `;
 
-const Heart = styled.div`
+const HeartButton = styled.div`
   width: 4rem;
   height: 5rem;
-  background-color: red;
+  border: 1px solid red;
   margin-left: auto;
+  padding-left: 1.3rem;
+  padding-top: 1.9rem;
 `;
