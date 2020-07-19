@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import IndexHeader from "@src/components/organisms/Header/IndexHeader";
 import IndexVideo from "@src/components/organisms/Video/indexVideo";
@@ -10,6 +11,7 @@ export default function Home() {
   if (!process.browser) {
     return <div></div>;
   }
+
   const [isMenu, setIsMenu] = useState(false);
   const [currentPageNum, setCurrentPageNum] = useState(0);
 
@@ -90,8 +92,6 @@ export default function Home() {
 }
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
   position: fixed;
   overflow: hidden;
 `;

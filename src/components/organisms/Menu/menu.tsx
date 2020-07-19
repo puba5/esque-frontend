@@ -58,12 +58,11 @@ const Wrapper = styled.div`
   z-index: 101;
   transform: translate3d(100vw, 0, 0);
   background: #2b2b2b;
-  height: 100vh;
-
+  height: 100%;
   width: 100%;
   color: white;
   position: fixed;
-  opacity: 0.9;
+  opacity: 0.95;
   font-size: 3rem;
   line-height: 4rem;
   font-weight: 300;
