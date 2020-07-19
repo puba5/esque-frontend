@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 export default function ShopProduct(props) {
-  const { brandName, productName, price } = props;
+  const { brandName, productName, price, productImage } = props;
   const [isHeart, setIsHeart] = useState(false);
 
   const heartClick = () => {
@@ -12,9 +12,10 @@ export default function ShopProduct(props) {
       setIsHeart(false);
     }
   };
+
   return (
     <Wrapper>
-      <ProductPhoto></ProductPhoto>
+      <ProductPhoto src={productImage} />
       <ProductDesc>
         <Brand>{brandName}</Brand>
         <ProductName>{productName}</ProductName>
@@ -45,7 +46,7 @@ const HeartEmpty = styled.img`
   height: 1.5rem;
 `;
 
-const ProductPhoto = styled.div`
+const ProductPhoto = styled.img`
   width: 7.6rem;
   height: 7.6rem;
   background: #f4f4f4;

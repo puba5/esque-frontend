@@ -74,10 +74,8 @@ export default function Shop() {
     };
   }, [currentScene, yOffset]);
 
-  console.log("KEY IS", process.env.API_KEY);
   useEffect(() => {
     // 상품 정보 데이터를 가져옴
-
     axios
       .get("https://www.esque.store/commerce/products/", {
         params: {},
