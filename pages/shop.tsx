@@ -74,16 +74,18 @@ export default function Shop() {
     };
   }, [currentScene, yOffset]);
 
+  console.log("KEY IS", process.env.API_KEY);
   useEffect(() => {
+    // 상품 정보 데이터를 가져옴
+
     axios
-      .get("http://www.esque.store/commerce/products/", {
+      .get("https://www.esque.store/commerce/products/", {
         params: {},
       })
       .then(function (response) {
-        console.log(response.data);
         let processedData = {};
+        // 데이터를 분석하여 같은 패키지끼리 묶어준다.
         for (let product of response.data) {
-          // console.log("package", product.package);
           if (processedData[product.package]) {
             processedData[product.package].push(product);
           } else {

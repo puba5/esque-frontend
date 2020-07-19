@@ -18,7 +18,9 @@ export default function MyProduct() {
           <Price>8,500</Price>
         </ProductDesc>
         <Quantity>
-          <option value="1">1</option>
+          <option value="1" selected>
+            1
+          </option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
@@ -109,6 +111,7 @@ const Price = styled.div`
 `;
 
 const Quantity = styled.select`
+  color: black;
   width: 5.3rem;
   height: 2.4rem;
   margin-right: 2rem;
