@@ -127,7 +127,10 @@ export default function ShopProducts(props) {
         담백한 독일식 <br />
         브런치는 어떠세요?
       </Desc>
-      <Photo ref={videoRef} />
+      <Photo
+        ref={videoRef}
+        src="https://firebasestorage.googleapis.com/v0/b/esque-66147.appspot.com/o/products%2F%5B%EC%83%81%ED%92%88%EC%9D%B4%EB%AF%B8%EC%A7%802%5DMy%20Musesli%20Mix%20%EC%84%B8%ED%8A%B8.png?alt=media&token=be68def"
+      />
       <ProductList ref={productRef}>
         <ShopProduct />
         <ShopProduct />
@@ -159,7 +162,7 @@ const ProductList = styled.div`
   transform: translateY(10rem);
 `;
 
-const Photo = styled.div`
+const Photo = styled.img`
   padding-left: auto;
   width: 34.3rem;
   height: 30.5rem;

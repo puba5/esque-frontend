@@ -16,7 +16,7 @@ export default function Video(props) {
           <Country>프랑스</Country>
         </Where>
       </Bottom>
-      <video width="100%" loop autoPlay muted>
+      <video ref={videoRef} width="100%" autoPlay loop muted playsInline>
         <source
           src={
             "https://firebasestorage.googleapis.com/v0/b/esque-66147.appspot.com/o/esquevideo%2F%EC%98%81%EC%83%81%20%EC%98%88%EC%8B%9C3.mp4?alt=media&token=af589c15-539a-474a-ac5b-b80a3566122e"

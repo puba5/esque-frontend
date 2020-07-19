@@ -14,45 +14,62 @@ export default function Home() {
 
   // 모든 videoComponent에 slideRef 인자를 주기 위하여 slideRef 리스트 생성
   const slideRef = [];
+  const videoRef = [];
 
-  let totalPageList = 3;
+  let totalPageListCnt = 2;
   // 페이지 개수만큼 생성
-  for (let i = 0; i < totalPageList; i++) {
+  for (let i = 0; i <= totalPageListCnt; i++) {
     slideRef.push(useRef(null));
+    videoRef.push(useRef(null));
   }
 
   let currentPage = 0;
   let startY = 0;
   let gapY = 0;
+
   useEffect(() => {
     // 터치 시작
     document.addEventListener(
       "touchstart",
       (event) => {
-        console.log("valueChange");
         // 첫번째 터치의 Y 값을 구한다
         startY = event.touches[0].clientY;
       },
       false
     );
-    // 터치 이동
-    document.addEventListener("touchmove", () => {}, false);
-    // 터치 끝
+
     document.addEventListener(
       "touchend",
       (event) => {
-        console.log("touchEnd");
         gapY = event.changedTouches[0].clientY - startY;
         if (gapY < -50) {
-          currentPage = 0;
           // 슬라이드를 위로 올림
-          slideRef[0].current.style.transition = "all 0.5s ease-in-out";
-          slideRef[0].current.style.transform = `translateY(0vh)`;
+          console.log("UP", currentPage);
+          // 맨 마지막 페이지면, 내려가지 않도록
+          if (currentPage >= totalPageListCnt) {
+            console.log("NoMorePage");
+            return;
+          }
+          // 페에지 바꾸기 전에 비디오를 정지시키고, 새로운 비디오는 비디오를 재생
+          videoRef[currentPage].current.pause();
+          currentPage++;
+          videoRef[currentPage].current.play();
+          slideRef[currentPage].current.style.transition = "all 0.5s ease-in-out";
+          slideRef[currentPage].current.style.transform = `translateY(0vh)`;
         } else if (gapY > 50) {
-          currentPage = 1;
           // 슬라이드를 아래로 내림
-          slideRef[0].current.style.transition = "all 0.5s ease-in-out";
-          slideRef[0].current.style.transform = `translateY(100vh)`;
+          console.log("DOWN", currentPage);
+          // 맨 첫번째 페이지면, 올라가지 않도록
+          if (currentPage <= 0) {
+            console.log("NoMorePage");
+            return;
+          }
+          // 페에지 바꾸기 전에 비디오를 정지시키고, 새로운 비디오는 비디오를 재생
+          videoRef[currentPage].current.pause();
+          slideRef[currentPage].current.style.transition = "all 0.5s ease-in-out";
+          slideRef[currentPage].current.style.transform = `translateY(100vh)`;
+          currentPage--;
+          videoRef[currentPage].current.play();
         }
       },
       false
@@ -62,8 +79,9 @@ export default function Home() {
   return (
     <Wrapper>
       <IndexHeader isMenu={isMenu} setIsMenu={setIsMenu} />
-      <IndexVideo />
-      <Video slideRef={slideRef[0]} />
+      <IndexVideo videoRef={videoRef[0]} />
+      <Video slideRef={slideRef[1]} videoRef={videoRef[1]} />
+      <Video slideRef={slideRef[2]} videoRef={videoRef[2]} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
     </Wrapper>
   );
