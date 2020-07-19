@@ -5,11 +5,14 @@ import ShopProducts from "@src/components/organisms/productList/shopProducts";
 import Menu from "@src/components/organisms/Menu/menu";
 import ShopFooter from "@src/components/organisms/Footer/ShopFooter";
 
+import axios from "axios";
+
 export default function Shop() {
   // 서버사이드렌더링을 하게되면, window가 생성 X, 이 문제를 해결하기 위해
   if (!process.browser) {
     return <div></div>;
   }
+
   const [isMenu, setIsMenu] = useState(false);
   // 현재 스크롤 좌표
   const [yOffset, setyOffset] = useState(0);
@@ -18,9 +21,12 @@ export default function Shop() {
   const [componentHeightList, setComponentHeightList] = useState({});
   const [prev, setPrev] = useState(0);
   const [enterNewScene, setEnterNewScene] = useState(false);
+
+  const [productDataList, setProductDataList] = useState({});
+
   // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여 )
 
-  let totalComponent = 3;
+  let totalComponent = Object.keys(productDataList).length;
   let componentHeight = 729;
 
   function scrollLoop() {
@@ -68,38 +74,51 @@ export default function Shop() {
     };
   }, [currentScene, yOffset]);
 
+  useEffect(() => {
+    axios
+      .get("http://www.esque.store/commerce/products/", {
+        params: {},
+      })
+      .then(function (response) {
+        console.log(response.data);
+        let processedData = {};
+        for (let product of response.data) {
+          // console.log("package", product.package);
+          if (processedData[product.package]) {
+            processedData[product.package].push(product);
+          } else {
+            processedData[product.package] = [product];
+          }
+        }
+        setProductDataList(processedData);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, []);
+
   return (
     <Wrapper>
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
-      <ShopProducts
-        currentScene={currentScene}
-        sceneNumber={0}
-        yOffset={yOffset}
-        componentHeightList={componentHeightList}
-        setComponentHeightList={setComponentHeightList}
-        prev={prev}
-        enterNewScene={enterNewScene}
-      />
-      <ShopProducts
-        currentScene={currentScene}
-        sceneNumber={1}
-        yOffset={yOffset}
-        componentHeightList={componentHeightList}
-        setComponentHeightList={setComponentHeightList}
-        prev={prev}
-        enterNewScene={enterNewScene}
-      />
-      <ShopProducts
-        currentScene={currentScene}
-        sceneNumber={2}
-        yOffset={yOffset}
-        componentHeightList={componentHeightList}
-        setComponentHeightList={setComponentHeightList}
-        prev={prev}
-        enterNewScene={enterNewScene}
-      />
+      {Object.keys(productDataList).map((key, index) => {
+        return (
+          <ShopProducts
+            productData={productDataList[key]}
+            currentScene={currentScene}
+            sceneNumber={index}
+            yOffset={yOffset}
+            componentHeightList={componentHeightList}
+            setComponentHeightList={setComponentHeightList}
+            prev={prev}
+            enterNewScene={enterNewScene}
+          />
+        );
+      })}
       <ShopFooter />
     </Wrapper>
   );

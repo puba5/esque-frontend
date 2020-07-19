@@ -25,7 +25,7 @@ export default function VideoFooterUp(props) {
         <DescText onClick={onClickFooter}>
           <DescBig>달콤쌉살한 커피가 필요해</DescBig>
           <DescSmall>
-            비엔나에서 맛봤던 커피의 맛을 잊지 못해 늘 그리워 하고 있었어요. 입술에 닿는 순간
+            비엔나에서 맛봤던 커피의 맛을 잊지 못해 늘 그리워하고 있었어요. 입술에 닿는 순간
             초콜릿같이 달콤한 비엔나 커피의 향이 느껴지지 않나요?
           </DescSmall>
         </DescText>
@@ -67,6 +67,7 @@ const DescBig = styled.p`
 `;
 
 const DescSmall = styled.p`
+  width: 28rem;
   font-style: normal;
   font-weight: 300;
   font-size: 1.4rem;

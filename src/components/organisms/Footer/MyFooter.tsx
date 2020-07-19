@@ -73,4 +73,5 @@ const TasteButton = styled.button`
   text-align: center;
   letter-spacing: -0.02em;
   color: #fcfcfc;
+  font-style: normal;
 `;

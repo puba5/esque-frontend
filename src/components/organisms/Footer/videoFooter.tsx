@@ -46,6 +46,7 @@ const DescBig = styled.p`
 `;
 
 const DescSmall = styled.p`
+  width: 28rem;
   font-style: normal;
   font-weight: 300;
   font-size: 1.4rem;

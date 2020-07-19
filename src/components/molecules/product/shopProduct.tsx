@@ -16,9 +16,9 @@ export default function ShopProduct(props) {
     <Wrapper>
       <ProductPhoto></ProductPhoto>
       <ProductDesc>
-        <Brand>Mestemacher</Brand>
-        <ProductName>독일 천연 통곡물 호밀빵</ProductName>
-        <Price>8,500</Price>
+        <Brand>{brandName}</Brand>
+        <ProductName>{productName}</ProductName>
+        <Price>{price}</Price>
       </ProductDesc>
       <HeartButton onClick={heartClick}>
         {isHeart && <HeartFilled src="./image/filled_heart.png" />}

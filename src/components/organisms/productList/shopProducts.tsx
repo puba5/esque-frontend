@@ -28,6 +28,7 @@ export default function ShopProducts(props) {
     setComponentHeightList,
     prev,
     enterNewScene,
+    productData,
   } = props;
   const shopRef = useRef(null);
   const videoRef = useRef(null);
@@ -126,9 +127,16 @@ export default function ShopProducts(props) {
         src="https://firebasestorage.googleapis.com/v0/b/esque-66147.appspot.com/o/products%2F%5B%EC%83%81%ED%92%88%EC%9D%B4%EB%AF%B8%EC%A7%802%5DMy%20Musesli%20Mix%20%EC%84%B8%ED%8A%B8.png?alt=media&token=be68def"
       />
       <ProductList ref={productRef}>
-        <ShopProduct />
-        <ShopProduct />
-        <ShopProduct />
+        {productData.map((product, i) => {
+          return (
+            <ShopProduct
+              brandName={product.brand}
+              productName={product.name}
+              price={product.price}
+              productImage={product.main_image}
+            />
+          );
+        })}
       </ProductList>
     </Wrapper>
   );
