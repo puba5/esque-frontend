@@ -3,19 +3,23 @@ import styled from "styled-components";
 
 import VideoFooter from "@src/components/organisms/Footer/videoFooter";
 import VideoFooterUp from "@src/components/organisms/Footer/videoFooterUp";
+import IndexHeaderBlurred from "@src/components/organisms/Header/IndexHeaderBlurred";
 
 export default function Video(props) {
-  const { videoRef, slideRef } = props;
-  const [isFooterUp, setIsFooterUp] = useState(false);
+  const { videoRef, slideRef, isFooterUp, setIsFooterUp } = props;
+
   return (
     <Wrapper ref={slideRef}>
-      <Bottom>
-        <Desc>지금 여기는</Desc>
-        <Where>
-          <City>Paris</City>
-          <Country>프랑스</Country>
-        </Where>
-      </Bottom>
+      <IndexHeaderBlurred />
+      {!isFooterUp && (
+        <Bottom>
+          <Desc>지금 여기는</Desc>
+          <Where>
+            <City>Paris</City>
+            <Country>프랑스</Country>
+          </Where>
+        </Bottom>
+      )}
       <video ref={videoRef} width="100%" autoPlay loop muted playsInline>
         <source
           src={
@@ -24,8 +28,8 @@ export default function Video(props) {
           type="video/mp4"
         />
       </video>
-      {!isFooterUp && <VideoFooter setIsFooterUp={setIsFooterUp} />}
-      {isFooterUp && <VideoFooterUp setIsFooterUp={setIsFooterUp} />}
+      {!isFooterUp && <VideoFooter videoRef={videoRef} setIsFooterUp={setIsFooterUp} />}
+      {isFooterUp && <VideoFooterUp videoRef={videoRef} setIsFooterUp={setIsFooterUp} />}
     </Wrapper>
   );
 }

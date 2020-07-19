@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
 
 import IndexHeader from "@src/components/organisms/Header/IndexHeader";
 import IndexVideo from "@src/components/organisms/Video/indexVideo";
@@ -14,6 +13,7 @@ export default function Home() {
 
   const [isMenu, setIsMenu] = useState(false);
   const [currentPageNum, setCurrentPageNum] = useState(0);
+  const [isFooterUp, setIsFooterUp] = useState(false);
 
   // 모든 videoComponent에 slideRef 인자를 주기 위하여 slideRef 리스트 생성
   const slideRef = [];
@@ -82,10 +82,22 @@ export default function Home() {
 
   return (
     <Wrapper>
-      <IndexHeader isMenu={isMenu} setIsMenu={setIsMenu} videoRef={videoRef[currentPageNum]} />
+      {!isFooterUp && (
+        <IndexHeader isMenu={isMenu} setIsMenu={setIsMenu} videoRef={videoRef[currentPageNum]} />
+      )}
       <IndexVideo videoRef={videoRef[0]} />
-      <Video slideRef={slideRef[1]} videoRef={videoRef[1]} />
-      <Video slideRef={slideRef[2]} videoRef={videoRef[2]} />
+      <Video
+        slideRef={slideRef[1]}
+        videoRef={videoRef[1]}
+        isFooterUp={isFooterUp}
+        setIsFooterUp={setIsFooterUp}
+      />
+      <Video
+        slideRef={slideRef[2]}
+        videoRef={videoRef[2]}
+        isFooterUp={isFooterUp}
+        setIsFooterUp={setIsFooterUp}
+      />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} videoRef={videoRef[currentPageNum]} />
     </Wrapper>
   );

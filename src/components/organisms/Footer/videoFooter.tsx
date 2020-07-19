@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 export default function VideoFooter(props) {
-  const { setIsFooterUp } = props;
+  const { setIsFooterUp, videoRef } = props;
   return (
     <Wrapper
       onClick={() => {
         setIsFooterUp(true);
+        videoRef.current.pause();
       }}
     >
       <Background />
