@@ -30,6 +30,7 @@ const AboutImage2 = styled.img`
 `;
 const AboutImage3 = styled.img`
   width: 100%;
+  margin-bottom: 13rem;
 `;
 
 const Footer = styled.img`
