@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import VideoProduct from "@src/components/molecules/product/VideoProduct";
 import IndexHeader from "@src/components/organisms/Header/IndexHeader";
 
 export default function VideoFooterUp(props) {
-  const { setIsFooterUp, videoRef } = props;
+  const { setIsFooterUp, videoRef, footerRef } = props;
 
   const onClickFooter = () => {
     setIsFooterUp(false);
     videoRef.current.play();
   };
 
+  // 높이를 제기 위하여 추가
+  useEffect(() => {
+    footerRef.current.clientHeight;
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper ref={footerRef}>
       <IndexHeader />
       <Background />
       <Desc>

@@ -74,7 +74,6 @@ export default function ShopProducts(props) {
   }
 
   function playAnimation() {
-    let objs = sceneInfo.objs;
     let values = sceneInfo.values;
     let currentYOffset = yOffset - prev;
     //prevScrollHeight;
@@ -84,7 +83,7 @@ export default function ShopProducts(props) {
     console.log(enterNewScene);
     // 조건을 넣어 해당 조건에는 애니메이션이 작동하지 않도록
     if (currentYOffset < 0) return;
-    if (currentYOffset > 612) return;
+    if (currentYOffset > 729) return;
     if (enterNewScene) return;
     if (sceneNumber !== currentScene) {
       return;
@@ -110,11 +109,6 @@ export default function ShopProducts(props) {
   useEffect(() => {
     setComponentHeightList((componentHeightList[sceneNumber] = shopRef.current.clientHeight));
     setCurrentHeight(shopRef.current.clientHeight);
-
-    // 초기 값 설정
-    // sceneInfo.objs.video = videoRef;
-    // sceneInfo.objs.title = titleRef;
-    // sceneInfo.objs.product = productRef;
   }, []);
 
   useEffect(() => {

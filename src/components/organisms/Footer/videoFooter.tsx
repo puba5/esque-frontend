@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 export default function VideoFooter(props) {
-  const { setIsFooterUp, videoRef } = props;
+  const { setIsFooterUp, videoRef, footerRef } = props;
+
+  const onClickFooter = () => {
+    setIsFooterUp(true);
+    videoRef.current.pause();
+  };
+
+  // 높이를 제기 위하여 추가
+  useEffect(() => {
+    footerRef.current.clientHeight;
+  }, []);
+
   return (
-    <Wrapper
-      onClick={() => {
-        setIsFooterUp(true);
-        videoRef.current.pause();
-      }}
-    >
+    <Wrapper ref={footerRef} onClick={onClickFooter}>
       <Background />
       <Desc>
         <DescBig>달콤쌉살한 커피가 필요해</DescBig>

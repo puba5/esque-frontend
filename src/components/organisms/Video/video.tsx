@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
 import VideoFooter from "@src/components/organisms/Footer/videoFooter";
@@ -8,9 +8,12 @@ import IndexHeaderBlurred from "@src/components/organisms/Header/IndexHeaderBlur
 export default function Video(props) {
   const { videoRef, slideRef, isFooterUp, setIsFooterUp } = props;
 
+  const videoFooter = useRef(null);
+  const videoFooterUp = useRef(null);
+
   return (
     <Wrapper ref={slideRef}>
-      <IndexHeaderBlurred />
+      {isFooterUp && <IndexHeaderBlurred />}
       {!isFooterUp && (
         <Bottom>
           <Desc>지금 여기는</Desc>
@@ -28,8 +31,16 @@ export default function Video(props) {
           type="video/mp4"
         />
       </video>
-      {!isFooterUp && <VideoFooter videoRef={videoRef} setIsFooterUp={setIsFooterUp} />}
-      {isFooterUp && <VideoFooterUp videoRef={videoRef} setIsFooterUp={setIsFooterUp} />}
+      {!isFooterUp && (
+        <VideoFooter footerRef={videoFooter} videoRef={videoRef} setIsFooterUp={setIsFooterUp} />
+      )}
+      {isFooterUp && (
+        <VideoFooterUp
+          footerRef={videoFooterUp}
+          videoRef={videoRef}
+          setIsFooterUp={setIsFooterUp}
+        />
+      )}
     </Wrapper>
   );
 }
