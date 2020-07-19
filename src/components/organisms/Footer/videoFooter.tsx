@@ -28,12 +28,12 @@ const Wrapper = styled.div`
 const Desc = styled.div`
   position: fixed;
   width: 28rem;
-  bottom: 11.5rem;
+  bottom: 3.2rem;
   left: 2rem;
 `;
 const DescBig = styled.p`
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 2rem;
+  line-height: 3rem;
   letter-spacing: -0.02em;
   color: #ffffff;
 `;
@@ -41,8 +41,8 @@ const DescBig = styled.p`
 const DescSmall = styled.p`
   font-style: normal;
   font-weight: 300;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
   letter-spacing: -0.02em;
   color: #ffffff;
 `;

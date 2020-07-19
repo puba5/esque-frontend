@@ -36,19 +36,13 @@ const Background = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 31.8rem;
-  transform: rotate(180deg);
-  bottom: 0;
-  background: linear-gradient(
-    179.66deg,
-    rgba(2, 2, 2, 0.54) 0.35%,
-    rgba(1, 1, 1, 0.30375) 72.24%,
-    rgba(0, 0, 0, 0) 99.65%
-  );
+  height: 100vh;
+  background: #2b2b2b;
+  opacity: 0.9;
 `;
 const Desc = styled.div`
   position: fixed;
-  bottom: 3.2rem;
+  bottom: 2.9rem;
 `;
 const DescText = styled.div`
   padding-left: 2rem;

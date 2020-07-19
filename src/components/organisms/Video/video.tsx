@@ -33,8 +33,8 @@ export default function Video(props) {
 const Wrapper = styled.div`
   z-index: 1;
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   transform: translate3d(0, 100vh, 0);
   display: flex;
   flex-direction: column;
