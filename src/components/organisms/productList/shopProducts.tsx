@@ -80,6 +80,7 @@ export default function ShopProducts(props) {
     //prevScrollHeight;
 
     // 해당하는 컴포넌트가 아니면 skip
+
     console.log(enterNewScene);
     // 조건을 넣어 해당 조건에는 애니메이션이 작동하지 않도록
     if (currentYOffset < 0) return;
@@ -109,6 +110,7 @@ export default function ShopProducts(props) {
   useEffect(() => {
     setComponentHeightList((componentHeightList[sceneNumber] = shopRef.current.clientHeight));
     setCurrentHeight(shopRef.current.clientHeight);
+
     // 초기 값 설정
     // sceneInfo.objs.video = videoRef;
     // sceneInfo.objs.title = titleRef;

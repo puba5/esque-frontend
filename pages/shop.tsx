@@ -19,51 +19,44 @@ export default function Shop() {
   const [prev, setPrev] = useState(0);
   const [enterNewScene, setEnterNewScene] = useState(false);
   // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여 )
-  let prevScrollHeight = 0;
+
   let totalComponent = 3;
-  let componentHeight = 612;
-
-  //1 * window.innerHeight;
-
-  // let enterNewScene = false;
+  let componentHeight = 729;
 
   function scrollLoop() {
+    console.log("SIZSE", Object.keys(componentHeightList).length);
     setEnterNewScene(false);
     //enterNewScene = false;
 
-    prevScrollHeight = 0;
+    let prevScrollHeight = 0;
 
     for (let i = 0; i < currentScene; i++) {
       prevScrollHeight += componentHeight;
     }
 
     setPrev(prevScrollHeight);
-    //    console.log(currentScene, yOffset, prevScrollHeight, prev);
 
     if (yOffset > prevScrollHeight + componentHeight) {
-      //enterNewScene = true;
       setEnterNewScene(true);
       if (currentScene + 1 >= totalComponent) {
         return;
+      } else {
+        setCurrentScene(currentScene + 1);
       }
-      setCurrentScene(currentScene + 1);
     }
     if (yOffset < prevScrollHeight) {
       setEnterNewScene(true);
-      //enterNewScene = true;
       // 브라우저 바운스 효과로 -되는 것을 방지
       if (currentScene === 0) {
         return;
+      } else {
+        setCurrentScene(currentScene - 1);
       }
-      setCurrentScene(currentScene - 1);
     }
-    // if (enterNewScene) {
-    //   return;
-    // }
   }
 
   const SetScroll = () => {
-    setyOffset(window.pageYOffset + 0.7 * componentHeight);
+    setyOffset(window.pageYOffset + 0.5 * componentHeight);
     scrollLoop();
   };
 
