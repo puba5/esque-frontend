@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function ShopFooter() {
   return (
     <Wrapper>
-      <AboutEsque />
+      <AboutEsque src="./image/guide_banner.png" />
       <BottomBox>
         <BrandDesc>
           <DescIndex>
@@ -34,10 +34,8 @@ const Wrapper = styled.div`
   color: #8c8c8c;
 `;
 
-const AboutEsque = styled.div`
+const AboutEsque = styled.img`
   width: 100%;
-  height: 11.5rem;
-  background: blue;
 `;
 const BottomBox = styled.div`
   width: 100%;
@@ -69,9 +67,9 @@ const UnderBar = styled.div`
 const CopyRight = styled.p`
   font-style: normal;
   font-weight: 300;
-  font-size: 10px;
+  font-size: 1rem;
   line-height: 132%;
-  /* or 13px */
+
   letter-spacing: -0.02em;
   margin-top: 3.1rem;
 `;

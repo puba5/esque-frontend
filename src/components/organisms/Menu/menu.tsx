@@ -33,7 +33,7 @@ export default function Menu(props) {
         <Slash>
           <HambergerDivider />
         </Slash>
-        <PageMoveButton>브랜드 소개</PageMoveButton>
+        <PageMoveButton href="/about">브랜드 소개</PageMoveButton>
         <Slash>
           <HambergerDivider />
         </Slash>
