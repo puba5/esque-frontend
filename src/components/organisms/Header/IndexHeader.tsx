@@ -3,11 +3,12 @@ import styled from "styled-components";
 import Hamberger from "@src/components/atoms/btn/hamberger";
 
 export default function IndexHeader(props) {
-  const { isMenu, setIsMenu } = props;
+  const { isMenu, setIsMenu, videoRef } = props;
   const onClickButton = () => {
     if (isMenu == false) {
       setIsMenu(true);
     }
+    videoRef.current.pause();
   };
 
   return (

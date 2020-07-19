@@ -11,6 +11,7 @@ export default function Home() {
     return <div></div>;
   }
   const [isMenu, setIsMenu] = useState(false);
+  const [currentPageNum, setCurrentPageNum] = useState(0);
 
   // 모든 videoComponent에 slideRef 인자를 주기 위하여 slideRef 리스트 생성
   const slideRef = [];
@@ -71,6 +72,7 @@ export default function Home() {
           currentPage--;
           videoRef[currentPage].current.play();
         }
+        setCurrentPageNum(currentPage);
       },
       false
     );
@@ -78,11 +80,11 @@ export default function Home() {
 
   return (
     <Wrapper>
-      <IndexHeader isMenu={isMenu} setIsMenu={setIsMenu} />
+      <IndexHeader isMenu={isMenu} setIsMenu={setIsMenu} videoRef={videoRef[currentPageNum]} />
       <IndexVideo videoRef={videoRef[0]} />
       <Video slideRef={slideRef[1]} videoRef={videoRef[1]} />
       <Video slideRef={slideRef[2]} videoRef={videoRef[2]} />
-      <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
+      <Menu isMenu={isMenu} setIsMenu={setIsMenu} videoRef={videoRef[currentPageNum]} />
     </Wrapper>
   );
 }

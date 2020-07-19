@@ -6,7 +6,7 @@ import HamHeart from "@src/components/atoms/mark/ham_heart";
 import Close from "@src/components/atoms/mark/close";
 
 export default function Menu(props) {
-  const { isMenu, setIsMenu } = props;
+  const { isMenu, setIsMenu, videoRef } = props;
 
   const slideRef = useRef(null);
 
@@ -20,6 +20,7 @@ export default function Menu(props) {
 
   const closeMenu = () => {
     setIsMenu(false);
+    videoRef.current.play();
   };
 
   return (
