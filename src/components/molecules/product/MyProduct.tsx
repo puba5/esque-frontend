@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export default function MyProduct() {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const onClickCheckedButton = () => {
+    setIsChecked(!isChecked);
+  };
   return (
     <Wrapper>
       <HeaderLine></HeaderLine>
       <ButtonList>
-        <CheckButton></CheckButton>
+        <CheckButtonArea onClick={onClickCheckedButton}>
+          {!isChecked && <CheckButton src="./image/check_deactivated.png" />}
+          {isChecked && <CheckButtonActivated src="./image/check_activated.png" />}
+        </CheckButtonArea>
         <ButtonDesc>상품선택</ButtonDesc>
-        <CloseButton></CloseButton>
+        <CloseButtonArea>
+          <CloseButton src="./image/X_button.png" />
+        </CloseButtonArea>
       </ButtonList>
       <ProductContainer>
         <ProductPhoto />
@@ -18,9 +28,7 @@ export default function MyProduct() {
           <Price>8,500</Price>
         </ProductDesc>
         <Quantity>
-          <option value="1" selected>
-            1
-          </option>
+          <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
@@ -44,13 +52,26 @@ const HeaderLine = styled.div`
 const ButtonList = styled.div`
   display: flex;
 `;
-const CheckButton = styled.a`
+const CheckButtonArea = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: 1.6rem;
   margin-top: 1.3rem;
   width: 2.4rem;
   height: 2.4rem;
-  background: red;
+  border: 1px solid red;
 `;
+const CheckButton = styled.img`
+  width: 1.6rem;
+  height: 1.6rem;
+`;
+
+const CheckButtonActivated = styled.img`
+  width: 1.6rem;
+  height: 1.6rem;
+`;
+
 const ButtonDesc = styled.p`
   margin-left: 0.2rem;
   margin-top: 1.5rem;
@@ -61,13 +82,19 @@ const ButtonDesc = styled.p`
   letter-spacing: -0.02em;
 `;
 
-const CloseButton = styled.div`
+const CloseButtonArea = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: auto;
   margin-right: 1rem;
   margin-top: 1rem;
   width: 3rem;
   height: 3rem;
-  background-color: red;
+`;
+const CloseButton = styled.img`
+  width: 1rem;
+  height: 1rem;
 `;
 
 const ProductContainer = styled.div`
