@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function MyProduct() {
+export default function MyProduct(props) {
+  const { brandName, productName, price, productImage } = props;
   const [isChecked, setIsChecked] = useState(false);
 
   const onClickCheckedButton = () => {
@@ -21,11 +22,11 @@ export default function MyProduct() {
         </CloseButtonArea>
       </ButtonList>
       <ProductContainer>
-        <ProductPhoto />
+        <ProductPhoto src={productImage} />
         <ProductDesc>
-          <Brand>Mestemacher</Brand>
-          <ProductName>독일 천연 통곡물 호밀빵</ProductName>
-          <Price>8,500</Price>
+          <Brand>{brandName}</Brand>
+          <ProductName>{productName}</ProductName>
+          <Price>{price}</Price>
         </ProductDesc>
         <Quantity>
           <option value="1">1</option>
@@ -103,7 +104,7 @@ const ProductContainer = styled.div`
   margin-left: 2rem;
 `;
 
-const ProductPhoto = styled.div`
+const ProductPhoto = styled.img`
   width: 7.6rem;
   height: 7.6rem;
   background: #f4f4f4;

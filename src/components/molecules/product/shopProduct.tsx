@@ -7,14 +7,15 @@ export default function ShopProduct(props) {
 
   const heartClick = () => {
     // 좋아요 상품 목록들을 불러온다.
-    let myProduct = JSON.parse(localStorage.getItem("myProduct"));
+
+    let myProduct = JSON.parse(sessionStorage.getItem("myProduct"));
     if (!myProduct) {
       myProduct = [];
     }
     if (!isHeart) {
       // 하트 버튼을 누르면 저장
       setIsHeart(true);
-      localStorage.setItem("myProduct", JSON.stringify([...myProduct, productName]));
+      sessionStorage.setItem("myProduct", JSON.stringify([...myProduct, productName]));
     } else {
       setIsHeart(false);
       // 좋아요 취소를 하면 상품을 찾아서 리스트에서 삭제
@@ -22,13 +23,14 @@ export default function ShopProduct(props) {
       if (productIndex > -1) {
         myProduct.splice(productIndex, 1);
       }
-      localStorage.setItem("myProduct", JSON.stringify([...myProduct]));
+      sessionStorage.setItem("myProduct", JSON.stringify([...myProduct]));
     }
+    console.log(myProduct);
   };
 
   return (
     <Wrapper>
-      <ProductPhoto src={productImage} />그
+      <ProductPhoto src={productImage} />
       <ProductDesc>
         <Brand>{brandName}</Brand>
         <ProductName>{productName}</ProductName>

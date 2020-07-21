@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import MyProduct from "@src/components/molecules/product/MyProduct";
 import MyHeader from "@src/components/organisms/Header/MyHeader";
@@ -7,6 +7,31 @@ import MyFooter from "@src/components/organisms/Footer/MyFooter";
 import axios from "axios";
 
 export default function myPage() {
+  const [productList, setProductList] = useState([]);
+  const [myProduct, setMyProduct] = useState([]);
+  // const [selectedProductList, setSelectedProductList] = useState([]);
+
+  useEffect(() => {
+    // 세션 스토리지에서 좋아요 눌렀던 데이터를 가져옴
+    setMyProduct(JSON.parse(sessionStorage.getItem("myProduct")));
+
+    // 상품 정보 데이터를 가져옴
+    axios
+      .get("https://www.esque.store/commerce/products/", {
+        params: {},
+      })
+      .then(function (response) {
+        setProductList(response.data);
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, []);
+
   const AddProduct = () => {
     axios
       .post("https://www.esque.store/commerce/purchases/", {
@@ -24,6 +49,7 @@ export default function myPage() {
         // always executed아
       });
   };
+
   return (
     <Wrapper>
       <MyHeader />
@@ -33,9 +59,21 @@ export default function myPage() {
           <DeleteButton>삭제</DeleteButton>
         </ControllButton>
       </ProductControll>
-      <MyProduct />
-      <MyProduct />
-      <MyProduct />
+      {productList.map((product, i) => {
+        if (!myProduct) {
+          return;
+        }
+        if (myProduct.includes(product.name)) {
+          return (
+            <MyProduct
+              brandName={product.brand}
+              productName={product.name}
+              price={product.price}
+              productImage={product.main_image}
+            />
+          );
+        }
+      })}
       <MyFooter></MyFooter>
     </Wrapper>
   );
@@ -44,6 +82,7 @@ export default function myPage() {
 const Wrapper = styled.div`
   background: #f4f4f4;
   height: 100%;
+  padding-bottom: 7rem;
 `;
 
 const ProductControll = styled.div`
