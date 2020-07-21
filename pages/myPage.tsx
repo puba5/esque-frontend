@@ -7,44 +7,23 @@ import MyFooter from "@src/components/organisms/Footer/MyFooter";
 import axios from "axios";
 
 export default function myPage() {
-  // axios
-  //   .post("https://www.esque.store/commerce/customers/", {
-  //     purchases: [
-  //       {
-  //         id: 1,
-  //         count: 3,
-  //         product: 3,
-  //         customer: 1,
-  //       },
-  //       {
-  //         id: 2,
-  //         count: 100,
-  //         product: 5,
-  //         customer: 1,
-  //       },
-  //       {
-  //         id: 3,
-  //         count: 5,
-  //         product: 6,
-  //         customer: 1,
-  //       },
-  //     ],
-  //     selected_date: "2020-07-20",
-  //     email: "esque@gmail.com",
-  //     selected_at: "2020-07-19T11:00:00+09:00",
-  //     title: "맛보고 싶어요",
-  //     details: "정말 맛있어 보이네요",
-  //   })
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   })
-  //   .finally(function () {
-  //     // always executed
-  //   });
-
+  const AddProduct = () => {
+    axios
+      .post("https://www.esque.store/commerce/purchases/", {
+        count: 3,
+        product: 3,
+        customer: 1,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed아
+      });
+  };
   return (
     <Wrapper>
       <MyHeader />
@@ -54,9 +33,9 @@ export default function myPage() {
           <DeleteButton>삭제</DeleteButton>
         </ControllButton>
       </ProductControll>
-      <MyProduct></MyProduct>
-      <MyProduct></MyProduct>
-      <MyProduct></MyProduct>
+      <MyProduct />
+      <MyProduct />
+      <MyProduct />
       <MyFooter></MyFooter>
     </Wrapper>
   );

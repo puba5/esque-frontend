@@ -6,6 +6,14 @@ export default function ShopProduct(props) {
   const [isHeart, setIsHeart] = useState(false);
 
   const heartClick = () => {
+    let myProudct = JSON.parse(localStorage.getItem("myProduct"));
+    if (!myProudct) {
+      myProudct = [];
+    }
+    console.log(myProudct);
+
+    console.log([...myProudct, productName]);
+    localStorage.setItem("myProduct", JSON.stringify([...myProudct, productName]));
     if (!isHeart) {
       setIsHeart(true);
     } else {
@@ -15,7 +23,7 @@ export default function ShopProduct(props) {
 
   return (
     <Wrapper>
-      <ProductPhoto src={productImage} />
+      <ProductPhoto src={productImage} />그
       <ProductDesc>
         <Brand>{brandName}</Brand>
         <ProductName>{productName}</ProductName>
