@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import BackButton from "@src/components/atoms/btn/BackButton";
 
 export default function Search() {
   const ClickBackButton = () => {
@@ -10,13 +9,13 @@ export default function Search() {
   return (
     <Wrapper>
       <BackButtonArea onClick={ClickBackButton}>
-        <BackButton size={2.2} />
+        <BackButton src="./image/BackButton.png" />
       </BackButtonArea>
       <SearchForm>
         <SearchBox>
-          <SearchIcon />
+          <SearchIcon src="./image/search_icon.png" />
           <SearchInput placeholder="검색어를 입력하세요" />
-          <DeleteButton />
+          <DeleteButton src="./image/roundX.png" />
         </SearchBox>
       </SearchForm>
       <RecentSearch></RecentSearch>
@@ -27,6 +26,9 @@ export default function Search() {
 const Wrapper = styled.div`
   background: white;
   height: 100%;
+`;
+const BackButton = styled.img`
+  width: 0.8rem;
 `;
 
 const SearchForm = styled.div`
@@ -50,21 +52,17 @@ const SearchInput = styled.input`
   margin-left: 0.95rem;
 `;
 
-const SearchIcon = styled.div`
+const SearchIcon = styled.img`
   width: 1.8rem;
   height: 1.8rem;
   margin-left: 1.25rem;
-
-  border: 1px solid red;
 `;
 
-const DeleteButton = styled.div`
+const DeleteButton = styled.img`
   width: 2.2rem;
   height: 2.2rem;
   margin-right: 0.4rem;
   margin-left: auto;
-
-  border: 1px solid red;
 `;
 
 const BackButtonArea = styled.a`

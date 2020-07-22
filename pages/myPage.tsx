@@ -13,7 +13,12 @@ export default function myPage() {
 
   useEffect(() => {
     // 세션 스토리지에서 좋아요 눌렀던 데이터를 가져옴
-    setMyProduct(JSON.parse(sessionStorage.getItem("myProduct")));
+    let myProductList = JSON.parse(sessionStorage.getItem("myProduct"));
+    if (!myProductList) {
+      setMyProduct([]);
+    } else {
+      setMyProduct(JSON.parse(sessionStorage.getItem("myProduct")));
+    }
 
     // 상품 정보 데이터를 가져옴
     axios
