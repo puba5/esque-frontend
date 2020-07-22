@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 
 export default function VideoFooter(props) {
-  const { setIsFooterUp, videoRef, footerRef } = props;
+  const { setIsFooterUp, videoRef, footerRef, packageData } = props;
 
   const onClickFooter = () => {
     setIsFooterUp(true);
@@ -18,7 +18,7 @@ export default function VideoFooter(props) {
     <Wrapper ref={footerRef} onClick={onClickFooter}>
       <Background />
       <Desc>
-        <DescBig>달콤쌉살한 커피가 필요해</DescBig>
+        <DescBig>{packageData.name}</DescBig>
         <DescSmall>
           비엔나에서 맛봤던 커피의 맛을 잊지 못해 늘 그리워하고 있었어요. 입술에 닿는 순간
           초콜릿같이...

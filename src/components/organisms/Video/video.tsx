@@ -6,11 +6,13 @@ import VideoFooterUp from "@src/components/organisms/Footer/videoFooterUp";
 import IndexHeaderBlurred from "@src/components/organisms/Header/IndexHeaderBlurred";
 
 export default function Video(props) {
-  const { videoRef, slideRef, isFooterUp, setIsFooterUp } = props;
+  const { videoRef, slideRef, isFooterUp, setIsFooterUp, packageData } = props;
 
   const videoFooter = useRef(null);
   const videoFooterUp = useRef(null);
+  console.log(packageData.tv_video);
 
+  console.log(packageData);
   return (
     <Wrapper ref={slideRef}>
       {isFooterUp && <IndexHeaderBlurred />}
@@ -18,27 +20,29 @@ export default function Video(props) {
         <Bottom>
           <Desc>지금 여기는</Desc>
           <Where>
-            <City>Paris</City>
-            <Country>프랑스</Country>
+            <City>{packageData.city}</City>
+            <Country>{packageData.country}</Country>
           </Where>
         </Bottom>
       )}
+      <img src={packageData.tv_image} width="100%" />
       <video ref={videoRef} width="100%" autoPlay loop muted playsInline>
-        <source
-          src={
-            "https://firebasestorage.googleapis.com/v0/b/esque-66147.appspot.com/o/esquevideo%2F%EC%98%81%EC%83%81%20%EC%98%88%EC%8B%9C3.mp4?alt=media&token=af589c15-539a-474a-ac5b-b80a3566122e"
-          }
-          type="video/mp4"
-        />
+        <source src={packageData.tv_image} type="video/mp4" />
       </video>
       {!isFooterUp && (
-        <VideoFooter footerRef={videoFooter} videoRef={videoRef} setIsFooterUp={setIsFooterUp} />
+        <VideoFooter
+          packageData={packageData}
+          footerRef={videoFooter}
+          videoRef={videoRef}
+          setIsFooterUp={setIsFooterUp}
+        />
       )}
       {isFooterUp && (
         <VideoFooterUp
           footerRef={videoFooterUp}
           videoRef={videoRef}
           setIsFooterUp={setIsFooterUp}
+          packageData={packageData}
         />
       )}
     </Wrapper>

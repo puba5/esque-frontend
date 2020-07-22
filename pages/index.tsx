@@ -6,6 +6,8 @@ import IndexVideo from "@src/components/organisms/Video/indexVideo";
 import Video from "@src/components/organisms/Video/video";
 import Menu from "@src/components/organisms/Menu/menu";
 
+import axios from "axios";
+
 export default function Home() {
   if (!process.browser) {
     return <div></div>;
@@ -14,18 +16,40 @@ export default function Home() {
   const [isMenu, setIsMenu] = useState(false);
   const [currentPageNum, setCurrentPageNum] = useState(0);
   const [isFooterUp, setIsFooterUp] = useState(false);
+  const [packageList, setPackageList] = useState([]);
 
   // 모든 videoComponent에 slideRef 인자를 주기 위하여 slideRef 리스트 생성
   const slideRef = [];
   const videoRef = [];
 
-  let totalPageListCnt = 2;
-  // 페이지 개수만큼 생성
-  for (let i = 0; i <= totalPageListCnt; i++) {
-    slideRef.push(useRef(null));
-    videoRef.push(useRef(null));
-  }
+  useEffect(() => {
+    // 패키지 데이터를 가져온다
 
+    axios
+      .get("https://esque.store/commerce/packages/", {
+        params: {},
+      })
+      .then(function (response) {
+        setPackageList(response.data);
+      })
+      .catch(function (error) {})
+      .finally(function () {
+        // always executed
+      });
+  }, []);
+  // 동영상 페이지가 8개라는 것, 나중에 수정 예정
+  let totalPageListCnt = 8;
+
+  // 페이지 생성
+  const makePages = () => {
+    // 페이지 개수만큼 생성
+    for (let i = 0; i <= totalPageListCnt; i++) {
+      console.log(i);
+      slideRef.push(useRef(null));
+      videoRef.push(useRef(null));
+    }
+  };
+  makePages();
   let currentPage = 0;
   let startY = 0;
   let gapY = 0;
@@ -86,7 +110,18 @@ export default function Home() {
         <IndexHeader isMenu={isMenu} setIsMenu={setIsMenu} videoRef={videoRef[currentPageNum]} />
       )}
       <IndexVideo videoRef={videoRef[0]} />
-      <Video
+      {packageList.map((packageData, index) => {
+        return (
+          <Video
+            packageData={packageData}
+            slideRef={slideRef[index + 1]}
+            videoRef={videoRef[index + 1]}
+            isFooterUp={isFooterUp}
+            setIsFooterUp={setIsFooterUp}
+          />
+        );
+      })}
+      {/* <Video
         slideRef={slideRef[1]}
         videoRef={videoRef[1]}
         isFooterUp={isFooterUp}
@@ -97,7 +132,7 @@ export default function Home() {
         videoRef={videoRef[2]}
         isFooterUp={isFooterUp}
         setIsFooterUp={setIsFooterUp}
-      />
+      /> */}
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} videoRef={videoRef[currentPageNum]} />
     </Wrapper>
   );
