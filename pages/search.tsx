@@ -49,8 +49,17 @@ const SearchBox = styled.div`
 const SearchInput = styled.input`
   width: 23.5rem;
   height: 2.5rem;
-  border: 1px solid red;
+  border: none;
+  background: #f4f4f4;
   margin-left: 0.95rem;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.7rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.02em;
+  &:focus {
+    outline: none;
+  }
   ::placeholder {
     font-style: normal;
     font-weight: normal;

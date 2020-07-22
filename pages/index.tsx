@@ -120,8 +120,7 @@ export default function Home() {
           )}
         </div>
       )}
-      <IndexVideo videoRef={videoRef[0]} />
-
+      <IndexVideo currentPageNum={currentPageNum} videoRef={videoRef[0]} />
       {packageList.map((packageData, index) => {
         return (
           <Video
@@ -144,7 +143,7 @@ const Wrapper = styled.div`
 `;
 
 const Bottom = styled.div`
-  z-index: 101;
+  z-index: 100;
   position: fixed;
   top: 8.1rem;
   left: 1.9rem;

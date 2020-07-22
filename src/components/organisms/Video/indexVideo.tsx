@@ -1,10 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import Footer from "@src/components/organisms/Footer/footer";
 
 export default function IndexVideo(props) {
-  const { videoRef, page } = props;
+  const { videoRef, page, currentPageNum } = props;
 
   return (
     <Wrapper>
@@ -12,12 +12,12 @@ export default function IndexVideo(props) {
       <video ref={videoRef} width="100%" loop autoPlay muted playsInline>
         <source
           src={
-            "https://firebasestorage.googleapis.com/v0/b/esque-66147.appspot.com/o/esquevideo%2F%EC%98%81%EC%83%81%20%EC%98%88%EC%8B%9C1.mp4?alt=media&token=a583cc80-b418-455e-aa51-4b16102289d1"
+            "https://firebasestorage.googleapis.com/v0/b/esque-7491c.appspot.com/o/packages%2FesqueTV_main_video.mp4?alt=media&token=91643779-44e2-4217-bf7a-e9fd33316fbe"
           }
           type="video/mp4"
         />
       </video>
-      <Footer />
+      {currentPageNum === 0 && <Footer />}
     </Wrapper>
   );
 }
