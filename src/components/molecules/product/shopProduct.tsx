@@ -21,7 +21,7 @@ export default function ShopProduct(props) {
         moneyString = "," + moneyString;
       }
       moneyString = (moneyNumber % 10) + moneyString;
-      moneyNumber = parseInt(moneyNumber / 10);
+      moneyNumber = Math.round(moneyNumber / 10);
       cnt++;
     }
     return moneyString;

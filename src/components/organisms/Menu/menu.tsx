@@ -94,6 +94,11 @@ const PageMoveButton = styled.a`
   display: flex;
   text-decoration: none;
   color: white;
+  &:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+  }
   &:active {
     text-decoration: none;
     font-weight: bold;
