@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
-export default function MyFooter() {
+export default function MyFooter(props) {
+  const { selectedProductList } = props;
+  // 맛보고 싶어요 버튼
+  const onClickTasteButton = () => {};
   return (
     <Wrapper>
       <HeaderLine />
@@ -71,6 +74,7 @@ const TasteButton = styled.button`
   display: flex;
   align-items: center;
   text-align: center;
+  justify-content: center;
   letter-spacing: -0.02em;
   color: #fcfcfc;
   font-style: normal;

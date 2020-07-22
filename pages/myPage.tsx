@@ -102,7 +102,7 @@ export default function myPage() {
           );
         }
       })}
-      <MyFooter></MyFooter>
+      <MyFooter selectedProductList={selectedProductList} />
     </Wrapper>
   );
 }

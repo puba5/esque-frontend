@@ -8,6 +8,25 @@ export default function ShopProduct(props) {
   const [isHeart, setIsHeart] = useState(false);
 
   const [brandFullName, setBrandFullName] = useState(null);
+
+  // 숫자에 comma 추가
+  const addComma = (moneyNumber) => {
+    if (moneyNumber === 0) {
+      return "0";
+    }
+    let moneyString = "";
+    let cnt = 0;
+    while (moneyNumber !== 0) {
+      if (cnt !== 0 && cnt % 3 === 0) {
+        moneyString = "," + moneyString;
+      }
+      moneyString = (moneyNumber % 10) + moneyString;
+      moneyNumber = parseInt(moneyNumber / 10);
+      cnt++;
+    }
+    return moneyString;
+  };
+
   useEffect(() => {
     // 브랜드 id로 브랜드 이름을 가져옴
     axios
@@ -58,7 +77,7 @@ export default function ShopProduct(props) {
       <ProductDesc>
         <Brand>{brandFullName}</Brand>
         <ProductName>{productName}</ProductName>
-        <Price>{price}</Price>
+        <Price>{addComma(price)}</Price>
       </ProductDesc>
       <HeartButton onClick={heartClick}>
         {isHeart && <HeartFilled src="./image/filled_heart.png" />}

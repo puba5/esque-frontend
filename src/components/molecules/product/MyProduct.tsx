@@ -13,6 +13,24 @@ export default function MyProduct(props) {
   } = props;
   const [isChecked, setIsChecked] = useState(false);
 
+  // 숫자에 comma 추가
+  const addComma = (moneyNumber) => {
+    if (moneyNumber === 0) {
+      return "0";
+    }
+    let moneyString = "";
+    let cnt = 0;
+    while (moneyNumber !== 0) {
+      if (cnt !== 0 && cnt % 3 === 0) {
+        moneyString = "," + moneyString;
+      }
+      moneyString = (moneyNumber % 10) + moneyString;
+      moneyNumber = parseInt(moneyNumber / 10);
+      cnt++;
+    }
+    return moneyString;
+  };
+
   const onClickCheckedButton = () => {
     if (isChecked) {
       // 체크가 되있는 상태라면
@@ -41,7 +59,7 @@ export default function MyProduct(props) {
   };
   return (
     <Wrapper>
-      <HeaderLine></HeaderLine>
+      <HeaderLine />
       <ButtonList>
         <CheckButtonArea onClick={onClickCheckedButton}>
           {!isChecked && <CheckButton src="./image/check_deactivated.png" />}
@@ -57,7 +75,7 @@ export default function MyProduct(props) {
         <ProductDesc>
           <Brand>{brandName}</Brand>
           <ProductName>{productName}</ProductName>
-          <Price>{price}</Price>
+          <Price>{addComma(price)}</Price>
         </ProductDesc>
         <Quantity>
           <option value="1">1</option>
