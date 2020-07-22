@@ -36,6 +36,7 @@ const SearchForm = styled.div`
   top: 1rem;
   left: 5.3rem;
 `;
+
 const SearchBox = styled.div`
   display: flex;
   align-items: center;
@@ -50,6 +51,14 @@ const SearchInput = styled.input`
   height: 2.5rem;
   border: 1px solid red;
   margin-left: 0.95rem;
+  ::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+    letter-spacing: -0.02em;
+    color: #bababa;
+  }
 `;
 
 const SearchIcon = styled.img`
