@@ -67,6 +67,7 @@ export default function myPage() {
     });
     sessionStorage.setItem("myProduct", JSON.stringify([...myProduct]));
     setMyProduct(myProductList);
+    setSelectedProductList([]);
   };
 
   return (
