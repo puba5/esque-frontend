@@ -29,7 +29,7 @@ export default function Menu(props) {
         <Close size={1.6} />
       </ClosePosition>
       <List>
-        <PageMoveButton>검색</PageMoveButton>
+        <PageMoveButton href="/search">검색</PageMoveButton>
         <Slash>
           <HambergerDivider />
         </Slash>
