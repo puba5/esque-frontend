@@ -27,7 +27,7 @@ export default function Video(props) {
       )}
       <img src={packageData.tv_image} width="100%" />
       <video ref={videoRef} width="100%" autoPlay loop muted playsInline>
-        <source src={packageData.tv_image} type="video/mp4" />
+        {/* <source src={packageData.tv_image} type="video/mp4" /> */}
       </video>
       {!isFooterUp && (
         <VideoFooter
