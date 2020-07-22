@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Hamberger from "@src/components/atoms/btn/hamberger";
 
 export default function IndexHeader(props) {
-  const { isMenu, setIsMenu, videoRef } = props;
+  const { isMenu, setIsMenu, videoRef, packageData } = props;
   const onClickButton = () => {
     if (isMenu == false) {
       setIsMenu(true);
@@ -72,43 +72,4 @@ const Shop = styled.a`
   opacity: 0.6;
   letter-spacing: -0.02em;
   padding-right: 14.8rem;
-`;
-
-const Bottom = styled.div`
-  padding-left: 1.9rem;
-`;
-
-const Desc = styled.p`
-  margin-bottom: 0;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-`;
-
-const Where = styled.div`
-  display: flex;
-  flex-direction: row;
-  vertical-align: bottom;
-`;
-
-const Country = styled.p`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  padding-top: 0.46rem;
-`;
-const City = styled.p`
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 30px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  margin-top: 0;
-  margin-right: 0.5rem;
 `;

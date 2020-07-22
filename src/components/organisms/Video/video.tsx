@@ -16,7 +16,7 @@ export default function Video(props) {
   return (
     <Wrapper ref={slideRef}>
       {isFooterUp && <IndexHeaderBlurred />}
-      {!isFooterUp && (
+      {/* {!isFooterUp && (
         <Bottom>
           <Desc>지금 여기는</Desc>
           <Where>
@@ -24,7 +24,7 @@ export default function Video(props) {
             <Country>{packageData.country}</Country>
           </Where>
         </Bottom>
-      )}
+      )} */}
       <img src={packageData.tv_image} width="100%" />
       <video ref={videoRef} width="100%" autoPlay loop muted playsInline>
         {/* <source src={packageData.tv_image} type="video/mp4" /> */}
@@ -50,7 +50,6 @@ export default function Video(props) {
 }
 
 const Wrapper = styled.div`
-  z-index: 1;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -61,9 +60,11 @@ const Wrapper = styled.div`
 `;
 
 const Bottom = styled.div`
+  z-index: 101;
   position: fixed;
   top: 8.1rem;
   left: 1.9rem;
+  opacity: 1;
 `;
 
 const Desc = styled.p`
