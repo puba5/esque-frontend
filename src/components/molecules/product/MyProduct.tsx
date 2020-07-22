@@ -2,11 +2,42 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 export default function MyProduct(props) {
-  const { brandName, productName, price, productImage } = props;
+  const {
+    brandName,
+    productName,
+    price,
+    productImage,
+    setMyProduct,
+    selectedProductList,
+    setSelectedProductList,
+  } = props;
   const [isChecked, setIsChecked] = useState(false);
 
   const onClickCheckedButton = () => {
-    setIsChecked(!isChecked);
+    if (isChecked) {
+      // 체크가 되있는 상태라면
+      setIsChecked(!isChecked);
+      let newSelectedProductList = [...selectedProductList];
+      const selectedProductIndex = newSelectedProductList.indexOf(productName);
+      if (selectedProductIndex > -1) {
+        newSelectedProductList.splice(selectedProductIndex, 1);
+      }
+      setSelectedProductList(newSelectedProductList);
+    } else {
+      // 체크가 안되어 있는 상태라면
+      setIsChecked(!isChecked);
+      setSelectedProductList([...selectedProductList, productName]);
+    }
+  };
+  const onClickDeleteButton = () => {
+    // X 버튼을 누르면 myProduct 목록에서 삭제
+    let myProduct = JSON.parse(sessionStorage.getItem("myProduct"));
+    const productIndex = myProduct.indexOf(productName);
+    if (productIndex > -1) {
+      myProduct.splice(productIndex, 1);
+    }
+    sessionStorage.setItem("myProduct", JSON.stringify([...myProduct]));
+    setMyProduct(myProduct);
   };
   return (
     <Wrapper>
@@ -17,7 +48,7 @@ export default function MyProduct(props) {
           {isChecked && <CheckButtonActivated src="./image/check_activated.png" />}
         </CheckButtonArea>
         <ButtonDesc>상품선택</ButtonDesc>
-        <CloseButtonArea>
+        <CloseButtonArea onClick={onClickDeleteButton}>
           <CloseButton src="./image/X_button.png" />
         </CloseButtonArea>
       </ButtonList>

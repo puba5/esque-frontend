@@ -7,14 +7,19 @@ export default function ShopProduct(props) {
 
   const heartClick = () => {
     // 좋아요 상품 목록들을 불러온다.
-
+    // 세션 스토리지를 이용
     let myProduct = JSON.parse(sessionStorage.getItem("myProduct"));
     if (!myProduct) {
       myProduct = [];
     }
+
     if (!isHeart) {
       // 하트 버튼을 누르면 저장
       setIsHeart(true);
+      // 만약 이미 좋아요 누른 상품이라면 실행 myProduct에 담지 않는다.
+      if (myProduct.includes(productName)) {
+        return;
+      }
       sessionStorage.setItem("myProduct", JSON.stringify([...myProduct, productName]));
     } else {
       setIsHeart(false);

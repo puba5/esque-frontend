@@ -77,7 +77,7 @@ export default function Shop() {
   useEffect(() => {
     // 상품 정보 데이터를 가져옴
     axios
-      .get("https://www.esque.store/commerce/products/", {
+      .get("https://esque.store/commerce/products/", {
         params: {},
       })
       .then(function (response) {

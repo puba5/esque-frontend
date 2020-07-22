@@ -9,7 +9,7 @@ import axios from "axios";
 export default function myPage() {
   const [productList, setProductList] = useState([]);
   const [myProduct, setMyProduct] = useState([]);
-  // const [selectedProductList, setSelectedProductList] = useState([]);
+  const [selectedProductList, setSelectedProductList] = useState([]);
 
   useEffect(() => {
     // 세션 스토리지에서 좋아요 눌렀던 데이터를 가져옴
@@ -17,7 +17,7 @@ export default function myPage() {
 
     // 상품 정보 데이터를 가져옴
     axios
-      .get("https://www.esque.store/commerce/products/", {
+      .get("https://esque.store/commerce/products/", {
         params: {},
       })
       .then(function (response) {
@@ -34,7 +34,7 @@ export default function myPage() {
 
   const AddProduct = () => {
     axios
-      .post("https://www.esque.store/commerce/purchases/", {
+      .post("https://esque.store/commerce/purchases/", {
         count: 3,
         product: 3,
         customer: 1,
@@ -49,14 +49,33 @@ export default function myPage() {
         // always executed아
       });
   };
+  const onClickDeleteProduct = () => {
+    // 지우기 추가
+    // 지워진 이후 저장될 좋아요 상품 리스트
+    let myProductList = [...myProduct];
+
+    selectedProductList.map((selectedProduct) => {
+      // 만약 선택된 제품이 없다면 skip
+      if (!myProduct.includes(selectedProduct)) {
+        return;
+      }
+      // 좋아요 누른 상품을 목록에서 삭제
+      const productIndex = myProductList.indexOf(selectedProduct);
+      if (productIndex > -1) {
+        myProductList.splice(productIndex, 1);
+      }
+    });
+    sessionStorage.setItem("myProduct", JSON.stringify([...myProduct]));
+    setMyProduct(myProductList);
+  };
 
   return (
     <Wrapper>
       <MyHeader />
       <ProductControll>
         <ControllButton>
-          <SelectText>전체선택(2/3)</SelectText>
-          <DeleteButton>삭제</DeleteButton>
+          <SelectText>{`전체선택(${selectedProductList.length}/${myProduct.length})`}</SelectText>
+          <DeleteButton onClick={onClickDeleteProduct}>삭제</DeleteButton>
         </ControllButton>
       </ProductControll>
       {productList.map((product, i) => {
@@ -66,6 +85,9 @@ export default function myPage() {
         if (myProduct.includes(product.name)) {
           return (
             <MyProduct
+              selectedProductList={selectedProductList}
+              setSelectedProductList={setSelectedProductList}
+              setMyProduct={setMyProduct}
               brandName={product.brand}
               productName={product.name}
               price={product.price}
