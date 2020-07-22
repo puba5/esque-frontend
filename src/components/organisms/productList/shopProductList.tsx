@@ -28,7 +28,6 @@ export default function ShopProductList(props) {
     setComponentHeightList,
     prev,
     enterNewScene,
-    productData,
     packageData,
   } = props;
   const shopRef = useRef(null);
@@ -85,7 +84,7 @@ export default function ShopProductList(props) {
     console.log(enterNewScene);
     // 조건을 넣어 해당 조건에는 애니메이션이 작동하지 않도록
     if (currentYOffset < 0) return;
-    if (currentYOffset > 729) return;
+    if (currentYOffset >= setComponentHeightList[currentScene]) return;
     if (enterNewScene) return;
     if (sceneNumber !== currentScene) {
       return;
@@ -109,20 +108,23 @@ export default function ShopProductList(props) {
   }
 
   useEffect(() => {
-    setComponentHeightList((componentHeightList[sceneNumber] = shopRef.current.clientHeight));
+    // 비동기적으로 useState가 저장되는 문제를 해결하기 위하여 함수형으로 useState를 사용
+    setComponentHeightList((prevState) => {
+      let newHeightList = { ...prevState };
+      newHeightList[sceneNumber] = shopRef.current.clientHeight;
+      return newHeightList;
+    });
     setCurrentHeight(shopRef.current.clientHeight);
   }, []);
 
   useEffect(() => {
     playAnimation();
   });
-  console.log("Package", packageData);
+
+  // console.log("Package", packageData);
   return (
     <Wrapper ref={shopRef}>
-      <Desc ref={titleRef}>
-        담백한 독일식 <br />
-        브런치는 어떠세요?
-      </Desc>
+      <Desc ref={titleRef}>{packageData.name}</Desc>
       <Photo ref={videoRef} src={packageData.tv_image} />
       <ProductList ref={productRef}>
         {packageData.products.map((product, i) => {
@@ -164,7 +166,7 @@ const ProductList = styled.div`
 
 const Photo = styled.img`
   padding-left: auto;
-  width: 34.3rem;
+  /* width: 34.3rem; */
   height: 30.5rem;
   background: yellow;
   transform: translateY(10rem);

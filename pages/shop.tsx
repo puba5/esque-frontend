@@ -22,28 +22,28 @@ export default function Shop() {
   const [prev, setPrev] = useState(0);
   const [enterNewScene, setEnterNewScene] = useState(false);
 
-  const [productDataList, setProductDataList] = useState({});
+  // 데이터
   const [packageDataList, setPackageDataList] = useState([]);
 
-  // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여 )
+  // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여
 
-  let totalComponent = Object.keys(productDataList).length;
-  let componentHeight = 729;
+  let totalComponent = packageDataList.length;
 
   function scrollLoop() {
-    console.log("SIZSE", Object.keys(componentHeightList).length);
+    //  console.log("SIZSE", componentHeightList);
+    //console.log("SIZSE", Object.keys(componentHeightList).length);
     setEnterNewScene(false);
     //enterNewScene = false;
 
     let prevScrollHeight = 0;
 
     for (let i = 0; i < currentScene; i++) {
-      prevScrollHeight += componentHeight;
+      prevScrollHeight += componentHeightList[i];
     }
 
     setPrev(prevScrollHeight);
 
-    if (yOffset > prevScrollHeight + componentHeight) {
+    if (yOffset > prevScrollHeight + componentHeightList[currentScene]) {
       setEnterNewScene(true);
       if (currentScene + 1 >= totalComponent) {
         return;
@@ -63,7 +63,7 @@ export default function Shop() {
   }
 
   const SetScroll = () => {
-    setyOffset(window.pageYOffset + 0.5 * componentHeight);
+    setyOffset(window.pageYOffset + 0.5 * componentHeightList[0]);
     scrollLoop();
   };
 
@@ -77,30 +77,6 @@ export default function Shop() {
 
   useEffect(() => {
     // 상품 정보 데이터를 가져옴
-    axios
-      .get("https://esque.store/commerce/products/", {
-        params: {},
-      })
-      .then(function (response) {
-        console.log(response.data);
-        let processedData = {};
-        // 데이터를 분석하여 같은 패키지끼리 묶어준다.
-        for (let product of response.data) {
-          if (processedData[product.package]) {
-            processedData[product.package].push(product);
-          } else {
-            processedData[product.package] = [product];
-          }
-        }
-        setProductDataList(processedData);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
-
     axios
       .get("https://esque.store/commerce/packages/", {
         params: {},
@@ -123,20 +99,6 @@ export default function Shop() {
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
-      {/* {Object.keys(productDataList).map((key, index) => {
-        return (
-          <ShopProducts
-            productData={productDataList[key]}
-            currentScene={currentScene}
-            sceneNumber={index}
-            yOffset={yOffset}
-            componentHeightList={componentHeightList}
-            setComponentHeightList={setComponentHeightList}
-            prev={prev}
-            enterNewScene={enterNewScene}
-          />
-        );
-      })} */}
       {packageDataList.map((packageData, index) => {
         return (
           <ShopProductList
