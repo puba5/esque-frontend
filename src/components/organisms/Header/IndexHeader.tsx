@@ -64,6 +64,11 @@ const Shop = styled.a`
     font-weight: bold;
     color: white;
   }
+  &:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+  }
   font-size: 2rem;
   line-height: 3rem;
   font-style: normal;

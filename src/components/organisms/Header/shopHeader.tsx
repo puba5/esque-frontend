@@ -41,6 +41,11 @@ const EsqueTV = styled.a`
     font-weight: bold;
     color: black;
   }
+  &:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+  }
   margin-left: 1.9rem;
   margin-right: 3rem;
   font-style: normal;
