@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ShopHeader from "@src/components/organisms/Header/ShopHeader";
-import ShopProducts from "@src/components/organisms/productList/shopProducts";
+import ShopProductList from "@src/components/organisms/productList/shopProductList";
 import Menu from "@src/components/organisms/Menu/menu";
 import ShopFooter from "@src/components/organisms/Footer/ShopFooter";
 
@@ -23,6 +23,7 @@ export default function Shop() {
   const [enterNewScene, setEnterNewScene] = useState(false);
 
   const [productDataList, setProductDataList] = useState({});
+  const [packageDataList, setPackageDataList] = useState([]);
 
   // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여 )
 
@@ -81,6 +82,7 @@ export default function Shop() {
         params: {},
       })
       .then(function (response) {
+        console.log(response.data);
         let processedData = {};
         // 데이터를 분석하여 같은 패키지끼리 묶어준다.
         for (let product of response.data) {
@@ -98,6 +100,22 @@ export default function Shop() {
       .finally(function () {
         // always executed
       });
+
+    axios
+      .get("https://esque.store/commerce/packages/", {
+        params: {},
+      })
+      .then(function (response) {
+        // 데이터를 저장
+        console.log(response.data);
+        setPackageDataList(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
   }, []);
 
   return (
@@ -105,10 +123,24 @@ export default function Shop() {
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
-      {Object.keys(productDataList).map((key, index) => {
+      {/* {Object.keys(productDataList).map((key, index) => {
         return (
           <ShopProducts
             productData={productDataList[key]}
+            currentScene={currentScene}
+            sceneNumber={index}
+            yOffset={yOffset}
+            componentHeightList={componentHeightList}
+            setComponentHeightList={setComponentHeightList}
+            prev={prev}
+            enterNewScene={enterNewScene}
+          />
+        );
+      })} */}
+      {packageDataList.map((packageData, index) => {
+        return (
+          <ShopProductList
+            packageData={packageData}
             currentScene={currentScene}
             sceneNumber={index}
             yOffset={yOffset}
