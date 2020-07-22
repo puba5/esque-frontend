@@ -1,9 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
+import axios from "axios";
 
 export default function ShopProduct(props) {
   const { brandName, productName, price, productImage } = props;
   const [isHeart, setIsHeart] = useState(false);
+
+  const [brandFullName, setBrandFullName] = useState(null);
+  useEffect(() => {
+    // 브랜드 id로 브랜드 이름을 가져옴
+    axios
+      .get(`https://esque.store/commerce/brands/${brandName}/get-name/`, {
+        params: {},
+      })
+      .then(function (response) {
+        console.log(response);
+        setBrandFullName(response.data);
+      })
+      .catch(function (error) {})
+      .finally(function () {
+        // always executed
+      });
+  }, []);
 
   const heartClick = () => {
     // 좋아요 상품 목록들을 불러온다.
@@ -37,7 +56,7 @@ export default function ShopProduct(props) {
     <Wrapper>
       <ProductPhoto src={productImage} />
       <ProductDesc>
-        <Brand>{brandName}</Brand>
+        <Brand>{brandFullName}</Brand>
         <ProductName>{productName}</ProductName>
         <Price>{price}</Price>
       </ProductDesc>

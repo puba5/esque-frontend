@@ -121,11 +121,10 @@ export default function ShopProductList(props) {
     playAnimation();
   });
 
-  // console.log("Package", packageData);
   return (
     <Wrapper ref={shopRef}>
       <Desc ref={titleRef}>{packageData.name}</Desc>
-      <Photo ref={videoRef} src={packageData.tv_image} />
+      <Photo ref={videoRef} src={packageData.shop_image} />
       <ProductList ref={productRef}>
         {packageData.products.map((product, i) => {
           return (
