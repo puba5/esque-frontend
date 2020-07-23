@@ -153,8 +153,8 @@ const Bottom = styled.div`
 const Desc = styled.p`
   margin-bottom: 0;
   font-weight: 300;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
   letter-spacing: -0.02em;
   color: #ffffff;
 `;
@@ -168,8 +168,8 @@ const Where = styled.div`
 const Country = styled.p`
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
   letter-spacing: -0.02em;
   color: #ffffff;
   padding-top: 0.46rem;
@@ -177,8 +177,8 @@ const Country = styled.p`
 const City = styled.p`
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 2rem;
+  line-height: 3rem;
   letter-spacing: -0.02em;
   color: #ffffff;
   margin-top: 0;

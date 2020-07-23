@@ -24,10 +24,7 @@ export default function VideoFooterUp(props) {
       <Desc>
         <DescText onClick={onClickFooter}>
           <DescBig>{packageData.name}</DescBig>
-          <DescSmall>
-            비엔나에서 맛봤던 커피의 맛을 잊지 못해 늘 그리워하고 있었어요. 입술에 닿는 순간
-            초콜릿같이 달콤한 비엔나 커피의 향이 느껴지지 않나요?
-          </DescSmall>
+          <DescSmall>{packageData.main_text}</DescSmall>
         </DescText>
         <VideoProduct />
         <VideoProduct />

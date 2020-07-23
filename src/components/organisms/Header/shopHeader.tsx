@@ -44,7 +44,7 @@ const EsqueTV = styled.a`
   &:hover {
     text-decoration: none;
     font-weight: bold;
-    color: white;
+    color: black;
   }
   margin-left: 1.9rem;
   margin-right: 3rem;

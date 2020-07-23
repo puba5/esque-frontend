@@ -19,10 +19,7 @@ export default function VideoFooter(props) {
       <Background />
       <Desc>
         <DescBig>{packageData.name}</DescBig>
-        <DescSmall>
-          비엔나에서 맛봤던 커피의 맛을 잊지 못해 늘 그리워하고 있었어요. 입술에 닿는 순간
-          초콜릿같이...
-        </DescSmall>
+        <DescSmall>{packageData.main_text.substr(0, 52) + "..."}</DescSmall>
       </Desc>
     </Wrapper>
   );

@@ -10,7 +10,7 @@ const sceneInfo = {
     // values에는 변화의 시작 값, 끝 값, 변화의 시작과 끝 시간(비율)
     title_translateY_in: [10, 0, { start: 0, end: 0.2 }],
     video_translateY_in: [10, 0, { start: 0.2, end: 0.4 }],
-    product_translateY_in: [10, 0, { start: 0.3, end: 0.5 }],
+    product_translateY_in: [10, -6, { start: 0.3, end: 0.5 }],
   },
   objs: {
     video: null,
@@ -148,6 +148,7 @@ const Wrapper = styled.div`
 `;
 
 const Desc = styled.div`
+  white-space: pre-line;
   z-index: 1;
   position: absolute;
   font-style: normal;
@@ -161,12 +162,13 @@ const Desc = styled.div`
 
 const ProductList = styled.div`
   transform: translateY(10rem);
+  background: white;
 `;
 
 const Photo = styled.img`
   padding-left: auto;
-  /* width: 34.3rem; */
-  height: 30.5rem;
+  width: 100%;
+  /* height: 30.5rem; */
   background: yellow;
   transform: translateY(10rem);
 `;

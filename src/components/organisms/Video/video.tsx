@@ -10,9 +10,8 @@ export default function Video(props) {
 
   const videoFooter = useRef(null);
   const videoFooterUp = useRef(null);
-  console.log(packageData.tv_video);
-
   console.log(packageData);
+
   return (
     <Wrapper ref={slideRef}>
       {isFooterUp && <IndexHeaderBlurred />}
