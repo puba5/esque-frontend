@@ -16,9 +16,9 @@ export default function IndexHeader(props) {
       <Top>
         <EsqueTV>Esque TV</EsqueTV>
         <Shop href="/shop">SHOP</Shop>
-        <div onClick={onClickButton}>
+        <HambergerButton onClick={onClickButton}>
           <Hamberger size={1} color={"white"} />
-        </div>
+        </HambergerButton>
       </Top>
     </Wrapper>
   );
@@ -42,7 +42,6 @@ const Wrapper = styled.div`
 
 const Top = styled.div`
   display: flex;
-  flex-direction: row;
   margin-bottom: 3.4rem;
 `;
 
@@ -76,5 +75,9 @@ const Shop = styled.a`
   color: #ffffff;
   opacity: 0.6;
   letter-spacing: -0.02em;
-  padding-right: 14.8rem;
+  margin-right: auto;
+`;
+
+const HambergerButton = styled.div`
+  padding-right: 1.2rem;
 `;
