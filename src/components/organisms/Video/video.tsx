@@ -24,9 +24,18 @@ export default function Video(props) {
           </Where>
         </Bottom>
       )} */}
-      <img src={packageData.tv_image} width="100%" />
-      <video ref={videoRef} width="100%" autoPlay loop muted playsInline>
-        {/* <source src={packageData.tv_image} type="video/mp4" /> */}
+      {/* <img src={packageData.tv_image} width="100%" /> */}
+
+      <video
+        ref={videoRef}
+        width="100%"
+        poster={packageData.tv_image}
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src={packageData.tv_video} type="video/mp4" />
       </video>
       {!isFooterUp && (
         <VideoFooter

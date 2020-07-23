@@ -9,7 +9,17 @@ export default function IndexVideo(props) {
   return (
     <Wrapper>
       <div>{page}</div>
-      <video ref={videoRef} width="100%" loop autoPlay muted playsInline>
+      <video
+        ref={videoRef}
+        poster={
+          "https://firebasestorage.googleapis.com/v0/b/esque-7491c.appspot.com/o/packages%2FesqueTV_main_video.mp4?alt=media&token=91643779-44e2-4217-bf7a-e9fd33316fbe"
+        }
+        width="100%"
+        loop
+        autoPlay
+        muted
+        playsInline
+      >
         <source
           src={
             "https://firebasestorage.googleapis.com/v0/b/esque-7491c.appspot.com/o/packages%2FesqueTV_main_video.mp4?alt=media&token=91643779-44e2-4217-bf7a-e9fd33316fbe"
