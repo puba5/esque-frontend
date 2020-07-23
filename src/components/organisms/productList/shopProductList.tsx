@@ -36,13 +36,16 @@ export default function ShopProductList(props) {
   const productRef = useRef(null);
 
   const [currentHeight, setCurrentHeight] = useState(0);
-  // 한 컴포넌트의 높이
-  // let componentHeight = 1 * shopRef.current.clientHeight;
-  // 현재 컴포넌트 전까지의 높이
-  // let prevScrollHeight = 0;
-  // for (let i = 0; i < currentScene; i++) {
-  //   prevScrollHeight += componentHeightList[0];
-  // }
+  const [prevSrollHeight, setPrevScrollHeight] = useState(0);
+
+  // 컴포넌트 현재의 높이를 구하기 위하여, 이전 컴포넌트들의 높이를 구해놓는다.
+  useEffect(() => {
+    let heightSum = 0;
+    for (let i = 0; i < sceneNumber; i++) {
+      heightSum += componentHeightList[i];
+    }
+    setPrevScrollHeight(heightSum);
+  }, [componentHeightList]);
 
   // 화면 비율을 구하여 알맞은 값을 계산
   function calcValues(values, currentYOffset) {
@@ -50,9 +53,14 @@ export default function ShopProductList(props) {
     // 현재 씬에서 스크롤된 범위로 구하기
     const scrollHeight = currentHeight;
     //const scrollRatio = currentYOffset / scrollHeight;
-    const scrollRatio = currentYOffset / currentHeight;
+
+    let scrollRatio = currentYOffset / currentHeight;
     //.log("ratio", scrollHeight, scrollRatio);
 
+    // 빠르게 변화해서 비율이 0보다 작아진다면, 0으로 취급
+    if (scrollRatio <= 0) {
+      scrollRatio = 0;
+    }
     if (values[2]) {
       // start~end 사이에 애니메이션 실행
       const partScrollStart = values[2].start * scrollHeight;
@@ -76,21 +84,25 @@ export default function ShopProductList(props) {
 
   function playAnimation() {
     let values = sceneInfo.values;
-    let currentYOffset = yOffset - prev;
+    // 현재 높이를 window.pageYOffset + 0.5 * componentHeightList[0]로 구함
+    let currentYOffset = window.pageYOffset + 0.5 * componentHeightList[0] - prevSrollHeight;
+
+    // let currentYOffset = yOffset - prev;
     //prevScrollHeight;
 
     // 해당하는 컴포넌트가 아니면 skip
 
-    console.log(enterNewScene);
-    // 조건을 넣어 해당 조건에는 애니메이션이 작동하지 않도록
-    if (currentYOffset < 0) return;
-    if (currentYOffset >= setComponentHeightList[currentScene]) return;
-    if (enterNewScene) return;
+    // console.log(enterNewScene);
     if (sceneNumber !== currentScene) {
       return;
     }
+    // 조건을 넣어 해당 조건에는 애니메이션이 작동하지 않도록
+    if (currentYOffset < 0) return;
+    if (currentYOffset >= componentHeightList[currentScene]) return;
+    // if (enterNewScene) return;
 
-    console.log("curr", currentYOffset, yOffset, prev, sceneNumber, currentScene);
+    console.log("APPLY");
+
     titleRef.current.style.transform = `translateY(${calcValues(
       values.title_translateY_in,
       currentYOffset
@@ -106,6 +118,7 @@ export default function ShopProductList(props) {
       currentYOffset
     )}rem )`;
   }
+  const photoRef = useRef(null);
 
   useEffect(() => {
     // 비동기적으로 useState가 저장되는 문제를 해결하기 위하여 함수형으로 useState를 사용
@@ -114,8 +127,19 @@ export default function ShopProductList(props) {
       newHeightList[sceneNumber] = shopRef.current.clientHeight;
       return newHeightList;
     });
+    console.log(componentHeightList);
     setCurrentHeight(shopRef.current.clientHeight);
   }, []);
+
+  // 사진의 높이는 정해지지 않았고, 마지막에 로딩되므로, 컴포넌트의 높이는 사진이 로딩된 이후 결정한다
+  const initializeHeight = () => {
+    setComponentHeightList((prevState) => {
+      let newHeightList = { ...prevState };
+      newHeightList[sceneNumber] = shopRef.current.clientHeight;
+      return newHeightList;
+    });
+    setCurrentHeight(shopRef.current.clientHeight);
+  };
 
   useEffect(() => {
     playAnimation();
@@ -124,7 +148,7 @@ export default function ShopProductList(props) {
   return (
     <Wrapper ref={shopRef}>
       <Desc ref={titleRef}>{packageData.name}</Desc>
-      <Photo ref={videoRef} src={packageData.shop_image} />
+      <Photo ref={videoRef} src={packageData.shop_image} onLoad={initializeHeight} />
       <ProductList ref={productRef}>
         {packageData.products.map((product, i) => {
           return (

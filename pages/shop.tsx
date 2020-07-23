@@ -30,8 +30,8 @@ export default function Shop() {
   let totalComponent = packageDataList.length;
 
   function scrollLoop() {
-    //  console.log("SIZSE", componentHeightList);
-    //console.log("SIZSE", Object.keys(componentHeightList).length);
+    // console.log("SIZSE", componentHeightList);
+
     setEnterNewScene(false);
     //enterNewScene = false;
 

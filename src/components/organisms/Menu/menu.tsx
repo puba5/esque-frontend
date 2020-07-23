@@ -42,7 +42,7 @@ export default function Menu(props) {
           <HamHeart size={2.4} />
         </PageMoveButton>
         <Slash>
-          <HambergerDivider />
+          <HambergerDivider />저
         </Slash>
         <PageMoveButton href="/askPage">1:1문의</PageMoveButton>
       </List>
