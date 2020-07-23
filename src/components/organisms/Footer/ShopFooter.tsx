@@ -32,7 +32,7 @@ export default function ShopFooter() {
             <DescText>{peopleInformation[peopleNumber].email}</DescText>
           </DescContent>
         </BrandDesc>
-        <UnderBar></UnderBar>
+        <UnderBar />
         <CopyRight>copyright(C) -esque all rights reserved.</CopyRight>
       </BottomBox>
     </Wrapper>
