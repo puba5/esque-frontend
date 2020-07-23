@@ -34,7 +34,6 @@ export default function ShopProduct(props) {
         params: {},
       })
       .then(function (response) {
-        console.log(response);
         setBrandFullName(response.data);
       })
       .catch(function (error) {})
@@ -68,7 +67,6 @@ export default function ShopProduct(props) {
       }
       sessionStorage.setItem("myProduct", JSON.stringify([...myProduct]));
     }
-    console.log(myProduct);
   };
 
   return (

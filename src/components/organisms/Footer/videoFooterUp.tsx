@@ -27,7 +27,7 @@ export default function VideoFooterUp(props) {
             <DescBig>{packageData.name}</DescBig>
             <DescSmall>{packageData.main_text}</DescSmall>
           </DescText>
-          <DownButton />
+          <DownButton src="./image/down.png" />
         </DescAndButton>
         {packageData.products.map((productData) => {
           return <VideoProduct productData={productData} />;
@@ -52,8 +52,6 @@ const DownButton = styled.img`
   margin-top: auto;
   margin-left: auto;
   margin-right: 3.5rem;
-
-  border: 1px solid red;
   width: 1.8rem;
   height: 1.3rem;
 `;

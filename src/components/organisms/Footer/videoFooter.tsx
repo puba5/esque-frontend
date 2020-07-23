@@ -21,7 +21,7 @@ export default function VideoFooter(props) {
         <DescBig>{packageData.name}</DescBig>
         <DescSmall>{packageData.main_text.substr(0, 52) + "..."}</DescSmall>
       </Desc>
-      <UpButton />
+      <UpButton src="./image/up.png" />
     </Wrapper>
   );
 }
@@ -34,7 +34,6 @@ const UpButton = styled.img`
   position: fixed;
   right: 3.5rem;
   bottom: 3.4rem;
-  border: 1px solid red;
   width: 1.8rem;
   height: 1.3rem;
 `;

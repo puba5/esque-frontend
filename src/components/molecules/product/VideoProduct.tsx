@@ -8,10 +8,27 @@ export default function VideoProduct(props) {
   const [brandFullName, setBrandFullName] = useState(null);
 
   const heartClick = () => {
+    let myProduct = JSON.parse(sessionStorage.getItem("myProduct"));
+    if (!myProduct) {
+      myProduct = [];
+    }
+
     if (!isHeart) {
+      // 하트 버튼을 누르면 저장
       setIsHeart(true);
+      // 만약 이미 좋아요 누른 상품이라면 실행 myProduct에 담지 않는다.
+      if (myProduct.includes(productData.id)) {
+        return;
+      }
+      sessionStorage.setItem("myProduct", JSON.stringify([...myProduct, productData.id]));
     } else {
       setIsHeart(false);
+      // 좋아요 취소를 하면 상품을 찾아서 리스트에서 삭제
+      const productIndex = myProduct.indexOf(productData.id);
+      if (productIndex > -1) {
+        myProduct.splice(productIndex, 1);
+      }
+      sessionStorage.setItem("myProduct", JSON.stringify([...myProduct]));
     }
   };
 
