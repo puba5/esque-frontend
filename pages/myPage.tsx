@@ -149,7 +149,7 @@ const CheckButtonArea = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 1.6rem;
+  margin-left: 0.3rem;
   margin-top: 1.3rem;
   width: 2.4rem;
   height: 2.4rem;
