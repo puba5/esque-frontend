@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function ShopFooter() {
+  const peopleInformation = [
+    { name: "최준혁", position: "대표", email: "lud2ns@gmail.com" },
+    { name: "백승연", position: "CTO", email: "chris8w8@naver.com" },
+  ];
+  const [peopleNumber, setPeopleNumber] = useState(0);
+
+  const changePeople = () => {
+    if (peopleNumber == 0) {
+      setPeopleNumber(1);
+    } else {
+      setPeopleNumber(0);
+    }
+  };
   return (
     <Wrapper>
       <AboutEsque src="./image/guide_banner.png" />
@@ -9,13 +22,13 @@ export default function ShopFooter() {
         <BrandDesc>
           <DescIndex>
             <DescText>브랜드</DescText>
-            <DescText>대표</DescText>
+            <DescText>{peopleInformation[peopleNumber].position}</DescText>
             <DescText>문의</DescText>
           </DescIndex>
-          <DescContent>
+          <DescContent onClick={changePeople}>
             <DescText>Esque</DescText>
-            <DescText>최준혁</DescText>
-            <DescText>lud2ns@gmail.com</DescText>
+            <DescText>{peopleInformation[peopleNumber].name}</DescText>
+            <DescText>{peopleInformation[peopleNumber].email}</DescText>
           </DescContent>
         </BrandDesc>
         <UnderBar></UnderBar>

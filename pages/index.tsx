@@ -13,6 +13,12 @@ export default function Home() {
     return <div></div>;
   }
 
+  // 화면의 크기가 모바일보다 크다면 다른 화면으로
+  if (window.innerWidth > 500) {
+    console.log("NOT MOBILE");
+    return <div>모바일 화면으로 접속해주세요</div>;
+  }
+
   const [isMenu, setIsMenu] = useState(false);
   const [currentPageNum, setCurrentPageNum] = useState(0);
   const [isFooterUp, setIsFooterUp] = useState(false);

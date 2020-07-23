@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 export default function VideoProduct(props) {
-  const { brandName, productName, price } = props;
+  const { productData } = props;
   const [isHeart, setIsHeart] = useState(false);
+  const [brandFullName, setBrandFullName] = useState(null);
 
   const heartClick = () => {
     if (!isHeart) {
@@ -12,13 +14,47 @@ export default function VideoProduct(props) {
       setIsHeart(false);
     }
   };
+
+  useEffect(() => {
+    // 브랜드 id로 브랜드 이름을 가져옴
+    axios
+      .get(`https://esque.store/commerce/brands/${productData.brand}/get-name/`, {
+        params: {},
+      })
+      .then(function (response) {
+        console.log(response);
+        setBrandFullName(response.data);
+      })
+      .catch(function (error) {})
+      .finally(function () {
+        // always executed
+      });
+  }, []);
+
+  // 숫자에 comma 추가
+  const addComma = (moneyNumber) => {
+    if (moneyNumber === 0) {
+      return "0";
+    }
+    let moneyString = "";
+    let cnt = 0;
+    while (moneyNumber !== 0) {
+      if (cnt !== 0 && cnt % 3 === 0) {
+        moneyString = "," + moneyString;
+      }
+      moneyString = (moneyNumber % 10) + moneyString;
+      moneyNumber = Math.round(moneyNumber / 10);
+      cnt++;
+    }
+    return moneyString;
+  };
   return (
     <Wrapper>
-      <ProductPhoto></ProductPhoto>
+      <ProductPhoto src={productData.main_image} />
       <ProductDesc>
-        <Brand>Mestemacher</Brand>
-        <ProductName>독일 천연 통곡물 호밀빵</ProductName>
-        <Price>8,500</Price>
+        <Brand>{brandFullName}</Brand>
+        <ProductName>{productData.name}</ProductName>
+        <Price>{addComma(productData.price)}</Price>
       </ProductDesc>
       <HeartButton onClick={heartClick}>
         {isHeart && <HeartFilled src="./image/filled_heart_white.png" />}
@@ -45,7 +81,7 @@ const HeartEmpty = styled.img`
   height: 1.5rem;
 `;
 
-const ProductPhoto = styled.div`
+const ProductPhoto = styled.img`
   width: 7.6rem;
   height: 7.6rem;
   background: #f4f4f4;

@@ -22,13 +22,16 @@ export default function VideoFooterUp(props) {
       <IndexHeader />
       <Background />
       <Desc>
-        <DescText onClick={onClickFooter}>
-          <DescBig>{packageData.name}</DescBig>
-          <DescSmall>{packageData.main_text}</DescSmall>
-        </DescText>
-        <VideoProduct />
-        <VideoProduct />
-        <VideoProduct />
+        <DescAndButton>
+          <DescText onClick={onClickFooter}>
+            <DescBig>{packageData.name}</DescBig>
+            <DescSmall>{packageData.main_text}</DescSmall>
+          </DescText>
+          <DownButton />
+        </DescAndButton>
+        {packageData.products.map((productData) => {
+          return <VideoProduct productData={productData} />;
+        })}
       </Desc>
     </Wrapper>
   );
@@ -39,7 +42,21 @@ const Wrapper = styled.div`
   height: 100%;
   z-index: 100;
 `;
+const DescAndButton = styled.div`
+  display: flex;
+  border: 1px solid red;
+  margin-bottom: 1.9rem;
+`;
 
+const DownButton = styled.img`
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: 3.5rem;
+
+  border: 1px solid red;
+  width: 1.8rem;
+  height: 1.3rem;
+`;
 const Background = styled.div`
   position: fixed;
   bottom: 0;
@@ -51,16 +68,18 @@ const Background = styled.div`
 const Desc = styled.div`
   position: fixed;
   bottom: 2.9rem;
+  width: 100%;
 `;
 const DescText = styled.div`
   padding-left: 2rem;
-  width: 28rem;
+  width: 32rem;
 `;
 const DescBig = styled.p`
   font-size: 2rem;
   line-height: 3rem;
   letter-spacing: -0.02em;
   color: #ffffff;
+  margin-bottom: 1.2rem;
 `;
 
 const DescSmall = styled.p`
@@ -71,4 +90,5 @@ const DescSmall = styled.p`
   line-height: 2.1rem;
   letter-spacing: -0.02em;
   color: #ffffff;
+  margin-bottom: 0;
 `;

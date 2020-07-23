@@ -21,6 +21,7 @@ export default function VideoFooter(props) {
         <DescBig>{packageData.name}</DescBig>
         <DescSmall>{packageData.main_text.substr(0, 52) + "..."}</DescSmall>
       </Desc>
+      <UpButton />
     </Wrapper>
   );
 }
@@ -29,6 +30,14 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+const UpButton = styled.img`
+  position: fixed;
+  right: 3.5rem;
+  bottom: 3.4rem;
+  border: 1px solid red;
+  width: 1.8rem;
+  height: 1.3rem;
+`;
 const Desc = styled.div`
   position: fixed;
   width: 28rem;
@@ -40,6 +49,7 @@ const DescBig = styled.p`
   line-height: 3rem;
   letter-spacing: -0.02em;
   color: #ffffff;
+  margin-bottom: 1.2rem;
 `;
 
 const DescSmall = styled.p`
@@ -50,6 +60,7 @@ const DescSmall = styled.p`
   line-height: 2.1rem;
   letter-spacing: -0.02em;
   color: #ffffff;
+  margin-bottom: 0;
 `;
 
 const Background = styled.div`
