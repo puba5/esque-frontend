@@ -50,7 +50,6 @@ export default function Home() {
   const makePages = () => {
     // 페이지 개수만큼 생성
     for (let i = 0; i <= totalPageListCnt; i++) {
-      console.log(i);
       slideRef.push(useRef(null));
       videoRef.push(useRef(null));
     }

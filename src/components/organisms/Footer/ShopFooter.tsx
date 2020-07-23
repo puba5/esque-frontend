@@ -17,7 +17,9 @@ export default function ShopFooter() {
   };
   return (
     <Wrapper>
-      <AboutEsque src="./image/guide_banner.png" />
+      <a href="./about">
+        <AboutEsque src="./image/guide_banner.png" />
+      </a>
       <BottomBox>
         <BrandDesc>
           <DescIndex>
