@@ -33,8 +33,10 @@ export default function askPage() {
       })
       .then(function (response) {
         console.log(response.data);
+        alert("이메일이 잘 전송되었습니다.");
       })
       .catch(function (error) {
+        alert("오류 발생!");
         console.log(error);
       })
       .finally(function () {
