@@ -1,21 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import AskHeader from "@src/components/organisms/Header/AskHeader";
 import AskFooter from "@src/components/organisms/Footer/AskFooter";
 
+import axios from "axios";
+
 export default function askPage() {
+  const [email, setEmail] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [details, setDetails] = useState(null);
+
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const onChangeTitle = (event) => {
+    setTitle(event.target.value);
+  };
+  const onChangeDetails = (event) => {
+    setDetails(event.target.value);
+  };
+
+  const sendEmail = () => {
+    let timeNow = new Date();
+    console.log(email, title, timeNow, details);
+    axios
+      .post("https://esque.store/commerce/customers/", {
+        email: email,
+        selected_at: timeNow,
+        title: title,
+        details: details,
+      })
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  };
+
   return (
     <Wrapper>
       <AskHeader />
       <Title>문의 작성하기</Title>
       <Detail>답변은 입력해주신 이메일을 통해 드리겠습니다.</Detail>
       <InputBoxes>
-        <Email placeholder="이메일 주소" />
-        <AskTitle placeholder="제목" />
-        <AskContent placeholder="문의 내용" />
+        <Email placeholder="이메일 주소" value={email} onChange={onChangeEmail} />
+        <AskTitle placeholder="제목" value={title} onChange={onChangeTitle} />
+        <AskContent placeholder="문의 내용" value={details} onChange={onChangeDetails} />
       </InputBoxes>
-      <AskFooter />
+      <AskFooter sendEmail={sendEmail} />
     </Wrapper>
   );
 }
