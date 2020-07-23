@@ -20,7 +20,6 @@ export default function Shop() {
   const [currentScene, setCurrentScene] = useState(0);
   const [componentHeightList, setComponentHeightList] = useState({});
   const [prev, setPrev] = useState(0);
-  const [enterNewScene, setEnterNewScene] = useState(false);
 
   // 데이터
   const [packageDataList, setPackageDataList] = useState([]);
@@ -30,11 +29,6 @@ export default function Shop() {
   let totalComponent = packageDataList.length;
 
   function scrollLoop() {
-    // console.log("SIZSE", componentHeightList);
-
-    setEnterNewScene(false);
-    //enterNewScene = false;
-
     let prevScrollHeight = 0;
 
     for (let i = 0; i < currentScene; i++) {
@@ -44,7 +38,6 @@ export default function Shop() {
     setPrev(prevScrollHeight);
 
     if (yOffset > prevScrollHeight + componentHeightList[currentScene]) {
-      setEnterNewScene(true);
       if (currentScene + 1 >= totalComponent) {
         return;
       } else {
@@ -52,7 +45,6 @@ export default function Shop() {
       }
     }
     if (yOffset < prevScrollHeight) {
-      setEnterNewScene(true);
       // 브라우저 바운스 효과로 -되는 것을 방지
       if (currentScene === 0) {
         return;
@@ -109,7 +101,6 @@ export default function Shop() {
             componentHeightList={componentHeightList}
             setComponentHeightList={setComponentHeightList}
             prev={prev}
-            enterNewScene={enterNewScene}
           />
         );
       })}
