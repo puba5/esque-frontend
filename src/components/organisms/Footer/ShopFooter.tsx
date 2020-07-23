@@ -5,15 +5,14 @@ export default function ShopFooter() {
   const peopleInformation = [
     { name: "최준혁", position: "대표", email: "lud2ns@gmail.com" },
     { name: "백승연", position: "CTO", email: "chris8w8@naver.com" },
+    { name: "김희진", position: "디자인", email: "heejin5203@gmail.com" },
+    { name: "김지연", position: "디자인", email: "zxyeon22@gmail.com" },
+    { name: "유현우", position: "개발", email: "puba5@naver.com" },
   ];
   const [peopleNumber, setPeopleNumber] = useState(0);
 
   const changePeople = () => {
-    if (peopleNumber == 0) {
-      setPeopleNumber(1);
-    } else {
-      setPeopleNumber(0);
-    }
+    setPeopleNumber((peopleNumber + 1) % 5);
   };
   return (
     <Wrapper>
@@ -28,7 +27,7 @@ export default function ShopFooter() {
             <DescText>문의</DescText>
           </DescIndex>
           <DescContent onClick={changePeople}>
-            <DescText>Esque</DescText>
+            <EsqueLogo src="./image/esque_logo.png" />
             <DescText>{peopleInformation[peopleNumber].name}</DescText>
             <DescText>{peopleInformation[peopleNumber].email}</DescText>
           </DescContent>
@@ -52,6 +51,13 @@ const Wrapper = styled.div`
 const AboutEsque = styled.img`
   width: 100%;
 `;
+
+const EsqueLogo = styled.img`
+  width: 4.4rem;
+  margin-bottom: 1.3rem;
+  margin-top: 0.6rem;
+`;
+
 const BottomBox = styled.div`
   width: 100%;
   height: 34.7rem;
