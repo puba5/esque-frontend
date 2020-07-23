@@ -12,6 +12,7 @@ export default function myPage() {
   const [myProduct, setMyProduct] = useState([]);
   const [selectedProductList, setSelectedProductList] = useState([]);
   const [isModal, setIsModal] = useState(false);
+  const [isALLChecked, setIsALLChecked] = useState(false);
 
   const ModalRef = useRef(null);
   useEffect(() => {
@@ -61,12 +62,28 @@ export default function myPage() {
     setSelectedProductList([]);
   };
 
+  // 체크 버튼을 누르면 작동
+  const onClickCheckedButton = () => {
+    if (isALLChecked) {
+      // 체크가 되있는 상태라면
+      setIsALLChecked(!isALLChecked);
+      setSelectedProductList([]);
+    } else {
+      // 체크가 안되어 있는 상태라면
+      setIsALLChecked(!isALLChecked);
+      setSelectedProductList([...myProduct]);
+    }
+  };
   return (
     <Wrapper>
       {isModal && <BlackBackground />}
       <MyHeader />
       <ProductControll>
         <ControllButton>
+          <CheckButtonArea onClick={onClickCheckedButton}>
+            {!isALLChecked && <CheckButton src="./image/check_deactivated.png" />}
+            {isALLChecked && <CheckButtonActivated src="./image/check_activated.png" />}
+          </CheckButtonArea>
           <SelectText>{`전체선택(${selectedProductList.length}/${myProduct.length})`}</SelectText>
           <DeleteButton onClick={onClickDeleteProduct}>삭제</DeleteButton>
         </ControllButton>
@@ -86,6 +103,8 @@ export default function myPage() {
               price={product.price}
               productImage={product.main_image}
               productID={product.id}
+              isALLChecked={isALLChecked}
+              setIsALLChecked={setIsALLChecked}
             />
           );
         }
@@ -125,7 +144,26 @@ const ProductControll = styled.div`
   padding-top: 6.8rem;
   background: #f4f4f4;
 `;
-const SelectButton = styled.div``;
+
+const CheckButtonArea = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1.6rem;
+  margin-top: 1.3rem;
+  width: 2.4rem;
+  height: 2.4rem;
+`;
+const CheckButton = styled.img`
+  width: 1.6rem;
+  height: 1.6rem;
+`;
+
+const CheckButtonActivated = styled.img`
+  width: 1.6rem;
+  height: 1.6rem;
+`;
+
 const SelectText = styled.a`
   font-style: normal;
   font-weight: normal;
@@ -137,7 +175,6 @@ const SelectText = styled.a`
 const ControllButton = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid red;
   margin: 0 auto;
   height: 3.6rem;
   width: 34.8rem;

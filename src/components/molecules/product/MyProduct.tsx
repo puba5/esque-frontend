@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 export default function MyProduct(props) {
@@ -11,6 +11,8 @@ export default function MyProduct(props) {
     selectedProductList,
     setSelectedProductList,
     productID,
+    isALLChecked,
+    setIsALLChecked,
   } = props;
   const [isChecked, setIsChecked] = useState(false);
 
@@ -32,10 +34,20 @@ export default function MyProduct(props) {
     return moneyString;
   };
 
+  // 전체선택을 위하여 isALLChecked의 값이 변하면 체크하도록 구조를 수정
+  // 나중에 문제를 해결할 예정
+  useEffect(() => {
+    if (isALLChecked) {
+      setIsChecked(true);
+    }
+  }, [isALLChecked]);
+
   const onClickCheckedButton = () => {
     if (isChecked) {
       // 체크가 되있는 상태라면
       setIsChecked(!isChecked);
+      // 전체 선택 버튼을 false로 수정
+      setIsALLChecked(false);
       let newSelectedProductList = [...selectedProductList];
       const selectedProductIndex = newSelectedProductList.indexOf(productID);
       if (selectedProductIndex > -1) {
@@ -111,7 +123,6 @@ const CheckButtonArea = styled.p`
   margin-top: 1.3rem;
   width: 2.4rem;
   height: 2.4rem;
-  border: 1px solid red;
 `;
 const CheckButton = styled.img`
   width: 1.6rem;
