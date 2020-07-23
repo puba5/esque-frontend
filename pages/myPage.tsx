@@ -3,6 +3,7 @@ import styled from "styled-components";
 import MyProduct from "@src/components/molecules/product/MyProduct";
 import MyHeader from "@src/components/organisms/Header/MyHeader";
 import MyFooter from "@src/components/organisms/Footer/MyFooter";
+import EmailModal from "@src/components/organisms/Modal/EmailModal";
 
 import axios from "axios";
 
@@ -87,6 +88,7 @@ export default function myPage() {
         }
       })}
       <MyFooter selectedProductList={selectedProductList} />
+      <EmailModal selectedProductList={selectedProductList} />
     </Wrapper>
   );
 }
