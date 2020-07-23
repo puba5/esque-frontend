@@ -8,9 +8,9 @@ export default function IndexHeader(props) {
       <Top>
         <EsqueTV>Esque TV</EsqueTV>
         <Shop>SHOP</Shop>
-        <div>
+        <HambergerButton>
           <Hamberger size={1} color={"white"} />
-        </div>
+        </HambergerButton>
       </Top>
     </Wrapper>
   );
@@ -34,7 +34,6 @@ const Wrapper = styled.div`
 
 const Top = styled.div`
   display: flex;
-  flex-direction: row;
   margin-bottom: 3.4rem;
 `;
 
@@ -64,44 +63,9 @@ const Shop = styled.a`
   color: #ffffff;
   opacity: 0.6;
   letter-spacing: -0.02em;
-  padding-right: 14.8rem;
+  padding-right: auto;
 `;
 
-const Bottom = styled.div`
-  padding-left: 1.9rem;
-`;
-
-const Desc = styled.p`
-  margin-bottom: 0;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-`;
-
-const Where = styled.div`
-  display: flex;
-  flex-direction: row;
-  vertical-align: bottom;
-`;
-
-const Country = styled.p`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  padding-top: 0.46rem;
-`;
-const City = styled.p`
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 30px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  margin-top: 0;
-  margin-right: 0.5rem;
+const HambergerButton = styled.div`
+  padding-right: 1.2rem;
 `;
