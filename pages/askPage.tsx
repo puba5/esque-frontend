@@ -44,6 +44,22 @@ export default function askPage() {
       });
   };
 
+  const sendAutoEmail = (id) => {
+    axios
+      .get(`https://esque.store/commerce/customers/${id}/mail`, {})
+      .then(function (response) {
+        console.log(response.data);
+        console.log("자동전송완료");
+      })
+      .catch(function (error) {
+        alert("자동전송오류발생!");
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  };
+
   return (
     <Wrapper>
       <AskHeader />
