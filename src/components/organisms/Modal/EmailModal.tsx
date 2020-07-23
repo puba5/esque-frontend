@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 
 export default function EmailModal(props) {
-  const { selectedProductList } = props;
+  const { selectedProductList, ModalRef, setIsModal } = props;
 
   const [email, setEmail] = useState(null);
 
@@ -74,10 +74,16 @@ export default function EmailModal(props) {
         // always executed
       });
   };
+  // 모달을 닫는 버튼
+  const onClickCloseModal = () => {
+    setIsModal(false);
+    ModalRef.current.style.transition = "all 0.7s ease-in-out";
+    ModalRef.current.style.transform = `translateY(100vh)`;
+  };
 
   return (
-    <Wrapper>
-      <XbuttonArea>
+    <Wrapper ref={ModalRef}>
+      <XbuttonArea onClick={onClickCloseModal}>
         <Xbutton src="./image/X_button.png" />
       </XbuttonArea>
       <FooterContent>
@@ -95,8 +101,8 @@ export default function EmailModal(props) {
 }
 
 const Wrapper = styled.div`
-  transform: translateY(0vh);
-  z-index: 100;
+  transform: translateY(100vh);
+  z-index: 300;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -113,7 +119,6 @@ const XbuttonArea = styled.div`
   right: 1.1rem;
   width: 3rem;
   height: 3rem;
-  border: 1px red solid;
 `;
 
 const Xbutton = styled.img`

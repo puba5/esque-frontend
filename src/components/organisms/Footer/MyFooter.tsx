@@ -3,14 +3,16 @@ import styled from "styled-components";
 import axios from "axios";
 
 export default function MyFooter(props) {
-  const { selectedProductList } = props;
+  const { selectedProductList, ModalRef, setIsModal } = props;
   // 맛보고 싶어요 버튼
   const onClickTasteButton = () => {
-    console.log("ADDED");
     selectedProductList.map((selectedProduct) => {
       AddProduct(1, selectedProduct, 1);
     });
-    alert("맛있게 드세요!!!");
+    // 모달을 올린다
+    setIsModal(true);
+    ModalRef.current.style.transition = "all 0.5s ease-in-out";
+    ModalRef.current.style.transform = `translateY(0vh)`;
   };
 
   // 맛보고 싶어요를 클릭시 제품을 추가

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import MyProduct from "@src/components/molecules/product/MyProduct";
 import MyHeader from "@src/components/organisms/Header/MyHeader";
@@ -11,7 +11,9 @@ export default function myPage() {
   const [productList, setProductList] = useState([]);
   const [myProduct, setMyProduct] = useState([]);
   const [selectedProductList, setSelectedProductList] = useState([]);
+  const [isModal, setIsModal] = useState(false);
 
+  const ModalRef = useRef(null);
   useEffect(() => {
     // 세션 스토리지에서 좋아요 눌렀던 데이터를 가져옴
     let myProductList = JSON.parse(sessionStorage.getItem("myProduct"));
@@ -61,6 +63,7 @@ export default function myPage() {
 
   return (
     <Wrapper>
+      {isModal && <BlackBackground />}
       <MyHeader />
       <ProductControll>
         <ControllButton>
@@ -87,8 +90,16 @@ export default function myPage() {
           );
         }
       })}
-      <MyFooter selectedProductList={selectedProductList} />
-      <EmailModal selectedProductList={selectedProductList} />
+      <MyFooter
+        selectedProductList={selectedProductList}
+        ModalRef={ModalRef}
+        setIsModal={setIsModal}
+      />
+      <EmailModal
+        selectedProductList={selectedProductList}
+        ModalRef={ModalRef}
+        setIsModal={setIsModal}
+      />
     </Wrapper>
   );
 }
@@ -97,6 +108,15 @@ const Wrapper = styled.div`
   background: #f4f4f4;
   height: 100%;
   padding-bottom: 7rem;
+`;
+
+const BlackBackground = styled.div`
+  z-index: 200;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.7;
 `;
 
 const ProductControll = styled.div`
