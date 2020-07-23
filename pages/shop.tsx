@@ -7,6 +7,8 @@ import ShopFooter from "@src/components/organisms/Footer/ShopFooter";
 
 import axios from "axios";
 
+// const EsqueTVOrder = [{}];
+
 export default function Shop() {
   // 서버사이드렌더링을 하게되면, window가 생성 X, 이 문제를 해결하기 위해
   if (!process.browser) {
