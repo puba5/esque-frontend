@@ -37,23 +37,6 @@ export default function myPage() {
       });
   }, []);
 
-  const AddProduct = (count, product, id) => {
-    axios
-      .post("https://esque.store/commerce/purchases/", {
-        count: count,
-        product: product,
-        customer: id,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed아
-      });
-  };
   const onClickDeleteProduct = () => {
     // 지우기 추가
     // 지워진 이후 저장될 좋아요 상품 리스트

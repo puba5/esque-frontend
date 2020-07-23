@@ -1,10 +1,36 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 export default function MyFooter(props) {
   const { selectedProductList } = props;
   // 맛보고 싶어요 버튼
-  const onClickTasteButton = () => {};
+  const onClickTasteButton = () => {
+    console.log("ADDED");
+    selectedProductList.map((selectedProduct) => {
+      AddProduct(1, selectedProduct, 1);
+    });
+    alert("맛있게 드세요!!!");
+  };
+
+  // 맛보고 싶어요를 클릭시 제품을 추가
+  const AddProduct = (count, productID, id) => {
+    axios
+      .post("https://esque.store/commerce/purchases/", {
+        count: count,
+        product: productID,
+        customer: id,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed아
+      });
+  };
   return (
     <Wrapper>
       <HeaderLine />
@@ -13,8 +39,8 @@ export default function MyFooter(props) {
           <TotalText>Total</TotalText>
           <TotalPrice>8,500 원</TotalPrice>
         </PriceInfo>
-        <TasteButton>
-          <a>맛보고 싶어요</a>
+        <TasteButton onClick={onClickTasteButton}>
+          <p>맛보고 싶어요</p>
         </TasteButton>
       </FooterContent>
     </Wrapper>
