@@ -93,9 +93,11 @@ export default function EmailModal(props) {
         <EmailDetail>**전송 후에는 수정이 불가하므로 다시 한번 확인해 주세요.</EmailDetail>
       </FooterContent>
       <HeaderLine />
-      <MailSendButton onClick={sendEmail}>
-        <p>메일 보내기</p>
-      </MailSendButton>
+      <ButtonWrapper>
+        <MailSendButton onClick={sendEmail}>
+          <p>메일 보내기</p>
+        </MailSendButton>
+      </ButtonWrapper>
     </Wrapper>
   );
 }
@@ -189,12 +191,16 @@ const EmailDetail = styled.div`
   letter-spacing: -0.02em;
   color: #8c8c8c;
 `;
-const MailSendButton = styled.button`
-  width: 33.5rem;
-  height: 5rem;
+const ButtonWrapper = styled.div`
+  width: 100%;
+  padding-right: 2rem;
+  padding-left: 2rem;
   margin-bottom: 1.2rem;
   margin-top: 0.8rem;
-  margin-left: 2rem;
+`;
+const MailSendButton = styled.button`
+  width: 100%;
+  height: 5rem;
   border: none;
   background: #2b2b2b;
   border-radius: 5px;
