@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import Hamberger from "@src/components/atoms/btn/hamberger";
 
 export default function IndexHeader(props) {
-  const { isMenu, setIsMenu, videoRef, packageData } = props;
+  const { isMenu, setIsMenu, videoRef, packageData, currentPageNum } = props;
+
+  const VideoBarRef = useRef(null);
   const onClickButton = () => {
     if (isMenu == false) {
       setIsMenu(true);
     }
     videoRef.current.pause();
   };
+
+  useEffect(() => {
+    VideoBarRef.current.style.transition = "all 0.2s ease-in-out";
+    VideoBarRef.current.style.transform = `translateY(${100 * currentPageNum}%)`;
+  }, [currentPageNum]);
 
   return (
     <Wrapper>
@@ -20,6 +27,10 @@ export default function IndexHeader(props) {
           <Hamberger size={1} color={"white"} />
         </HambergerButton>
       </Top>
+      <VideoBarWrapper>
+        <VideoBar />
+        <CurrentVideoBar ref={VideoBarRef} />
+      </VideoBarWrapper>
     </Wrapper>
   );
 }
@@ -38,6 +49,29 @@ const Wrapper = styled.div`
     rgba(1, 1, 1, 0.306563) 63.54%,
     rgba(0, 0, 0, 0) 100%
   );
+`;
+
+const VideoBarWrapper = styled.div`
+  position: fixed;
+  right: 2rem;
+  height: 100%;
+  display: flex;
+  align-content: center;
+`;
+
+const VideoBar = styled.div`
+  height: 80%;
+  width: 0.1rem;
+  background: #ffffff;
+  opacity: 0.3;
+`;
+
+const CurrentVideoBar = styled.div`
+  position: absolute;
+  transform: translateY(0%);
+  height: 9%;
+  width: 0.1rem;
+  background: #ffffff;
 `;
 
 const Top = styled.div`

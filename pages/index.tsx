@@ -121,7 +121,12 @@ export default function Home() {
     <Wrapper>
       {!isFooterUp && (
         <div>
-          <IndexHeader isMenu={isMenu} setIsMenu={setIsMenu} videoRef={videoRef[currentPageNum]} />
+          <IndexHeader
+            isMenu={isMenu}
+            setIsMenu={setIsMenu}
+            videoRef={videoRef[currentPageNum]}
+            currentPageNum={currentPageNum}
+          />
           {currentPageNum !== 0 && (
             <Bottom>
               <Desc>지금 여기는</Desc>
