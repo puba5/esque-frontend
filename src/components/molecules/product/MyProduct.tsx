@@ -10,6 +10,7 @@ export default function MyProduct(props) {
     setMyProduct,
     selectedProductList,
     setSelectedProductList,
+    productID,
   } = props;
   const [isChecked, setIsChecked] = useState(false);
 
@@ -36,7 +37,7 @@ export default function MyProduct(props) {
       // 체크가 되있는 상태라면
       setIsChecked(!isChecked);
       let newSelectedProductList = [...selectedProductList];
-      const selectedProductIndex = newSelectedProductList.indexOf(productName);
+      const selectedProductIndex = newSelectedProductList.indexOf(productID);
       if (selectedProductIndex > -1) {
         newSelectedProductList.splice(selectedProductIndex, 1);
       }
@@ -44,13 +45,13 @@ export default function MyProduct(props) {
     } else {
       // 체크가 안되어 있는 상태라면
       setIsChecked(!isChecked);
-      setSelectedProductList([...selectedProductList, productName]);
+      setSelectedProductList([...selectedProductList, productID]);
     }
   };
   const onClickDeleteButton = () => {
     // X 버튼을 누르면 myProduct 목록에서 삭제
     let myProduct = JSON.parse(sessionStorage.getItem("myProduct"));
-    const productIndex = myProduct.indexOf(productName);
+    const productIndex = myProduct.indexOf(productID);
     if (productIndex > -1) {
       myProduct.splice(productIndex, 1);
     }

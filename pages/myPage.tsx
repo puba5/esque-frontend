@@ -37,12 +37,12 @@ export default function myPage() {
       });
   }, []);
 
-  const AddProduct = () => {
+  const AddProduct = (count, product, id) => {
     axios
       .post("https://esque.store/commerce/purchases/", {
-        count: 3,
-        product: 3,
-        customer: 1,
+        count: count,
+        product: product,
+        customer: id,
       })
       .then(function (response) {
         console.log(response);
@@ -88,7 +88,7 @@ export default function myPage() {
         if (!myProduct) {
           return;
         }
-        if (myProduct.includes(product.name)) {
+        if (myProduct.includes(product.id)) {
           return (
             <MyProduct
               selectedProductList={selectedProductList}
@@ -98,6 +98,7 @@ export default function myPage() {
               productName={product.name}
               price={product.price}
               productImage={product.main_image}
+              productID={product.id}
             />
           );
         }

@@ -55,7 +55,6 @@ export default function ShopProductList(props) {
     //const scrollRatio = currentYOffset / scrollHeight;
 
     let scrollRatio = currentYOffset / currentHeight;
-    //.log("ratio", scrollHeight, scrollRatio);
 
     // 빠르게 변화해서 비율이 0보다 작아진다면, 0으로 취급
     if (scrollRatio <= 0) {
@@ -157,6 +156,7 @@ export default function ShopProductList(props) {
               productName={product.name}
               price={product.price}
               productImage={product.main_image}
+              productID={product.id}
             />
           );
         })}

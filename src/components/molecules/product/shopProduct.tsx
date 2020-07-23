@@ -4,7 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 
 export default function ShopProduct(props) {
-  const { brandName, productName, price, productImage } = props;
+  const { brandName, productName, price, productImage, productID } = props;
   const [isHeart, setIsHeart] = useState(false);
 
   const [brandFullName, setBrandFullName] = useState(null);
@@ -55,14 +55,14 @@ export default function ShopProduct(props) {
       // 하트 버튼을 누르면 저장
       setIsHeart(true);
       // 만약 이미 좋아요 누른 상품이라면 실행 myProduct에 담지 않는다.
-      if (myProduct.includes(productName)) {
+      if (myProduct.includes(productID)) {
         return;
       }
-      sessionStorage.setItem("myProduct", JSON.stringify([...myProduct, productName]));
+      sessionStorage.setItem("myProduct", JSON.stringify([...myProduct, productID]));
     } else {
       setIsHeart(false);
       // 좋아요 취소를 하면 상품을 찾아서 리스트에서 삭제
-      const productIndex = myProduct.indexOf(productName);
+      const productIndex = myProduct.indexOf(productID);
       if (productIndex > -1) {
         myProduct.splice(productIndex, 1);
       }
