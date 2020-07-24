@@ -55,23 +55,27 @@ export default function VideoProduct(props) {
     }
     let moneyString = "";
     let cnt = 0;
-    while (moneyNumber !== 0) {
+    while (moneyNumber >= 1) {
       if (cnt !== 0 && cnt % 3 === 0) {
         moneyString = "," + moneyString;
       }
       moneyString = (moneyNumber % 10) + moneyString;
-      moneyNumber = Math.round(moneyNumber / 10);
+      moneyNumber = Math.floor(moneyNumber / 10);
       cnt++;
     }
     return moneyString;
   };
+
   return (
     <Wrapper>
       <ProductPhoto src={productData.main_image} />
       <ProductDesc>
         <Brand>{brandFullName}</Brand>
         <ProductName>{productData.name}</ProductName>
-        <Price>{addComma(productData.price)}</Price>
+        <Price>
+          <PlusMinus>±</PlusMinus>
+          {addComma(productData.price)}
+        </Price>
       </ProductDesc>
       <HeartButton onClick={heartClick}>
         {isHeart && <HeartFilled src="./image/filled_heart_white.png" />}
@@ -85,6 +89,17 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   padding: 2.2rem 1rem 0.5rem 2rem;
+  color: white;
+`;
+
+const PlusMinus = styled.div`
+  margin-top: auto;
+  margin-right: 0.7rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  letter-spacing: -0.02em;
   color: white;
 `;
 
@@ -124,6 +139,7 @@ const ProductName = styled.div`
   letter-spacing: -0.02em;
 `;
 const Price = styled.div`
+  display: flex;
   font-style: normal;
   font-weight: bold;
   font-size: 17px;

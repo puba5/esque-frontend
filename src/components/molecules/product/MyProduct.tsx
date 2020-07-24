@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 export default function MyProduct(props) {
   const {
@@ -14,7 +15,25 @@ export default function MyProduct(props) {
     isALLChecked,
     setIsALLChecked,
   } = props;
+
   const [isChecked, setIsChecked] = useState(false);
+  const [brandFullName, setBrandFullName] = useState(null);
+
+  useEffect(() => {
+    // 브랜드 id로 브랜드 이름을 가져옴
+
+    axios
+      .get(`https://esque.store/commerce/brands/${brandName}/get-name/`, {
+        params: {},
+      })
+      .then(function (response) {
+        setBrandFullName(response.data);
+      })
+      .catch(function (error) {})
+      .finally(function () {
+        // always executed
+      });
+  }, []);
 
   // 숫자에 comma 추가
   const addComma = (moneyNumber) => {
@@ -23,12 +42,12 @@ export default function MyProduct(props) {
     }
     let moneyString = "";
     let cnt = 0;
-    while (moneyNumber !== 0) {
+    while (moneyNumber >= 1) {
       if (cnt !== 0 && cnt % 3 === 0) {
         moneyString = "," + moneyString;
       }
       moneyString = (moneyNumber % 10) + moneyString;
-      moneyNumber = Math.round(moneyNumber / 10);
+      moneyNumber = Math.floor(moneyNumber / 10);
       cnt++;
     }
     return moneyString;
@@ -86,9 +105,12 @@ export default function MyProduct(props) {
       <ProductContainer>
         <ProductPhoto src={productImage} />
         <ProductDesc>
-          <Brand>{brandName}</Brand>
+          <Brand>{brandFullName}</Brand>
           <ProductName>{productName}</ProductName>
-          <Price>{addComma(price)}</Price>
+          <Price>
+            <PlusMinus>±</PlusMinus>
+            {addComma(price)}
+          </Price>
         </ProductDesc>
         <Quantity>
           <option value="1">1</option>
@@ -192,6 +214,7 @@ const ProductName = styled.div`
   letter-spacing: -0.02em;
 `;
 const Price = styled.div`
+  display: flex;
   font-style: normal;
   font-weight: bold;
   font-size: 1.7rem;
@@ -199,6 +222,16 @@ const Price = styled.div`
   letter-spacing: -0.02em;
 `;
 
+const PlusMinus = styled.div`
+  margin-top: auto;
+  margin-right: 0.7rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  letter-spacing: -0.02em;
+  color: black;
+`;
 const Quantity = styled.select`
   color: black;
   width: 5.3rem;

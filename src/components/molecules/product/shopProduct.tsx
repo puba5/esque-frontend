@@ -13,6 +13,22 @@ export default function ShopProduct(props) {
 
   const [brandFullName, setBrandFullName] = useState(null);
 
+  useEffect(() => {
+    // 브랜드 id로 브랜드 이름을 가져옴
+
+    axios
+      .get(`https://esque.store/commerce/brands/${brandName}/get-name/`, {
+        params: {},
+      })
+      .then(function (response) {
+        setBrandFullName(response.data);
+      })
+      .catch(function (error) {})
+      .finally(function () {
+        // always executed
+      });
+  }, []);
+
   // 숫자에 comma 추가
   const addComma = (moneyNumber) => {
     if (moneyNumber === 0) {
@@ -30,22 +46,6 @@ export default function ShopProduct(props) {
     }
     return moneyString;
   };
-
-  useEffect(() => {
-    // 브랜드 id로 브랜드 이름을 가져옴
-
-    axios
-      .get(`https://esque.store/commerce/brands/${brandName}/get-name/`, {
-        params: {},
-      })
-      .then(function (response) {
-        setBrandFullName(response.data);
-      })
-      .catch(function (error) {})
-      .finally(function () {
-        // always executed
-      });
-  }, []);
 
   const heartClick = () => {
     // 좋아요 상품 목록들을 불러온다.

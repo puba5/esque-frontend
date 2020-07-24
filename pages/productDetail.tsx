@@ -195,6 +195,24 @@ export default function productDetail(props) {
     }
   }, [productID]);
 
+  // 숫자에 comma 추가
+  const addComma = (moneyNumber) => {
+    if (moneyNumber === 0) {
+      return "0";
+    }
+    let moneyString = "";
+    let cnt = 0;
+    while (moneyNumber >= 1) {
+      if (cnt !== 0 && cnt % 3 === 0) {
+        moneyString = "," + moneyString;
+      }
+      moneyString = (moneyNumber % 10) + moneyString;
+      moneyNumber = Math.floor(moneyNumber / 10);
+      cnt++;
+    }
+    return moneyString;
+  };
+
   const onClickTasteButton = () => {};
   return (
     <Wrapper>
@@ -210,7 +228,7 @@ export default function productDetail(props) {
         </TitleShare>
         <PriceArea>
           <PlusMinus>±</PlusMinus>
-          <Price>{productInfo.price} 원</Price>
+          <Price>{addComma(productInfo.price)} 원</Price>
           <PriceDesc>(최소 수량 주문 금액)</PriceDesc>
         </PriceArea>
       </TitleInformation>
