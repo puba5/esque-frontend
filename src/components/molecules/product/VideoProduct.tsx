@@ -82,7 +82,6 @@ export default function VideoProduct(props) {
 }
 
 const Wrapper = styled.div`
-  border: 2px solid red;
   display: flex;
   width: 100%;
   padding: 2.2rem 1rem 0.5rem 2rem;
@@ -135,7 +134,6 @@ const Price = styled.div`
 const HeartButton = styled.div`
   width: 4rem;
   height: 5rem;
-  border: 1px solid red;
   margin-left: auto;
   padding-left: 1.3rem;
   padding-top: 1.9rem;

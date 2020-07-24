@@ -44,7 +44,6 @@ const Wrapper = styled.div`
 `;
 const DescAndButton = styled.div`
   display: flex;
-  border: 1px solid red;
   margin-bottom: 1.9rem;
 `;
 

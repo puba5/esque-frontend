@@ -96,7 +96,7 @@ const BackButtonArea = styled.a`
 const RecentSearch = styled.div`
   height: 21.5rem;
   width: 100%;
-  border: 1px solid red;
+
   position: fixed;
   top: 7.3rem;
   margin-left: 2rem;
