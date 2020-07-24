@@ -17,13 +17,14 @@ export default function Home() {
   if (window.innerWidth > 500) {
     console.log("NOT MOBILE");
     return (
-      <div>
-        모바일 화면으로 접속해주세요,모바일 화면으로 접속해주세요모바일 화면으로 접속해주세요모바일
-        화면으로 접속해주세요모바일 화면으로 접속해주세요모바일 화면으로 접속해주세요모바일 화면으로
-        접속해주세요모바일 화면으로 접속해주세요,모바일 화면으로 접속해주세요모바일 화면으로
-        접속해주세요모바일 화면으로 접속해주세요모바일 화면으로 접속해주세요모바일 화면으로
-        접속해주세요모바일 화면으로 접속해주세요
-      </div>
+      <WebWrapper>
+        <QRimage src="./image/esqueQR.png" />
+        <QRTEXT>
+          esque는 모바일 중심의 서비스입니다
+          <br />
+          QR코드로 모바일 환경에서 접속해주세요.
+        </QRTEXT>
+      </WebWrapper>
     );
   }
 
@@ -158,6 +159,31 @@ export default function Home() {
 const Wrapper = styled.div`
   position: fixed;
   overflow: hidden;
+`;
+
+const WebWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: auto;
+`;
+const QRimage = styled.img`
+  position: fixed;
+  top: 25vh;
+  left: 40vw;
+  z-index: 100;
+  width: 20vw;
+`;
+
+const QRTEXT = styled.p`
+  position: fixed;
+  top: 65vh;
+  text-align: center;
+  font-size: 1.25vw;
+  left: 40vw;
 `;
 
 const Bottom = styled.div`
