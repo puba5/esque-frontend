@@ -84,7 +84,10 @@ export default function ShopProduct(props) {
       <ProductDesc>
         <Brand>{brandFullName}</Brand>
         <ProductName>{productName}</ProductName>
-        <Price>{addComma(price)}</Price>
+        <Price>
+          <PlusMinus>±</PlusMinus>
+          {addComma(price)}
+        </Price>
       </ProductDesc>
       <HeartButton onClick={heartClick}>
         {isHeart && <HeartFilled src="./image/filled_heart.png" />}
@@ -95,11 +98,21 @@ export default function ShopProduct(props) {
 }
 
 const Wrapper = styled.div`
-  border: 2px solid red;
   display: flex;
   width: 100%;
   padding: 2.2rem 1rem 0.5rem 2rem;
   color: black;
+`;
+
+const PlusMinus = styled.div`
+  margin-top: auto;
+  margin-right: 0.7rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  letter-spacing: -0.02em;
+  color: #2b2b2b;
 `;
 
 const HeartFilled = styled.img`
@@ -138,6 +151,7 @@ const ProductName = styled.div`
   letter-spacing: -0.02em;
 `;
 const Price = styled.div`
+  display: flex;
   font-style: normal;
   font-weight: bold;
   font-size: 17px;
@@ -148,7 +162,6 @@ const Price = styled.div`
 const HeartButton = styled.div`
   width: 4rem;
   height: 5rem;
-  border: 1px solid red;
   margin-left: auto;
   padding-left: 1.3rem;
   padding-top: 1.9rem;

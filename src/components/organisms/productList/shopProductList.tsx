@@ -10,7 +10,7 @@ const sceneInfo = {
     // values에는 변화의 시작 값, 끝 값, 변화의 시작과 끝 시간(비율)
     title_translateY_in: [10, 0, { start: 0, end: 0.2 }],
     video_translateY_in: [10, 0, { start: 0.2, end: 0.4 }],
-    product_translateY_in: [10, -6, { start: 0.3, end: 0.5 }],
+    product_translateY_in: [10, -10, { start: 0.3, end: 0.5 }],
   },
   objs: {
     video: null,
@@ -192,6 +192,7 @@ const TextTop = styled.p`
 const TextBottom = styled.p``;
 
 const Desc = styled.div`
+  padding-left: 2rem;
   white-space: pre-line;
   z-index: 1;
   position: absolute;
