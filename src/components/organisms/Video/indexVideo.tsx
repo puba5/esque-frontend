@@ -11,9 +11,7 @@ export default function IndexVideo(props) {
       <div>{page}</div>
       <video
         ref={videoRef}
-        poster={
-          "https://firebasestorage.googleapis.com/v0/b/esque-7491c.appspot.com/o/packages%2FesqueTV_main_video.mp4?alt=media&token=91643779-44e2-4217-bf7a-e9fd33316fbe"
-        }
+        poster={"https://esque.s3.ap-northeast-2.amazonaws.com/packages/esqueTV_main_thum.jpg"}
         width="100%"
         loop
         autoPlay
@@ -21,9 +19,7 @@ export default function IndexVideo(props) {
         playsInline
       >
         <source
-          src={
-            "https://firebasestorage.googleapis.com/v0/b/esque-7491c.appspot.com/o/packages%2FesqueTV_main_video.mp4?alt=media&token=91643779-44e2-4217-bf7a-e9fd33316fbe"
-          }
+          src={"https://esque.s3.ap-northeast-2.amazonaws.com/packages/esqueTV_main_video.mp4"}
           type="video/mp4"
         />
       </video>

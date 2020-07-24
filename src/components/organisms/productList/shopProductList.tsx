@@ -186,6 +186,6 @@ const Photo = styled.img`
   padding-left: auto;
   width: 100%;
   /* height: 30.5rem; */
-  background: yellow;
+
   transform: translateY(10rem);
 `;

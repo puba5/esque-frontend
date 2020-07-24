@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 import axios from "axios";
 
 export default function ShopProduct(props) {
+  const router = useRouter();
+
   const { brandName, productName, price, productImage, productID } = props;
   const [isHeart, setIsHeart] = useState(false);
 
@@ -16,12 +20,12 @@ export default function ShopProduct(props) {
     }
     let moneyString = "";
     let cnt = 0;
-    while (moneyNumber !== 0) {
+    while (moneyNumber >= 1) {
       if (cnt !== 0 && cnt % 3 === 0) {
         moneyString = "," + moneyString;
       }
       moneyString = (moneyNumber % 10) + moneyString;
-      moneyNumber = Math.round(moneyNumber / 10);
+      moneyNumber = Math.floor(moneyNumber / 10);
       cnt++;
     }
     return moneyString;
@@ -29,6 +33,7 @@ export default function ShopProduct(props) {
 
   useEffect(() => {
     // 브랜드 id로 브랜드 이름을 가져옴
+
     axios
       .get(`https://esque.store/commerce/brands/${brandName}/get-name/`, {
         params: {},
@@ -69,9 +74,13 @@ export default function ShopProduct(props) {
     }
   };
 
+  // 브랜드 id로 해당하는 곳으로 이동
+
   return (
     <Wrapper>
-      <ProductPhoto src={productImage} />
+      <Link href={`/productDetail?productID=${productID}`}>
+        <ProductPhoto src={productImage} />
+      </Link>
       <ProductDesc>
         <Brand>{brandFullName}</Brand>
         <ProductName>{productName}</ProductName>
