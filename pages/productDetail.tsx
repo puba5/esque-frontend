@@ -27,7 +27,8 @@ const LocalProductInformation = [
     headText: "마카롱이 시작된 곳, 파리를 맛보다",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F2_1macarons.png?alt=media&token=72c98c18-bd60-4404-a3d4-339ac19d0c62",
-    detailImage: "",
+    detailImage:
+      "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F2__detail.png?alt=media&token=258c7cbc-a64a-4e34-805d-828873f93166",
   },
   {
     id: 4,
