@@ -27,6 +27,9 @@ export default function ShopProductList(props) {
     componentHeightList,
     setComponentHeightList,
     packageData,
+    textTop,
+    textBottom,
+    align,
   } = props;
   const shopRef = useRef(null);
   const videoRef = useRef(null);
@@ -139,7 +142,25 @@ export default function ShopProductList(props) {
 
   return (
     <Wrapper ref={shopRef}>
-      <Desc ref={titleRef}>{packageData.name}</Desc>
+      {align === "right" && (
+        <DescRight ref={titleRef}>
+          {/* {packageData.name} */}
+          <div>
+            <TextTopRight>{textTop}</TextTopRight>
+            <TextBottomRight> {textBottom}</TextBottomRight>
+          </div>
+        </DescRight>
+      )}
+      {align === "left" && (
+        <Desc ref={titleRef}>
+          {/* {packageData.name} */}
+          <div>
+            <TextTop>{textTop}</TextTop>
+            <TextBottom> {textBottom}</TextBottom>
+          </div>
+        </Desc>
+      )}
+
       <Photo ref={videoRef} src={packageData.shop_image} onLoad={initializeHeight} />
       <ProductList ref={productRef}>
         {packageData.products.map((product, i) => {
@@ -160,11 +181,39 @@ export default function ShopProductList(props) {
 
 const Wrapper = styled.div`
   padding-bottom: 10rem;
-  border: green solid 4px;
   width: 100%;
 `;
 
+const TextTop = styled.p`
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 0;
+`;
+const TextBottom = styled.p``;
+
 const Desc = styled.div`
+  white-space: pre-line;
+  z-index: 1;
+  position: absolute;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 3rem;
+  line-height: 4rem;
+  letter-spacing: -0.02em;
+  color: #2b2b2b;
+  transform: translateY(10rem);
+`;
+
+const TextTopRight = styled.p`
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 0;
+`;
+const TextBottomRight = styled.p``;
+
+const DescRight = styled.div`
+  text-align: right;
+  right: 2rem;
   white-space: pre-line;
   z-index: 1;
   position: absolute;

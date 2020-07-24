@@ -8,7 +8,7 @@ import ShopFooter from "@src/components/organisms/Footer/ShopFooter";
 import axios from "axios";
 
 // tv 순서 결정,
-const EsqueTVOrder = [
+let EsqueTVOrder = [
   { id: 5, textTop: "와인에 곁들일", textBottom: "스페인 타파스 어때요?", align: "right" },
   { id: 1, textTop: "이번 주말은 특별하게", textBottom: "영국식 피크닉", align: "right" },
   { id: 3, textTop: "마카롱이 시작된 곳,", textBottom: "파리를 맛보다", align: "left" },
@@ -33,8 +33,17 @@ export default function Shop() {
   const [componentHeightList, setComponentHeightList] = useState({});
   const [prev, setPrev] = useState(0);
 
-  // 데이터
-  const [packageDataList, setPackageDataList] = useState([]);
+  // 데이터 초기 값 설정
+  const [packageDataList, setPackageDataList] = useState([
+    { products: [] },
+    { products: [] },
+    { products: [] },
+    { products: [] },
+    { products: [] },
+    { products: [] },
+    { products: [] },
+    { products: [] },
+  ]);
 
   // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여
 
@@ -103,11 +112,14 @@ export default function Shop() {
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
-      {packageDataList.map((packageData, index) => {
+      {EsqueTVOrder.map((packageData, index) => {
         return (
           <ShopProductList
-            packageData={packageData}
+            packageData={packageDataList[packageData.id]}
             currentScene={currentScene}
+            textTop={EsqueTVOrder[index].textTop}
+            textBottom={EsqueTVOrder[index].textBottom}
+            align={EsqueTVOrder[index].align}
             sceneNumber={index}
             yOffset={yOffset}
             componentHeightList={componentHeightList}
