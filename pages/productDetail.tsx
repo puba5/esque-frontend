@@ -8,6 +8,7 @@ import axios from "axios";
 const LocalProductInformation = [
   {
     id: 1,
+    headText: "베를리너가 선별한 최고의 원두샘플",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F1_1sample.png?alt=media&token=c2c2745f-c2c1-4564-b167-0f318d661b23",
     detailImage:
@@ -15,6 +16,7 @@ const LocalProductInformation = [
   },
   {
     id: 2,
+    headText: "베를린의 분위기가 가득 담긴 원두세트",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F1_2home.png?alt=media&token=cc7495d1-5d4b-4dd8-a075-61b7800033d1",
     detailImage:
@@ -22,12 +24,14 @@ const LocalProductInformation = [
   },
   {
     id: 3,
+    headText: "마카롱이 시작된 곳, 파리를 맛보다",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F2_1macarons.png?alt=media&token=72c98c18-bd60-4404-a3d4-339ac19d0c62",
     detailImage: "",
   },
   {
     id: 4,
+    headText: "이탈리아 밀로만든 탱탱한 식감의 파르팔레",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F3_1pasta.png?alt=media&token=45ded086-468e-4896-9ea6-5f01e11ff3e1",
     detailImage:
@@ -35,6 +39,7 @@ const LocalProductInformation = [
   },
   {
     id: 5,
+    headText: "쌉쌀한 바질향 가득한 바질페스토",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F3_2basil.png?alt=media&token=78709afa-224a-4c6f-98a5-39c2aded9423",
     detailImage:
@@ -42,6 +47,7 @@ const LocalProductInformation = [
   },
   {
     id: 6,
+    headText: "티타임에 딱, 버터향 가득 영국식 비스켓",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F4_1bread.png?alt=media&token=6c09f6e6-9d5c-423a-984e-0904fe44a2a5",
     detailImage:
@@ -49,6 +55,7 @@ const LocalProductInformation = [
   },
   {
     id: 7,
+    headText: "티타임의 본고장에서 만든 달콤한 마멀레이드",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F4_2jam.png?alt=media&token=b8356a43-cf36-4e70-9fe9-8bcacdf6efc5",
     detailImage:
@@ -56,6 +63,7 @@ const LocalProductInformation = [
   },
   {
     id: 8,
+    headText: "영국 왕실이 사랑한 담백한 크림",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F4_3cream.png?alt=media&token=f56132d3-b7ce-4d01-9770-0c734f2d81db",
     detailImage:
@@ -63,6 +71,7 @@ const LocalProductInformation = [
   },
   {
     id: 9,
+    headText: "지중해의 싱싱함이 가득담긴 부라타치즈",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F5_1burata.png?alt=media&token=5e1e4131-f28e-4071-844e-e6318bab8b3c",
     detailImage:
@@ -70,6 +79,7 @@ const LocalProductInformation = [
   },
   {
     id: 10,
+    headText: "이탈리아 포도향이 가득담긴 발사믹식초",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F5_2balsamic.png?alt=media&token=7c40e84c-67e1-4385-861d-ad12858c036a",
     detailImage:
@@ -77,6 +87,7 @@ const LocalProductInformation = [
   },
   {
     id: 11,
+    headText: "쫄깃한 식감이 가득한 대왕오징어",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F6_1squid.png?alt=media&token=55704571-9e3d-44c0-9352-917475d0a2dc",
     detailImage:
@@ -84,6 +95,7 @@ const LocalProductInformation = [
   },
   {
     id: 12,
+    headText: "스페인 바다향 듬뿍, 정어리 통조림",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F6_2fish.png?alt=media&token=8a398c33-e168-4288-923f-2d3080281628",
     detailImage:
@@ -91,6 +103,7 @@ const LocalProductInformation = [
   },
   {
     id: 13,
+    headText: "스페인 향이 듬뿍 담긴 참치 통조림",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F6_3tuna.png?alt=media&token=063e601d-0926-437b-8b07-971cf9193f29",
     detailImage:
@@ -98,6 +111,7 @@ const LocalProductInformation = [
   },
   {
     id: 14,
+    headText: "건강 듬뿍 독일식 전통 요거트",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F7_1yogurt.png?alt=media&token=c8731a24-621f-49b0-bd14-9fe4c40d19be",
     detailImage:
@@ -105,6 +119,7 @@ const LocalProductInformation = [
   },
   {
     id: 15,
+    headText: "베를리너들이 즐기는 영양가득 뮤즐리",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F7_2muesli.png?alt=media&token=a3162d4b-f99e-4d21-b870-e87bdb669c2c",
     detailImage:
@@ -112,12 +127,14 @@ const LocalProductInformation = [
   },
   {
     id: 16,
+    headText: "쫀쫀하고 고소한 진짜 파리 바게트",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F8_1baguette.png?alt=media&token=5b3a7156-e89a-4ecc-b431-f72828ce6e70",
     detailImage: "",
   },
   {
     id: 17,
+    headText: "파리지엥 픽, 버터향 가득 크루아상",
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/esque1.appspot.com/o/products%2F8_2croissant.png?alt=media&token=92aa88e4-4436-4da8-9ef6-df0b82f97ea3",
     detailImage: "",
@@ -128,12 +145,16 @@ export default function productDetail(props) {
   const router = useRouter();
   const { productID } = router.query;
   const [isHeart, setIsHeart] = useState(false);
-  const [productData, setProductData] = useState({ productImage: "", detailImage: "" });
+  const [brandFullName, setBrandFullName] = useState("");
+  const [productData, setProductData] = useState({
+    headText: "",
+    productImage: "",
+    detailImage: "",
+  });
   const [productInfo, setProductInfo] = useState({ name: "", price: "", description: "" });
 
   const onClickHeartButton = () => {
     setIsHeart(!isHeart);
-    console.log("PP", productData);
   };
 
   const getProductData = (productID) => {
@@ -144,6 +165,21 @@ export default function productDetail(props) {
       .then(function (response) {
         console.log(response.data);
         setProductInfo(response.data);
+        GetBrandName(response.data.brand);
+      })
+      .catch(function (error) {})
+      .finally(function () {
+        // always executed
+      });
+  };
+
+  const GetBrandName = (brandName) => {
+    axios
+      .get(`https://esque.store/commerce/brands/${brandName}/get-name/`, {
+        params: {},
+      })
+      .then(function (response) {
+        setBrandFullName(response.data);
       })
       .catch(function (error) {})
       .finally(function () {
@@ -166,7 +202,7 @@ export default function productDetail(props) {
       <TitleInformation>
         <TitleShare>
           <TitleArea>
-            <Brand>{productID}</Brand>
+            <Brand>{brandFullName}</Brand>
             <Title>{productInfo.name}</Title>
           </TitleArea>
           <ShareButton src="./image/share_button.png" />
@@ -176,9 +212,20 @@ export default function productDetail(props) {
           <Price>{productInfo.price} 원</Price>
           <PriceDesc>(최소 수량 주문 금액)</PriceDesc>
         </PriceArea>
-        <div>{productInfo.description}</div>
       </TitleInformation>
       <Bar />
+      <HeadText>
+        <p>{productData.headText}</p>
+      </HeadText>
+      <DetailText>
+        <p>{productInfo.description}</p>
+      </DetailText>
+
+      <a href="./about">
+        <AboutEsque src="./image/guide_banner.png" />
+      </a>
+      <ProductPhoto src={productData.detailImage} />
+
       <ButtonArea>
         <HeartButtonArea onClick={onClickHeartButton}>
           {!isHeart && <HeartButton src="./image/empty_square_heart.png" />}
@@ -188,10 +235,7 @@ export default function productDetail(props) {
           <TasteButton src="./image/taste_button.png" />
         </div>
       </ButtonArea>
-      <a href="./about">
-        <AboutEsque src="./image/guide_banner.png" />
-      </a>
-      <ProductPhoto src={productData.detailImage} />
+
       <Footer src="./image/footer.png" />
     </Wrapper>
   );
@@ -209,6 +253,37 @@ const ProductPhoto = styled.img`
 const TitleInformation = styled.div`
   padding-left: 2.4rem;
   margin-top: 1.8rem;
+`;
+const HeadText = styled.div`
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 2.7rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #2b2b2b;
+`;
+const DetailText = styled.div`
+  width: 100%;
+  padding-left: 1.9rem;
+  padding-right: 2.1rem;
+  margin-bottom: 6.7rem;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 2.7rem;
+  /* or 180% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #000000;
 `;
 const TitleShare = styled.div`
   display: flex;
@@ -238,6 +313,7 @@ const Title = styled.p`
   font-size: 1.7rem;
   line-height: 2.7rem;
   letter-spacing: -0.02em;
+  margin-bottom: 0rem;
   color: #2b2b2b;
 `;
 
@@ -282,6 +358,7 @@ const PlusMinus = styled.div`
 
 const Bar = styled.div`
   width: 100%;
+  margin-bottom: 4.8rem;
   height: 0.1rem;
   background: #e4e4e4;
 `;
