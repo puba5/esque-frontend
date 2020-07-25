@@ -13,7 +13,10 @@ export default function MyHeader() {
         <BackButtonArea onClick={ClickBackButton}>
           <BackButton size={2.2} />
         </BackButtonArea>
-        <MainTitle>MY</MainTitle>
+        <MainTitle>
+          MY
+          <MyHeart src="./image/myHeart.png" />
+        </MainTitle>
       </HeaderContent>
       <HeaderLine />
     </Wrapper>
@@ -31,6 +34,11 @@ const Wrapper = styled.div`
   background: #ffffff;
   color: black;
 `;
+const MyHeart = styled.img`
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-left: 0.6rem;
+`;
 
 const HeaderContent = styled.div`
   display: flex;
@@ -45,14 +53,17 @@ const BackButtonArea = styled.a`
 `;
 
 const MainTitle = styled.p`
-  margin-top: 1.2rem;
-  margin-left: 9rem;
+  display: flex;
+  align-items: center;
   font-style: normal;
-  font-weight: normal;
-  font-size: 1.7rem;
-  line-height: 2.5rem;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 3rem;
   text-align: center;
   letter-spacing: -0.02em;
+  color: #2b2b2b;
+  margin-top: 0rem;
+  margin-left: 9rem;
 `;
 
 const Shop = styled.p`

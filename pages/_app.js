@@ -79,6 +79,7 @@ export default class Esque extends App {
           <Grey />
           <Wrapper>
             <Component {...pageProps} />
+            {/* <TmpText>사이트 공사중</TmpText> */}
           </Wrapper>
           <Grey />
         </BestWrapper>
@@ -105,4 +106,7 @@ const BestWrapper = styled.div`
   display: flex;
   flex-direction: row;
   min-height: 100%;
+`;
+const TmpText = styled.div`
+  font-size: 3rem;
 `;
