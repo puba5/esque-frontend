@@ -20,4 +20,11 @@ typeScript를 사용하려 tsx 파일로 생성 (But javaScript 스타일로 코
 esque.kr
 ```
 
-##
+## 구현한 페이지
+
+```
+상하 carousel (Esque TV)
+인터렉션 (shop page)
+
+
+```
