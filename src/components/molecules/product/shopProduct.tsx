@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import ProuductHeartButton from "@src/components/molecules/Button/ProuductHeartButton";
 
 import axios from "axios";
 
@@ -89,10 +90,11 @@ export default function ShopProduct(props) {
           {addComma(price)}
         </Price>
       </ProductDesc>
-      <HeartButton onClick={heartClick}>
+      <ProuductHeartButton />
+      {/* <HeartButton onClick={heartClick}>
         {isHeart && <HeartFilled src="./image/filled_heart.png" />}
         {!isHeart && <HeartEmpty src="./image/empty_heart.png" />}
-      </HeartButton>
+      </HeartButton> */}
     </Wrapper>
   );
 }

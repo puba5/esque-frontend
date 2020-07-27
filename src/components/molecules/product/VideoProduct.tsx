@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
+import ProuductHeartButton from "@src/components/molecules/Button/ProuductHeartButton";
+
 export default function VideoProduct(props) {
   const { productData } = props;
   const [isHeart, setIsHeart] = useState(false);
@@ -77,10 +79,11 @@ export default function VideoProduct(props) {
           {addComma(productData.price)}
         </Price>
       </ProductDesc>
-      <HeartButton onClick={heartClick}>
+      <ProuductHeartButton />
+      {/* <HeartButton onClick={heartClick}>
         {isHeart && <HeartFilled src="./image/filled_heart_white.png" />}
         {!isHeart && <HeartEmpty src="./image/empty_heart.png" />}
-      </HeartButton>
+      </HeartButton> */}
     </Wrapper>
   );
 }
