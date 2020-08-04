@@ -111,18 +111,6 @@ export default function ShopProductList(props) {
       currentYOffset
     )}rem )`;
   }
-  const photoRef = useRef(null);
-
-  // useEffect(() => {
-  //   // 비동기적으로 useState가 저장되는 문제를 해결하기 위하여 함수형으로 useState를 사용
-  //   setComponentHeightList((prevState) => {
-  //     let newHeightList = { ...prevState };
-  //     newHeightList[sceneNumber] = shopRef.current.clientHeight;
-  //     return newHeightList;
-  //   });
-  //   console.log(componentHeightList);
-  //   setCurrentHeight(shopRef.current.clientHeight);
-  // }, []);
 
   // 다른 컴포넌트들의 높이는 정해져 있어서 높이 값을 받아올 수 있다.
   // 하지만 사진의 높이는 정해지지 않았고, 마지막에 로딩되므로, 컴포넌트의 높이를 사진이 로딩된 이후 결정한다
