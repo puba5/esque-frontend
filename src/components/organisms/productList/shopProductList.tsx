@@ -128,6 +128,8 @@ export default function ShopProductList(props) {
     playAnimation();
   });
 
+  console.log("PA", packageData);
+
   return (
     <Wrapper ref={shopRef}>
       {align === "right" && (

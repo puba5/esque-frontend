@@ -41,8 +41,6 @@ export default function Shop() {
     { products: [] },
     { products: [] },
     { products: [] },
-    { products: [] },
-    { products: [] },
   ]);
 
   // 이전까지의 스크롤 높이가 몇인지( 현재 씬의 스크롤 비율을 구하기 위하여
@@ -112,10 +110,10 @@ export default function Shop() {
       <ShopHeader isMenu={isMenu} setIsMenu={setIsMenu} />
       <Menu isMenu={isMenu} setIsMenu={setIsMenu} />
       <Dummy />
-      {EsqueTVOrder.map((packageData, index) => {
+      {packageDataList.map((packageData, index) => {
         return (
           <ShopProductList
-            packageData={packageDataList[packageData.id]}
+            packageData={packageData}
             currentScene={currentScene}
             textTop={EsqueTVOrder[index].textTop}
             textBottom={EsqueTVOrder[index].textBottom}
