@@ -11,7 +11,7 @@ export default function IndexVideo(props) {
       <div>{page}</div>
       <video
         ref={videoRef}
-        poster={"https://esque.s3.ap-northeast-2.amazonaws.com/packages/esqueTV_main_thum.jpg"}
+        poster={"https://esquee.s3.ap-northeast-2.amazonaws.com/packages/esqueTV_main_thum.jpg"}
         width="100%"
         loop
         autoPlay
@@ -19,7 +19,7 @@ export default function IndexVideo(props) {
         playsInline
       >
         <source
-          src={"https://esque.s3.ap-northeast-2.amazonaws.com/packages/esqueTV_main_video.mp4"}
+          src={"https://esquee.s3.ap-northeast-2.amazonaws.com/packages/esqueTV_main_video.mp4"}
           type="video/mp4"
         />
       </video>

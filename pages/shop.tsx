@@ -8,14 +8,15 @@ import ShopFooter from "@src/components/organisms/Footer/ShopFooter";
 import axios from "axios";
 
 // tv 순서 결정,
+
 let EsqueTVOrder = [
-  { id: 5, textTop: "와인에 곁들일", textBottom: "스페인 타파스 어때요?", align: "right" },
-  { id: 1, textTop: "이번 주말은 특별하게", textBottom: "영국식 피크닉", align: "right" },
+  { id: 5, textTop: "독일 로스터리", textBottom: "여유로움 느껴보기", align: "right" },
   { id: 3, textTop: "마카롱이 시작된 곳,", textBottom: "파리를 맛보다", align: "left" },
-  { id: 0, textTop: "독일 로스터리", textBottom: "여유로움 느껴보기", align: "left" },
+  { id: 1, textTop: "이번 주말은 특별하게", textBottom: "영국식 피크닉", align: "right" },
   { id: 4, textTop: "이탈리아의 아침을", textBottom: "담은 샐러드", align: "right" },
-  { id: 7, textTop: "에펠탑 앞에서", textBottom: "파리 바게트", align: "right" },
+  { id: 0, textTop: "와인에 곁들일", textBottom: "스페인 타파스 어때요?", align: "left" },
   { id: 6, textTop: "베를린의 아침", textBottom: "그 분위기 그대로", align: "left" },
+  { id: 7, textTop: "에펠탑 앞에서", textBottom: "파리 바게트", align: "right" },
   { id: 2, textTop: "이탈리아의 색감을", textBottom: "닮은 바질 파스타", align: "left" },
 ];
 
