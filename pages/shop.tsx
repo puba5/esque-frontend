@@ -7,19 +7,6 @@ import ShopFooter from "@src/components/organisms/Footer/ShopFooter";
 
 import axios from "axios";
 
-// tv 순서 결정,
-
-let EsqueTVOrder = [
-  { id: 5, textTop: "독일 로스터리", textBottom: "여유로움 느껴보기", align: "right" },
-  { id: 3, textTop: "마카롱이 시작된 곳,", textBottom: "파리를 맛보다", align: "left" },
-  { id: 1, textTop: "이번 주말은 특별하게", textBottom: "영국식 피크닉", align: "right" },
-  { id: 4, textTop: "이탈리아의 아침을", textBottom: "담은 샐러드", align: "right" },
-  { id: 0, textTop: "와인에 곁들일", textBottom: "스페인 타파스 어때요?", align: "left" },
-  { id: 6, textTop: "베를린의 아침", textBottom: "그 분위기 그대로", align: "left" },
-  { id: 7, textTop: "에펠탑 앞에서", textBottom: "파리 바게트", align: "right" },
-  { id: 2, textTop: "이탈리아의 색감을", textBottom: "닮은 바질 파스타", align: "left" },
-];
-
 export default function Shop() {
   // 서버사이드렌더링을 하게되면, window가 생성 X, 이 문제를 해결하기 위해
   if (!process.browser) {
@@ -95,7 +82,7 @@ export default function Shop() {
       })
       .then(function (response) {
         // 데이터를 저장
-        console.log(response.data);
+        console.log("getPackageData", response.data);
         setPackageDataList(response.data);
       })
       .catch(function (error) {
@@ -116,9 +103,6 @@ export default function Shop() {
           <ShopProductList
             packageData={packageData}
             currentScene={currentScene}
-            textTop={EsqueTVOrder[index].textTop}
-            textBottom={EsqueTVOrder[index].textBottom}
-            align={EsqueTVOrder[index].align}
             sceneNumber={index}
             yOffset={yOffset}
             componentHeightList={componentHeightList}

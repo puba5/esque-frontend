@@ -27,9 +27,6 @@ export default function ShopProductList(props) {
     componentHeightList,
     setComponentHeightList,
     packageData,
-    textTop,
-    textBottom,
-    align,
   } = props;
   const shopRef = useRef(null);
   const videoRef = useRef(null);
@@ -128,25 +125,22 @@ export default function ShopProductList(props) {
     playAnimation();
   });
 
-  console.log("PA", packageData);
+  console.log("PA", packageData, packageData.role);
 
   return (
     <Wrapper ref={shopRef}>
-      {align === "right" && (
+      {packageData.role === "R" ? (
         <DescRight ref={titleRef}>
           {/* {packageData.name} */}
           <div>
-            <TextTopRight>{textTop}</TextTopRight>
-            <TextBottomRight> {textBottom}</TextBottomRight>
+            <TextTopRight>{packageData.shop_name}</TextTopRight>
           </div>
         </DescRight>
-      )}
-      {align === "left" && (
+      ) : (
         <Desc ref={titleRef}>
           {/* {packageData.name} */}
           <div>
-            <TextTop>{textTop}</TextTop>
-            <TextBottom> {textBottom}</TextBottom>
+            <TextTop>{packageData.shop_name}</TextTop>
           </div>
         </Desc>
       )}
