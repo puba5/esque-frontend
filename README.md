@@ -1,30 +1,32 @@
 # Esque FrontEnd 페이지
 
-## 사용한 기술
+### 기술 스택/모듈/라이브러리
 
 ```
-next를 이용하여 SSR (ServerSideRendering)
-typeScript를 사용하려 tsx 파일로 생성 (But javaScript 스타일로 코딩)
+React
+Next.js
+TypeScript를 사용하려 tsx 파일로 생성 (But javaScript 스타일로 코딩)
+vercel ( now )
+styled-component
 ```
 
 ## Getting Started
 
 ```
-1. npm install 로 패치지 설치
-2. npm run dev 로 실행
+npm install
+npm run dev
 ```
 
 ## 서비스(배포) 주소
 
-```
-esque.kr
-```
+> esque.kr
 
 ## 구현한 페이지
 
-```
-상하 carousel (Esque TV)
-인터렉션 (shop page)
+> 동영상 상하 carousel (Esque TV)
 
+![landing-page](./readme-images/landing-page.png)
 
-```
+> shop page 스크롤에 따른 인터렉션
+
+![shop-page](./readme-images/shop-page.png)
