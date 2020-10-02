@@ -15,16 +15,18 @@ export default function myPage() {
   const [isALLChecked, setIsALLChecked] = useState(false);
 
   const ModalRef = useRef(null);
-  useEffect(() => {
-    // 세션 스토리지에서 좋아요 눌렀던 데이터를 가져옴
+
+  // 세션 스토리지에서 좋아요 눌렀던 데이터를 가져옴
+  const initalizeMyProduct = () => {
     let myProductList = JSON.parse(sessionStorage.getItem("myProduct"));
     if (!myProductList) {
       setMyProduct([]);
     } else {
       setMyProduct(JSON.parse(sessionStorage.getItem("myProduct")));
     }
+  };
 
-    // 상품 정보 데이터를 가져옴
+  const getProductData = () =>
     axios
       .get("https://esque.store/commerce/products/", {
         params: {},
@@ -35,10 +37,11 @@ export default function myPage() {
       })
       .catch(function (error) {
         console.log(error);
-      })
-      .finally(function () {
-        // always executed
       });
+
+  useEffect(() => {
+    initalizeMyProduct();
+    getProductData();
   }, []);
 
   const onClickDeleteProduct = () => {
