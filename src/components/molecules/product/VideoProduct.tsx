@@ -6,55 +6,26 @@ import ProuductHeartButton from "@src/components/molecules/Button/ProuductHeartB
 
 export default function VideoProduct(props) {
   const { productData } = props;
-  const [isHeart, setIsHeart] = useState(false);
   const [brandFullName, setBrandFullName] = useState(null);
 
-  const heartClick = () => {
-    let myProduct = JSON.parse(sessionStorage.getItem("myProduct"));
-    if (!myProduct) {
-      myProduct = [];
-    }
-
-    if (!isHeart) {
-      // 하트 버튼을 누르면 저장
-      setIsHeart(true);
-      // 만약 이미 좋아요 누른 상품이라면 실행 myProduct에 담지 않는다.
-      if (myProduct.includes(productData.id)) {
-        return;
-      }
-      sessionStorage.setItem("myProduct", JSON.stringify([...myProduct, productData.id]));
-    } else {
-      setIsHeart(false);
-      // 좋아요 취소를 하면 상품을 찾아서 리스트에서 삭제
-      const productIndex = myProduct.indexOf(productData.id);
-      if (productIndex > -1) {
-        myProduct.splice(productIndex, 1);
-      }
-      sessionStorage.setItem("myProduct", JSON.stringify([...myProduct]));
-    }
-  };
-
-  useEffect(() => {
-    // 브랜드 id로 브랜드 이름을 가져옴
+  const getBrandName = (brandName) =>
     axios
-      .get(`https://esque.store/commerce/brands/${productData.brand}/get-name/`, {
+      .get(`https://esque.store/commerce/brands/${brandName}/get-name/`, {
         params: {},
       })
-      .then(function (response) {
-        console.log(response);
+      .then((response) => {
         setBrandFullName(response.data);
       })
-      .catch(function (error) {})
-      .finally(function () {
-        // always executed
-      });
+      .catch((error) => console.log(error));
+
+  useEffect(() => {
+    getBrandName(productData.brand);
   }, []);
 
   // 숫자에 comma 추가
   const addComma = (moneyNumber) => {
-    if (moneyNumber === 0) {
-      return "0";
-    }
+    if (moneyNumber === 0) return "0";
+
     let moneyString = "";
     let cnt = 0;
     while (moneyNumber >= 1) {
@@ -79,11 +50,7 @@ export default function VideoProduct(props) {
           {addComma(productData.price)}
         </Price>
       </ProductDesc>
-      <ProuductHeartButton />
-      {/* <HeartButton onClick={heartClick}>
-        {isHeart && <HeartFilled src="./image/filled_heart_white.png" />}
-        {!isHeart && <HeartEmpty src="./image/empty_heart.png" />}
-      </HeartButton> */}
+      <ProuductHeartButton productID={productData.id} />
     </Wrapper>
   );
 }
