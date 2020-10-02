@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function ProuductHeartButton(props) {
-  const { productID } = props;
+export default function ProuductHeartButton({ productID }) {
   const [isHeart, setIsHeart] = useState(false);
 
   const heartClick = () => {
