@@ -31,53 +31,42 @@ export default function askPage() {
         title: title,
         details: details,
       })
-      .then(function (response) {
+      .then((response) => {
         console.log(response.data);
         alert("이메일이 잘 전송되었습니다.");
         getLastEmail(email);
       })
-      .catch(function (error) {
+      .catch((error) => {
         alert("오류 발생!");
         console.log(error);
-      })
-      .finally(function () {
-        // always executed
       });
   };
 
-  const getLastEmail = (email) => {
+  const getLastEmail = (email) =>
     axios
       .get(`https://esque.store/commerce/customers/?search=${email}`, {})
-      .then(function (response) {
+      .then((response) => {
         console.log("사용자", response.data);
         console.log("ID", response.data[response.data.length - 1].id);
         sendAutoEmail(response.data[response.data.length - 1].id);
         console.log("이메일 마지막 사용자 가져옴");
       })
-      .catch(function (error) {
+      .catch((error) => {
         alert("사용자 못가져옴!!");
         console.log(error);
-      })
-      .finally(function () {
-        // always executed
       });
-  };
 
-  const sendAutoEmail = (id) => {
+  const sendAutoEmail = (id) =>
     axios
       .get(`https://esque.store/commerce/customers/${id}/mail/`, {})
-      .then(function (response) {
+      .then((response) => {
         console.log(response.data);
         console.log("자동전송완료");
       })
-      .catch(function (error) {
+      .catch((error) => {
         alert("자동전송오류발생!");
         console.log(error);
-      })
-      .finally(function () {
-        // always executed
       });
-  };
 
   return (
     <Wrapper>
