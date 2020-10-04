@@ -1,6 +1,6 @@
 # Esque FrontEnd 페이지
 
-### 기술 스택/모듈/라이브러리
+## 기술 스택/모듈/라이브러리
 
 ```
 React
@@ -19,14 +19,18 @@ npm run dev
 
 ## 서비스(배포) 주소
 
-> esque.kr
+### esque.kr
 
-## 구현한 페이지
+## 실제 페이지 구동 이미지
 
-> 동영상 상하 carousel (Esque TV)
+### 동영상 상하 carousel (Esque TV)
 
-![landing-page](./readme-images/landing-page.png)
+![landing-page](./readme-images/esque-main.gif)
 
-> shop page 스크롤에 따른 인터렉션
+### shop page 스크롤에 따른 인터렉션
 
-![shop-page](./readme-images/shop-page.png)
+![shop-page](./readme-images/esque-shop.gif)
+
+### my page
+
+![shop-page](./readme-images/esque-my.gif)
