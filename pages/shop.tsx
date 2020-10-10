@@ -82,7 +82,6 @@ export default function Shop() {
       })
       .then(function (response) {
         // 데이터를 저장
-        console.log("getPackageData", response.data);
         setPackageDataList(response.data);
       })
       .catch(function (error) {

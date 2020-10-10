@@ -15,7 +15,6 @@ export default function Home() {
 
   // 화면의 크기가 모바일보다 크다면 다른 화면으로
   if (window.innerWidth > 500) {
-    console.log("NOT MOBILE");
     return (
       <WebWrapper>
         <QRimage src="./image/esqueQR.png" />
@@ -83,12 +82,10 @@ export default function Home() {
       "touchend",
       (event) => {
         gapY = event.changedTouches[0].clientY - startY;
+        // 슬라이드를 위로 올림
         if (gapY < -50) {
-          // 슬라이드를 위로 올림
-          console.log("UP", currentPage);
           // 맨 마지막 페이지면, 내려가지 않도록
           if (currentPage >= totalPageListCnt) {
-            console.log("NoMorePage");
             return;
           }
           // 페에지 바꾸기 전에 비디오를 정지시키고, 새로운 비디오는 비디오를 재생
@@ -99,10 +96,8 @@ export default function Home() {
           slideRef[currentPage].current.style.transform = `translateY(0vh)`;
         } else if (gapY > 50) {
           // 슬라이드를 아래로 내림
-          console.log("DOWN", currentPage);
-          // 맨 첫번째 페이지면, 올라가지 않도록
           if (currentPage <= 0) {
-            console.log("NoMorePage");
+            // 맨 첫번째 페이지면, 올라가지 않도록
             return;
           }
           // 페에지 바꾸기 전에 비디오를 정지시키고, 새로운 비디오는 비디오를 재생

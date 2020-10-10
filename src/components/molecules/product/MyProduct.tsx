@@ -21,7 +21,6 @@ export default function MyProduct(props) {
 
   useEffect(() => {
     // 브랜드 id로 브랜드 이름을 가져옴
-
     axios
       .get(`https://esque.store/commerce/brands/${brandName}/get-name/`, {
         params: {},
@@ -29,10 +28,7 @@ export default function MyProduct(props) {
       .then(function (response) {
         setBrandFullName(response.data);
       })
-      .catch(function (error) {})
-      .finally(function () {
-        // always executed
-      });
+      .catch(function (error) {});
   }, []);
 
   // 숫자에 comma 추가

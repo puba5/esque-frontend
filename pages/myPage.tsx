@@ -33,11 +33,8 @@ export default function myPage() {
       })
       .then(function (response) {
         setProductList(response.data);
-        console.log(response.data);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function (error) {});
 
   useEffect(() => {
     initalizeMyProduct();

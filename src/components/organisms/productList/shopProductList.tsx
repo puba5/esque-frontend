@@ -125,23 +125,15 @@ export default function ShopProductList(props) {
     playAnimation();
   });
 
-  console.log("PA", packageData, packageData.role);
-
   return (
     <Wrapper ref={shopRef}>
       {packageData.role === "R" ? (
         <DescRight ref={titleRef}>
-          {/* {packageData.name} */}
-          <div>
-            <TextTopRight>{packageData.shop_name}</TextTopRight>
-          </div>
+          <TextTopRight>{packageData.shop_name}</TextTopRight>
         </DescRight>
       ) : (
         <Desc ref={titleRef}>
-          {/* {packageData.name} */}
-          <div>
-            <TextTop>{packageData.shop_name}</TextTop>
-          </div>
+          <TextTop>{packageData.shop_name}</TextTop>
         </Desc>
       )}
 

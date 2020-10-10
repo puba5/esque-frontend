@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export default function Search() {
   const ClickBackButton = () => {
-    console.log("BACK!!!");
     window.history.back();
   };
   return (

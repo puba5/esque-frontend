@@ -160,32 +160,21 @@ export default function productDetail(props) {
 
   const getProductData = (productID) => {
     axios
-      .get(`https://esque.store/commerce/products/${productID}/`, {
-        params: {},
-      })
+      .get(`https://esque.store/commerce/products/${productID}/`)
       .then(function (response) {
-        console.log(response.data);
         setProductInfo(response.data);
         GetBrandName(response.data.brand);
       })
-      .catch(function (error) {})
-      .finally(function () {
-        // always executed
-      });
+      .catch(function (error) {});
   };
 
   const GetBrandName = (brandName) => {
     axios
-      .get(`https://esque.store/commerce/brands/${brandName}/get-name/`, {
-        params: {},
-      })
+      .get(`https://esque.store/commerce/brands/${brandName}/get-name/`)
       .then(function (response) {
         setBrandFullName(response.data);
       })
-      .catch(function (error) {})
-      .finally(function () {
-        // always executed
-      });
+      .catch(function (error) {});
   };
 
   useEffect(() => {
