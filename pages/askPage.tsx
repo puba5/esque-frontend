@@ -37,7 +37,6 @@ export default function askPage() {
       })
       .catch((error) => {
         alert("오류 발생!");
-        console.log(error);
       });
   };
 
