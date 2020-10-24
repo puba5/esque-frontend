@@ -87,9 +87,6 @@ export default function Shop() {
       .catch(function (error) {
         console.log(error);
       })
-      .finally(function () {
-        // always executed
-      });
   }, []);
 
   return (
