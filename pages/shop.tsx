@@ -14,6 +14,7 @@ export default function Shop() {
   }
 
   const [isMenu, setIsMenu] = useState(false);
+
   // 현재 스크롤 좌표
   const [yOffset, setyOffset] = useState(0);
   // 현재 몇 번째 씬인지
@@ -80,13 +81,13 @@ export default function Shop() {
       .get("https://esque.store/commerce/packages/", {
         params: {},
       })
-      .then(function (response) {
+      .then((response) => {
         // 데이터를 저장
         setPackageDataList(response.data);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
-      })
+      });
   }, []);
 
   return (
